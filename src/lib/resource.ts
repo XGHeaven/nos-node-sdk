@@ -1,22 +1,34 @@
 import * as path from 'path'
 import { Resource } from '../type/resource'
 import * as qs from 'querystring'
-import { map, sort, pipe, join, ascend, omit, pick} from 'ramda'
+import { map, sort, pipe, join, ascend, omit, pick } from 'ramda'
 import { compact } from 'ramda-adjunct'
 import { compactObject } from './util'
 import * as url from 'url'
 
 // stringify query
-const commonQueryStringify = pipe(Object.entries, map(([key, value]) => {
-  if (typeof value === 'boolean') {
-    return value ? key : ''
-  }
-  return `${key}=${qs.escape(value)}`
-}), compact, sort(ascend(v => v)), join('&'))
+const commonQueryStringify = pipe(
+  Object.entries,
+  map(([key, value]) => {
+    if (typeof value === 'boolean') {
+      return value ? key : ''
+    }
+    return `${key}=${qs.escape(value)}`
+  }),
+  compact,
+  sort(ascend(v => v)),
+  join('&')
+)
 
-const uriQueryStringify = pipe(omit(['bucket', 'objectKey']), commonQueryStringify)
+const uriQueryStringify = pipe(
+  omit(['bucket', 'objectKey']),
+  commonQueryStringify
+)
 
-const resourceQueryStringify = pipe(pick(['acl', 'location', 'uploadId', 'uploads', 'partNumber', 'delete']), commonQueryStringify)
+const resourceQueryStringify = pipe(
+  pick(['acl', 'location', 'uploadId', 'uploads', 'partNumber', 'delete']),
+  commonQueryStringify
+)
 
 /**
  * normalize object key
@@ -34,7 +46,7 @@ export function getResourceUri(resource: Resource) {
   const query = uriQueryStringify(resource)
   const urlObj = {
     pathname: '/',
-    search: query
+    search: query,
   }
   if ('objectKey' in resource) {
     urlObj.pathname = url.resolve(urlObj.pathname, normalizeObjectKey(resource.objectKey))
@@ -52,7 +64,7 @@ export function getResourceString(resource: Resource) {
       search: query,
     })
     // return `/${resource.bucket}/${qs.escape(resource.objectKey)}${query ? '?' + query : ''}`
-  } else if ('bucket' in resource){
+  } else if ('bucket' in resource) {
     return `/${resource.bucket}/${query ? '?' + query : ''}`
   }
   return '/'

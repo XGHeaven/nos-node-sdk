@@ -81,12 +81,7 @@ export class NosBaseClient {
     return resp
   }
 
-  protected async request(
-    method: string,
-    headers: any,
-    resource: Resource,
-    body?: any
-  ): Promise<Response> {
+  protected async request(method: string, headers: any, resource: Resource, body?: any): Promise<Response> {
     const resp = await this._request(method, headers, resource, body)
     return this.handleRequestError(resp)
   }
@@ -96,10 +91,12 @@ export class NosBaseClient {
     return await parseBody(resp)
   }
 
-  protected validateParams(params: OperateObjectParams | OperateOptionalBucketParams): {
-    bucket: string,
-    headers: any,
-    resource: Resource,
+  protected validateParams(
+    params: OperateObjectParams | OperateOptionalBucketParams
+  ): {
+    bucket: string
+    headers: any
+    resource: Resource
   } {
     const bucket = params.bucket || this.options.defaultBucket
     if (!bucket) {
@@ -118,15 +115,17 @@ export class NosBaseClient {
       bucket,
       resource,
       headers: {
-        host: `${bucket}.${this.options.host}`
-      }
+        host: `${bucket}.${this.options.host}`,
+      },
     }
   }
 
-  protected validateBinaryParams(params: OperateBinaryObjectParams): {
-    sourceBucket: string,
-    targetBucket: string,
-    resource: Resource,
+  protected validateBinaryParams(
+    params: OperateBinaryObjectParams
+  ): {
+    sourceBucket: string
+    targetBucket: string
+    resource: Resource
     headers: any
   } {
     const sourceBucket = params.sourceBucket || this.options.defaultBucket
@@ -149,8 +148,8 @@ export class NosBaseClient {
       targetBucket,
       resource,
       headers: {
-        host: `${targetBucket}.${this.options.host}`
-      }
+        host: `${targetBucket}.${this.options.host}`,
+      },
     }
   }
 }

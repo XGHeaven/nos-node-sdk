@@ -1,6 +1,6 @@
 import { OperateOptionalBucketParams, OperateObjectParams } from './object'
 
-export interface DeleteMultiObjectParams extends OperateOptionalBucketParams{
+export interface DeleteMultiObjectParams extends OperateOptionalBucketParams {
   objectKeys: string[]
 }
 

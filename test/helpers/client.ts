@@ -11,7 +11,7 @@ export function randomObjectKey(ext: string = '', prefix: string = '') {
 }
 
 export async function newClient() {
-  const bucket = 'nos-node-sdk-test'//randomBucketName()
+  const bucket = 'nos-node-sdk-test' //randomBucketName()
   const client = new NosClient({
     accessKey: process.env.NOS_ACCESS_KEY as string,
     accessSecret: process.env.NOS_ACCESS_SECRET as string,
@@ -19,7 +19,7 @@ export async function newClient() {
     defaultBucket: bucket,
   })
 
-  await client.ensureBucket({bucket})
+  await client.ensureBucket({ bucket })
 
   return client
 }
@@ -41,18 +41,18 @@ export async function cleanClient(client: NosClient) {
 }
 
 export async function newBucket(client: NosClient, bucket: string = randomBucketName()): Promise<string> {
-  await client.putBucket({bucket})
+  await client.putBucket({ bucket })
   return bucket
 }
 
 export async function cleanBucket(client: NosClient, bucket: string): Promise<void> {
-  const list = await client.listObject({bucket})
+  const list = await client.listObject({ bucket })
   for (const obj of list) {
-    await client.deleteObject({objectKey: obj.key, bucket})
+    await client.deleteObject({ objectKey: obj.key, bucket })
   }
 }
 
 export async function deleteBucket(client: NosClient, bucket: string): Promise<void> {
   await cleanBucket(client, bucket)
-  await client.deleteBucket({bucket})
+  await client.deleteBucket({ bucket })
 }

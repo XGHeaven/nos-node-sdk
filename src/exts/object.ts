@@ -1,18 +1,20 @@
-import { parse } from "date-fns"
+import { parse } from 'date-fns'
 import * as xml from 'fast-xml-parser'
-import fs from "fs"
-import * as querystring from "querystring"
+import fs from 'fs'
+import * as querystring from 'querystring'
 import { pick, type } from 'ramda'
-import * as url from "url"
+import * as url from 'url'
 import { NosBaseClient } from '../client'
 import { NosError } from '../lib/error'
 import { mergeResource } from '../lib/resource'
 import {
   addMetadataPrefix,
-  Callbackable, CamelCaseObject,
+  Callbackable,
+  CamelCaseObject,
   compactObject,
   getMetadataFromHeaders,
-  isHttpStatusOk, normalizeArray,
+  isHttpStatusOk,
+  normalizeArray,
   stream2Buffer,
 } from '../lib/util'
 import { Callback } from '../type/callback'
@@ -33,21 +35,20 @@ import { ObjectContent, OperateObjectParams } from '../type/object'
 import { PutObjectParams, PutObjectResult } from '../type/put-object'
 
 export class NosClientObjectExt extends NosBaseClient {
-
   @Callbackable
   async listObject(params: ListObjectParams = {}): Promise<ObjectContent[]> {
     const { bucket, headers, resource } = this.validateParams(params)
 
-    Object.assign(resource, pick(['prefix', 'marker', 'delimiter'], params), compactObject({
-      // 不要问我为什么，文档就是用了 kabab case 我有什么办法
-      'max-keys': params.limit
-    }))
-
-    const data = await this.requestBody(
-      'get',
-      headers,
+    Object.assign(
       resource,
+      pick(['prefix', 'marker', 'delimiter'], params),
+      compactObject({
+        // 不要问我为什么，文档就是用了 kabab case 我有什么办法
+        'max-keys': params.limit,
+      })
     )
+
+    const data = await this.requestBody('get', headers, resource)
     let objects = normalizeArray(data.listBucketResult.contents)
 
     for (const obj of objects) {
@@ -59,7 +60,7 @@ export class NosClientObjectExt extends NosBaseClient {
 
   @Callbackable
   async putObject(params: PutObjectParams): Promise<PutObjectResult> {
-    const {headers,resource} = this.validateParams(params)
+    const { headers, resource } = this.validateParams(params)
     let data: Buffer | NodeJS.ReadableStream | string
     if ('file' in params) {
       data = fs.createReadStream(params.file)
@@ -72,12 +73,7 @@ export class NosClientObjectExt extends NosBaseClient {
     })
 
     // TODO: check eTag
-    const resp = await this.request(
-      'put',
-      headers,
-      resource,
-      data
-    )
+    const resp = await this.request('put', headers, resource, data)
 
     return {
       eTag: resp.headers.get('etag') || '',
@@ -90,10 +86,12 @@ export class NosClientObjectExt extends NosBaseClient {
   @Callbackable
   async getObject(params: GetObjectParams): Promise<Buffer | string | NodeJS.ReadableStream> {
     const encode = params.encode || 'stream'
-    const {bucket, headers, resource} = this.validateParams(params)
+    const { bucket, headers, resource } = this.validateParams(params)
 
-    if(params.range) {
-      headers.range = 'bytes=' + (typeof params.range === 'string' ? params.range : `${params.range.first || ''}-${params.range.last || ''}`)
+    if (params.range) {
+      headers.range =
+        'bytes=' +
+        (typeof params.range === 'string' ? params.range : `${params.range.first || ''}-${params.range.last || ''}`)
     }
 
     mergeResource(resource, pick(['ifNotFound'], params))
@@ -117,7 +115,8 @@ export class NosClientObjectExt extends NosBaseClient {
     const { bucket, headers, resource } = this.validateParams(params)
 
     if (params.ifModifiedSince) {
-      headers['if-modified-since'] = typeof params.ifModifiedSince === 'string' ? params.ifModifiedSince : params.ifModifiedSince.toUTCString()
+      headers['if-modified-since'] =
+        typeof params.ifModifiedSince === 'string' ? params.ifModifiedSince : params.ifModifiedSince.toUTCString()
     }
 
     const resp = await this.request('head', headers, resource)
@@ -128,7 +127,7 @@ export class NosClientObjectExt extends NosBaseClient {
       lastModified: parse(lastModifiedHeader),
       eTag: resp.headers.get('etag') || '',
       contentType: resp.headers.get('content-type') || '',
-      metadata: getMetadataFromHeaders(resp.headers)
+      metadata: getMetadataFromHeaders(resp.headers),
     }
   }
 
@@ -147,14 +146,14 @@ export class NosClientObjectExt extends NosBaseClient {
 
   @Callbackable
   async copyObject(params: CopyObjectOptions): Promise<void> {
-    const {resource, headers, sourceBucket} = this.validateBinaryParams(params)
+    const { resource, headers, sourceBucket } = this.validateBinaryParams(params)
     headers['x-nos-copy-source'] = querystring.escape(`/${sourceBucket}/${params.sourceObjectKey}`)
     await this.requestBody('put', headers, resource)
   }
 
   @Callbackable
   async getObjectUrl(params: GetObjectUrlParams): Promise<string> {
-    const {bucket, headers, resource} = this.validateParams(params)
+    const { bucket, headers, resource } = this.validateParams(params)
     Object.assign(resource, {
       expires: params.expires,
       link: true,
@@ -172,7 +171,7 @@ export class NosClientObjectExt extends NosBaseClient {
 
   @Callbackable
   async deleteObject(params: DeleteObjectParams): Promise<void> {
-    const { headers, resource}  = this.validateParams(params)
+    const { headers, resource } = this.validateParams(params)
 
     try {
       await this.requestBody('delete', headers, resource)
@@ -186,9 +185,11 @@ export class NosClientObjectExt extends NosBaseClient {
 
   @Callbackable
   async moveObject(params: MoveObjectParams): Promise<void> {
-    const { sourceBucket, targetBucket,headers, resource} = this.validateBinaryParams(params)
+    const { sourceBucket, targetBucket, headers, resource } = this.validateBinaryParams(params)
     if (sourceBucket !== targetBucket) {
-      throw new Error('sourceBucket must be equal to targetBucket: https://www.163yun.com/help/documents/45669971175591936')
+      throw new Error(
+        'sourceBucket must be equal to targetBucket: https://www.163yun.com/help/documents/45669971175591936'
+      )
     }
     headers['x-nos-move-source'] = querystring.escape(`/${sourceBucket}/${params.sourceObjectKey}`)
     await this.request('put', headers, resource)
@@ -201,13 +202,13 @@ export class NosClientObjectExt extends NosBaseClient {
    */
   @Callbackable
   async deleteMultiObject(params: DeleteMultiObjectParams): Promise<DeleteMultiObjectErrorInfo[]> {
-    const {headers, resource} = this.validateParams(params)
+    const { headers, resource } = this.validateParams(params)
 
     const reqData = {
       delete: {
         quiet: true,
-        object: params.objectKeys.map(key => ({key}))
-      }
+        object: params.objectKeys.map(key => ({ key })),
+      },
     }
 
     Object.assign(resource, { delete: true })

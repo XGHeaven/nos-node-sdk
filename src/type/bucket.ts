@@ -1,6 +1,6 @@
 export interface Bucket {
-  creationDate: Date,
-  name: string,
+  creationDate: Date
+  name: string
 }
 
 export enum BucketAcl {
@@ -18,15 +18,15 @@ export interface OperateBucketParams {
   bucket: string
 }
 
-export interface SetBucketAclParams extends OperateBucketParams{
+export interface SetBucketAclParams extends OperateBucketParams {
   acl: BucketAcl
 }
 
-export interface SetBucketDefault404Params extends OperateBucketParams{
+export interface SetBucketDefault404Params extends OperateBucketParams {
   objectKey: string
 }
 
 export interface BucketWebsite {
-  indexDocument: string,
+  indexDocument: string
   errorDocument?: string
 }

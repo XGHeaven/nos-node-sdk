@@ -17,24 +17,22 @@ function doTests(tests: Tests, testFunc: (res: Resource) => string) {
 
 describe('getResourceUri', () => {
   const tests: Tests = {
-    'empty resource': [[
-      {}, '/'
-    ]],
+    'empty resource': [[{}, '/']],
     'bucket resource': [
       [{ bucket: 'bucket' }, '/'],
-      [{ bucket: 'bucket', acl: true}, '/?acl'],
-      [{ bucket: 'bucket', location: true}, '/?location'],
+      [{ bucket: 'bucket', acl: true }, '/?acl'],
+      [{ bucket: 'bucket', location: true }, '/?location'],
     ],
     'objectKey resource': [
-      [{bucket: 'bkt', objectKey: 'obj'}, '/obj'],
-      [{bucket: 'bkt', objectKey: 'obj', partNumber: 1}, '/obj?partNumber=1'],
-      [{bucket: 'bkt', objectKey: 'obj', uploads: true}, '/obj?uploads']
+      [{ bucket: 'bkt', objectKey: 'obj' }, '/obj'],
+      [{ bucket: 'bkt', objectKey: 'obj', partNumber: 1 }, '/obj?partNumber=1'],
+      [{ bucket: 'bkt', objectKey: 'obj', uploads: true }, '/obj?uploads'],
     ],
     'objectKey resource with directory': [
-      [{bucket: 'bkt', objectKey: 'dir/obj'}, '/dir/obj'],
-      [{bucket: 'bkt', objectKey: '/dir/obj'}, '/dir/obj'],
-      [{bucket: 'bkt', objectKey: 'dir/obj', uploads: true}, '/dir/obj?uploads']
-    ]
+      [{ bucket: 'bkt', objectKey: 'dir/obj' }, '/dir/obj'],
+      [{ bucket: 'bkt', objectKey: '/dir/obj' }, '/dir/obj'],
+      [{ bucket: 'bkt', objectKey: 'dir/obj', uploads: true }, '/dir/obj?uploads'],
+    ],
   }
 
   doTests(tests, getResourceUri)
@@ -43,20 +41,20 @@ describe('getResourceUri', () => {
 describe('getResourceString', () => {
   const tests: Tests = {
     'bucket resource': [
-      [{bucket: 'bucket'}, '/bucket/'],
-      [{bucket: 'bucket', acl: true}, '/bucket/?acl'],
-      [{bucket: 'bucket', location: true}, '/bucket/?location']
+      [{ bucket: 'bucket' }, '/bucket/'],
+      [{ bucket: 'bucket', acl: true }, '/bucket/?acl'],
+      [{ bucket: 'bucket', location: true }, '/bucket/?location'],
     ],
     'objectKey resource': [
-      [{bucket: 'bkt', objectKey: 'obj'}, '/bkt/obj'],
-      [{bucket: 'bkt', objectKey: 'obj', partNumber: 1}, '/bkt/obj?partNumber=1'],
-      [{bucket: 'bkt', objectKey: 'obj', uploads: true}, '/bkt/obj?uploads']
+      [{ bucket: 'bkt', objectKey: 'obj' }, '/bkt/obj'],
+      [{ bucket: 'bkt', objectKey: 'obj', partNumber: 1 }, '/bkt/obj?partNumber=1'],
+      [{ bucket: 'bkt', objectKey: 'obj', uploads: true }, '/bkt/obj?uploads'],
     ],
     'objectKey resource with directory': [
-      [{bucket: 'bkt', objectKey: 'folder/file'}, '/bkt/folder%2Ffile'],
-      [{bucket: 'bkt', objectKey: '/folder/file'}, '/bkt/folder%2Ffile'],
-      [{bucket: 'bkt', objectKey: 'dir/obj', uploads: true}, '/bkt/dir%2Fobj?uploads']
-    ]
+      [{ bucket: 'bkt', objectKey: 'folder/file' }, '/bkt/folder%2Ffile'],
+      [{ bucket: 'bkt', objectKey: '/folder/file' }, '/bkt/folder%2Ffile'],
+      [{ bucket: 'bkt', objectKey: 'dir/obj', uploads: true }, '/bkt/dir%2Fobj?uploads'],
+    ],
   }
 
   doTests(tests, getResourceString)

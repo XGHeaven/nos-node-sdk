@@ -6,12 +6,12 @@ export interface PutObjectBaseOptions extends OperateObjectParams {
   metadata?: object
 }
 
-export interface PutObjectBodyOptions extends PutObjectBaseOptions{
+export interface PutObjectBodyOptions extends PutObjectBaseOptions {
   body: string | Buffer
 }
 
-export interface PutObjectStreamOptions extends PutObjectBaseOptions{
-  body: NodeJS.ReadableStream,
+export interface PutObjectStreamOptions extends PutObjectBaseOptions {
+  body: NodeJS.ReadableStream
   length?: number
 }
 

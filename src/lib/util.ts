@@ -61,13 +61,18 @@ export function stream2Buffer(stream: ReadableStream): Promise<Buffer> {
   })
 }
 
-export const addMetadataPrefix = renameKeysWith(pipe(kababCase, concat('x-nos-')))
+export const addMetadataPrefix = renameKeysWith(
+  pipe(
+    kababCase,
+    concat('x-nos-')
+  )
+)
 export function getMetadataFromHeaders(headers: Headers): ObjectMetadata {
   let keyIt = headers.keys()
   const metadata: ObjectMetadata = {}
 
   let res = keyIt.next()
-  while(!res.done) {
+  while (!res.done) {
     const key = res.value
     if (key.startsWith('x-nos-')) {
       metadata[key.slice(6)] = headers.get(key) as string
@@ -84,7 +89,10 @@ export function isHttpStatusOk(status: number): boolean {
 }
 
 export function md5sum(data: Buffer | string): string {
-  return crypto.createHash('md5').update(data).digest('hex')
+  return crypto
+    .createHash('md5')
+    .update(data)
+    .digest('hex')
 }
 
 export const isNullOrUndefined = (a: any) => isNull(a) || isUndefined(a)
@@ -94,9 +102,9 @@ export const compactObject = filter<any>(e => !isNullOrUndefined(e))
 export function applyMixins(derivedCtor: any, baseCtors: any[]) {
   baseCtors.forEach(baseCtor => {
     Object.getOwnPropertyNames(baseCtor.prototype).forEach(name => {
-      derivedCtor.prototype[name] = baseCtor.prototype[name];
-    });
-  });
+      derivedCtor.prototype[name] = baseCtor.prototype[name]
+    })
+  })
 }
 
 // decorator to add callback support of method
@@ -106,7 +114,9 @@ export function Callbackable(target: any, key: string, descr: PropertyDescriptor
   descr.value = function(...args: any[]) {
     if (typeof args[args.length - 1] === 'function') {
       const cb = args[args.length - 1]
-      fn.apply(this, args.slice(0, -1)).then((data: any) => cb(null, data)).catch((e: any) => cb(e, null))
+      fn.apply(this, args.slice(0, -1))
+        .then((data: any) => cb(null, data))
+        .catch((e: any) => cb(e, null))
       return
     }
 

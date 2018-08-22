@@ -3,13 +3,16 @@ import { OperateObjectParams } from './object'
 export type GetObjectParams = GetObjectStreamParams | GetObjectBufferParams | GetObjectStringParams
 
 export interface GetObjectBaseOptions extends OperateObjectParams {
-  range?: {
-    first: number,
-    last?: number,
-  } | {
-    first?: number,
-    last: number,
-  } | string
+  range?:
+    | {
+        first: number
+        last?: number
+      }
+    | {
+        first?: number
+        last: number
+      }
+    | string
 
   // not use?
   ifNotFound?: string

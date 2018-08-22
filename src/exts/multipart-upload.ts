@@ -1,4 +1,4 @@
-import { parse } from "date-fns"
+import { parse } from 'date-fns'
 import * as xml from 'fast-xml-parser'
 import { type } from 'ramda'
 import { NosBaseClient } from '../client'
@@ -6,8 +6,13 @@ import { Callbackable, CamelCaseObject, normalizeArray } from '../lib/util'
 import { Callback } from '../type/callback'
 import { DeleteMultiObjectErrorInfo, DeleteMultiObjectParams } from '../type/delete-multi-object'
 import {
-  AbortMultipartUploadParams, CompleteMultipartParams,
-  InitMultipartUploadParams, ListMultipartParams, ListPartsOptions, MultipartUpload, MultipartUploadObject,
+  AbortMultipartUploadParams,
+  CompleteMultipartParams,
+  InitMultipartUploadParams,
+  ListMultipartParams,
+  ListPartsOptions,
+  MultipartUpload,
+  MultipartUploadObject,
   Part,
   UploadMultipartParams,
 } from '../type/multipart-upload'
@@ -15,7 +20,7 @@ import {
 export class NosClientMultipartUploadExt extends NosBaseClient {
   @Callbackable
   async initMultipartUpload(params: InitMultipartUploadParams): Promise<string> {
-    const {bucket, headers, resource} = this.validateParams(params)
+    const { bucket, headers, resource } = this.validateParams(params)
 
     Object.assign(resource, {
       uploads: true,
@@ -28,7 +33,7 @@ export class NosClientMultipartUploadExt extends NosBaseClient {
 
   @Callbackable
   async abortMultipartUpload(params: AbortMultipartUploadParams): Promise<boolean> {
-    const {bucket, headers, resource} = this.validateParams(params)
+    const { bucket, headers, resource } = this.validateParams(params)
 
     Object.assign(resource, {
       uploadId: params.uploadId,
@@ -42,7 +47,7 @@ export class NosClientMultipartUploadExt extends NosBaseClient {
 
   @Callbackable
   async uploadMultipart(params: UploadMultipartParams): Promise<Part> {
-    const {bucket, headers, resource} = this.validateParams(params)
+    const { bucket, headers, resource } = this.validateParams(params)
 
     Object.assign(resource, {
       partNumber: params.partNumber,
@@ -56,7 +61,7 @@ export class NosClientMultipartUploadExt extends NosBaseClient {
       partNumber: params.partNumber,
       eTag: (resp.headers.get('etag') as string).slice(1, -1),
       size: params.body.length,
-      lastModified: parse(resp.headers.get('date') as string)
+      lastModified: parse(resp.headers.get('date') as string),
     }
   }
 
@@ -68,11 +73,11 @@ export class NosClientMultipartUploadExt extends NosBaseClient {
    */
   @Callbackable
   async listParts(params: ListPartsOptions): Promise<Part[]> {
-    const {bucket, headers, resource} = this.validateParams(params)
+    const { bucket, headers, resource } = this.validateParams(params)
 
     Object.assign(resource, {
       uploadId: params.uploadId,
-      'max-parts': params.limit || 1000
+      'max-parts': params.limit || 1000,
     })
 
     const result = await this.requestBody('get', headers, resource)
@@ -92,7 +97,7 @@ export class NosClientMultipartUploadExt extends NosBaseClient {
 
   @Callbackable
   async listMultipartUpload(params: ListMultipartParams = {}): Promise<MultipartUpload[]> {
-    const {bucket, headers, resource} = this.validateParams(params)
+    const { bucket, headers, resource } = this.validateParams(params)
     Object.assign(resource, {
       uploads: true,
     })
@@ -105,7 +110,7 @@ export class NosClientMultipartUploadExt extends NosBaseClient {
 
     let uploads = normalizeArray(result.listMultipartUploadsResult.upload)
 
-    if (type(uploads)!=='Array') {
+    if (type(uploads) !== 'Array') {
       uploads = [uploads]
     }
 
@@ -118,7 +123,7 @@ export class NosClientMultipartUploadExt extends NosBaseClient {
 
   @Callbackable
   async completeMultipartUpload(params: CompleteMultipartParams): Promise<MultipartUploadObject> {
-    const {bucket, headers, resource} = this.validateParams(params)
+    const { bucket, headers, resource } = this.validateParams(params)
 
     Object.assign(resource, {
       uploadId: params.uploadId,
@@ -126,8 +131,8 @@ export class NosClientMultipartUploadExt extends NosBaseClient {
 
     const result = await this.requestBody('post', headers, resource, {
       completeMultipartUpload: {
-        part: params.parts.map(part => ({partNumber: part.partNumber, eTag: part.eTag}))
-      }
+        part: params.parts.map(part => ({ partNumber: part.partNumber, eTag: part.eTag })),
+      },
     })
 
     return result.completeMultipartUploadResult

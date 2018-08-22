@@ -37,32 +37,32 @@ describe('listBucket', () => {
 describe('putBucket', async () => {
   it('should ok', async () => {
     const bucket = randomBucketName()
-    await client.putBucket({bucket})
+    await client.putBucket({ bucket })
     buckets.push(bucket)
-    await expect(client.isBucketExist({bucket})).resolves.toBeTrue()
+    await expect(client.isBucketExist({ bucket })).resolves.toBeTrue()
   })
 })
 
 describe('deleteBucket', async () => {
   it('should ok when bucket exist', async () => {
     const bucket = randomBucketName()
-    await client.putBucket({bucket})
-    await client.deleteBucket({bucket})
-    await expect(client.isBucketExist({bucket})).resolves.toBeFalse()
+    await client.putBucket({ bucket })
+    await client.deleteBucket({ bucket })
+    await expect(client.isBucketExist({ bucket })).resolves.toBeFalse()
   })
 
   it('should return when bucket is not exist', async () => {
-    await client.deleteBucket({bucket: 'absolute-do-not-exist-bucket-' + Date.now()})
+    await client.deleteBucket({ bucket: 'absolute-do-not-exist-bucket-' + Date.now() })
   })
 
   it('should throw error when delete other user bucket', async () => {
-    await expect(client.deleteBucket({bucket: 'nos'})).rejects.toThrowError()
+    await expect(client.deleteBucket({ bucket: 'nos' })).rejects.toThrowError()
   })
 })
 
 describe('getBucketAcl', () => {
   it('should return bucket acl', async () => {
-    const acl = await client.getBucketAcl({bucket: ''})
+    const acl = await client.getBucketAcl({ bucket: '' })
     expect(acl).toBe(BucketAcl.PRIVATE)
   })
 })
@@ -71,7 +71,7 @@ describe('setBucketAcl', () => {
   let bucket = randomBucketName()
 
   beforeEach(async () => {
-    await client.putBucket({bucket})
+    await client.putBucket({ bucket })
   })
 
   afterEach(async () => {
@@ -79,15 +79,15 @@ describe('setBucketAcl', () => {
   })
 
   it('should set bucket acl', async () => {
-    await expect(client.getBucketAcl({bucket})).resolves.toEqual(BucketAcl.PRIVATE)
-    await client.setBucketAcl({bucket, acl: BucketAcl.PUBLISH})
-    await expect(client.getBucketAcl({bucket})).resolves.toEqual(BucketAcl.PUBLISH)
+    await expect(client.getBucketAcl({ bucket })).resolves.toEqual(BucketAcl.PRIVATE)
+    await client.setBucketAcl({ bucket, acl: BucketAcl.PUBLISH })
+    await expect(client.getBucketAcl({ bucket })).resolves.toEqual(BucketAcl.PUBLISH)
   })
 })
 
 describe('getBucketLocation', () => {
   it('should return bucket location', async () => {
-    const location = await client.getBucketLocation({bucket})
+    const location = await client.getBucketLocation({ bucket })
     expect(location).toBe(BucketLocation.HZ)
   })
 })
@@ -104,7 +104,7 @@ describe('getBucketDefault404', () => {
   })
 
   it('should return empty bucket default 404', async () => {
-    const default404 = await client.getBucketDefault404({bucket})
+    const default404 = await client.getBucketDefault404({ bucket })
     expect(default404).toBeEmpty()
   })
 })
@@ -112,15 +112,15 @@ describe('getBucketDefault404', () => {
 describe('setBucketDefault404', () => {
   it('set bucket default 404', async () => {
     const key = randomObjectKey('.html')
-    await client.setBucketDefault404({bucket, objectKey: key})
+    await client.setBucketDefault404({ bucket, objectKey: key })
 
-    await expect(client.getBucketDefault404({bucket})).resolves.toBe(key)
+    await expect(client.getBucketDefault404({ bucket })).resolves.toBe(key)
   })
 })
 
 describe('isBucketExist', () => {
   it('should return true when bucket exist', async () => {
-    const exist = await client.isBucketExist({bucket})
+    const exist = await client.isBucketExist({ bucket })
     expect(exist).toBeTruthy()
   })
 })

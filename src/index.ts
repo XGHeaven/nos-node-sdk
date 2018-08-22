@@ -9,8 +9,6 @@ export { ListObjectParams } from './type/list-object'
 
 export class NosClient extends NosBaseClient {}
 
-export interface NosClient extends NosClientBucketExt, NosClientObjectExt, NosClientMultipartUploadExt {
-
-}
+export interface NosClient extends NosClientBucketExt, NosClientObjectExt, NosClientMultipartUploadExt {}
 
 applyMixins(NosClient, [NosClientBucketExt, NosClientObjectExt, NosClientMultipartUploadExt])

@@ -7,14 +7,7 @@ import { getResourceString } from './resource'
 // lower-case header name
 const normalizeHeaders = renameKeysWith(toLower)
 
-const canonicalizedHeaders = pipe<
-  object,
-  object,
-  [string, any][],
-  [string, any][],
-  string[],
-  string
->(
+const canonicalizedHeaders = pipe<object, object, [string, any][], [string, any][], string[], string>(
   pickBy((_, key) => key.startsWith('x-nos-')),
   toPairs,
   sortBy(prop('0')),
@@ -28,12 +21,7 @@ const normalizeDate = function(date: any) {
 
 const joinParts = join('\n')
 
-export function signature(
-  secretKey: string,
-  verb: string,
-  headers: any,
-  resource: Resource
-) {
+export function signature(secretKey: string, verb: string, headers: any, resource: Resource) {
   headers = normalizeHeaders(headers)
 
   const contentMD5 = headers['content-md5'] || ''

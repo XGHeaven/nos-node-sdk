@@ -1,4 +1,4 @@
-import * as fs from "fs"
+import * as fs from 'fs'
 import fetch from 'node-fetch'
 import { NosClient } from '../../src'
 import { stream2Buffer } from '../../src/lib/util'
@@ -22,7 +22,7 @@ describe('listObject', async () => {
     const bucket = await newBucket(client)
 
     try {
-      await expect(client.listObject({bucket})).resolves.toHaveLength(0)
+      await expect(client.listObject({ bucket })).resolves.toHaveLength(0)
       await deleteBucket(client, bucket)
     } catch (e) {
       // make sure delete bucket
@@ -38,32 +38,31 @@ describe('listObject', async () => {
 
   it('list objects with prefix', async () => {
     const objectKey = randomObjectKey()
-    await client.putObject({objectKey: `test-prefix-${objectKey}`, body: 'random'})
-    const objs = await client.listObject({prefix: 'test-prefix'})
+    await client.putObject({ objectKey: `test-prefix-${objectKey}`, body: 'random' })
+    const objs = await client.listObject({ prefix: 'test-prefix' })
     expect(objs).toBeArray()
     expect(objs.length).toBeGreaterThan(0)
   })
 
   it('list objects with dir prefix', async () => {
     const key = randomObjectKey()
-    await client.putObject({objectKey: `list-prefix/${key}`, body: 'dir'})
-    const objs = await client.listObject({prefix: 'list-prefix/'})
+    await client.putObject({ objectKey: `list-prefix/${key}`, body: 'dir' })
+    const objs = await client.listObject({ prefix: 'list-prefix/' })
     expect(objs).toBeArray()
     expect(objs.length).toBeGreaterThan(0)
   })
 
   it('list objects with limit', async () => {
     for (let i = 0; i < 10; i++) {
-      await client.putObject({objectKey: randomObjectKey(), body: 'list object' + i})
+      await client.putObject({ objectKey: randomObjectKey(), body: 'list object' + i })
     }
 
-    const objs = await client.listObject({limit: 5})
+    const objs = await client.listObject({ limit: 5 })
     expect(objs).toHaveLength(5)
   })
 })
 
 describe('putObject', () => {
-
   it('upload file with string', async () => {
     const objectKey = randomObjectKey()
     const content = 'test-upload-file-with-string'
@@ -178,17 +177,17 @@ Object {
 describe('deleteObject', () => {
   it('should return when delete object success', async () => {
     const objectKey = randomObjectKey()
-    await client.putObject({objectKey, body: 'xxx'})
+    await client.putObject({ objectKey, body: 'xxx' })
 
-    await expect(client.isObjectExist({objectKey})).resolves.toBeTrue()
+    await expect(client.isObjectExist({ objectKey })).resolves.toBeTrue()
 
-    await client.deleteObject({objectKey})
-    await expect(client.isObjectExist({objectKey})).resolves.toBeFalse()
+    await client.deleteObject({ objectKey })
+    await expect(client.isObjectExist({ objectKey })).resolves.toBeFalse()
   })
 
   it.skip('should return false when delete object that do not exist', async () => {
     const objectKey = randomObjectKey()
-    client.deleteObject({objectKey})
+    client.deleteObject({ objectKey })
   })
 })
 
@@ -212,8 +211,8 @@ describe('headObject', () => {
   it.skip('head object with ifModifiedSince', async () => {
     const objectKey = randomObjectKey('.txt')
     const content = 'head object'
-    await client.putObject({objectKey, body: content})
-    const result = await client.headObject({objectKey, ifModifiedSince: new Date(Date.now())})
+    await client.putObject({ objectKey, body: content })
+    const result = await client.headObject({ objectKey, ifModifiedSince: new Date(Date.now()) })
     console.log(result)
   })
 })
@@ -223,21 +222,21 @@ describe('getObject', () => {
   let objectKey: string = randomObjectKey('.txt')
 
   beforeAll(async () => {
-    await client.putObject({objectKey, body: content})
+    await client.putObject({ objectKey, body: content })
   })
 
   it('should return string when encode is utf-8', async () => {
-    const body = await client.getObject({objectKey, encode: 'utf-8'})
+    const body = await client.getObject({ objectKey, encode: 'utf-8' })
     expect(body).toBe(content)
   })
 
   it('should return buffer when encode is buffer', async () => {
-    const body = await client.getObject({objectKey, encode: 'buffer'})
+    const body = await client.getObject({ objectKey, encode: 'buffer' })
     expect(body.toString()).toEqual(content)
   })
 
   it('should return stream when encode is stream', async () => {
-    const body = await client.getObject({objectKey, encode:'stream'})
+    const body = await client.getObject({ objectKey, encode: 'stream' })
     expect((await stream2Buffer(body)).toString()).toEqual(content)
   })
 
@@ -245,9 +244,9 @@ describe('getObject', () => {
     ['first-last', '0-5', content.slice(0, 6)],
     ['first-', '3-', content.slice(3)],
     ['-last', '-3', content.slice(0, 4)],
-    ['first-last obj', {first: 3, last: 5}, content.slice(3, 6)],
-    ['first- obj', {first: 3}, content.slice(3)],
-    ['-last obj', {last: 5}, content.slice(0, 6)]
+    ['first-last obj', { first: 3, last: 5 }, content.slice(3, 6)],
+    ['first- obj', { first: 3 }, content.slice(3)],
+    ['-last obj', { last: 5 }, content.slice(0, 6)],
   ])('should get object slice when range is %s', async (title: string, range: any, value: string) => {
     const body = await client.getObject({
       objectKey,
@@ -262,7 +261,7 @@ describe('getObject', () => {
     const body = await client.getObject({
       objectKey: 'absolute-not-found-key-iphonex-pixel-xl-3.y',
       ifNotFound: objectKey,
-      encode: 'utf-8'
+      encode: 'utf-8',
     })
 
     expect(body).toEqual(content)
@@ -316,10 +315,10 @@ describe('copyObject', () => {
   })
 
   it.each([
-    ['in same bucket', {}, {bucket: bucket1}],
+    ['in same bucket', {}, { bucket: bucket1 }],
     ['in different bucket', {}, {}],
-    ['source object in a folder', {key: randomObjectKey('', 'copy-file-folder')}, {}],
-    ['target object in a folder', {}, {key: randomObjectKey('', 'copy-file-folder')}],
+    ['source object in a folder', { key: randomObjectKey('', 'copy-file-folder') }, {}],
+    ['target object in a folder', {}, { key: randomObjectKey('', 'copy-file-folder') }],
   ])('should ok when %s', async (title, source, target) => {
     const sourceKey = source.key || randomObjectKey()
     const targetKey = target.key || randomObjectKey()
@@ -327,21 +326,28 @@ describe('copyObject', () => {
     const targetBucket = target.bucket || bucket2
     const content = 'copy file ' + title
 
-    await client.putObject({objectKey: sourceKey, body: content, bucket: sourceBucket})
-    await expect(client.isObjectExist({objectKey: sourceKey})).resolves.toBeTrue()
+    await client.putObject({ objectKey: sourceKey, body: content, bucket: sourceBucket })
+    await expect(client.isObjectExist({ objectKey: sourceKey })).resolves.toBeTrue()
 
-    await client.copyObject({sourceObjectKey: sourceKey, sourceBucket: sourceBucket, targetObjectKey: targetKey, targetBucket: targetBucket})
-    await expect(client.isObjectExist({objectKey: targetKey, bucket: targetBucket})).resolves.toBeTrue()
+    await client.copyObject({
+      sourceObjectKey: sourceKey,
+      sourceBucket: sourceBucket,
+      targetObjectKey: targetKey,
+      targetBucket: targetBucket,
+    })
+    await expect(client.isObjectExist({ objectKey: targetKey, bucket: targetBucket })).resolves.toBeTrue()
 
-    await expect(client.getObject({objectKey: targetKey, encode: 'utf-8', bucket: targetBucket})).resolves.toEqual(content)
+    await expect(client.getObject({ objectKey: targetKey, encode: 'utf-8', bucket: targetBucket })).resolves.toEqual(
+      content
+    )
   })
 })
 
 describe('getObjectUrl', () => {
   it('should return object url', async () => {
     const file = randomObjectKey()
-    await client.putObject({objectKey: file, body: 'file'})
-    const url = await client.getObjectUrl({objectKey: file, expires: 1000})
+    await client.putObject({ objectKey: file, body: 'file' })
+    const url = await client.getObjectUrl({ objectKey: file, expires: 1000 })
 
     expect(url).toBeTruthy()
 
@@ -358,12 +364,12 @@ describe('deleteMultiObject', () => {
     const file3 = randomObjectKey()
     const data = Buffer.from('test-content')
     await Promise.all([
-      client.putObject({objectKey: file1, body: data}),
-      client.putObject({objectKey: file2, body: data}),
-      client.putObject({objectKey: file3, body: data}),
+      client.putObject({ objectKey: file1, body: data }),
+      client.putObject({ objectKey: file2, body: data }),
+      client.putObject({ objectKey: file3, body: data }),
     ])
 
-    const result = await client.deleteMultiObject({objectKeys: [file1, file2, file3]})
+    const result = await client.deleteMultiObject({ objectKeys: [file1, file2, file3] })
     await expect(result).toHaveLength(0)
   })
 
@@ -372,11 +378,9 @@ describe('deleteMultiObject', () => {
     const file2 = randomObjectKey()
     const data = Buffer.from('test-content')
 
-    await Promise.all([
-      client.putObject({objectKey: file1, body: data})
-    ])
+    await Promise.all([client.putObject({ objectKey: file1, body: data })])
 
-    const result = await client.deleteMultiObject({objectKeys: [file1, file2]})
+    const result = await client.deleteMultiObject({ objectKeys: [file1, file2] })
     expect(result).toHaveLength(1)
     expect(result[0].key).toEqual(file2)
   })

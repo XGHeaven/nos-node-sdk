@@ -1,11 +1,12 @@
-import * as dateFns from "date-fns"
+import * as dateFns from 'date-fns'
 import { NosBaseClient } from '../client'
 import { NosError } from '../lib/error'
 import { Callbackable, normalizeArray } from '../lib/util'
 import {
   Bucket,
   BucketAcl,
-  BucketLocation, BucketWebsite,
+  BucketLocation,
+  BucketWebsite,
   OperateBucketParams,
   SetBucketAclParams,
   SetBucketDefault404Params,
@@ -20,9 +21,13 @@ export class NosClientBucketExt extends NosBaseClient {
    */
   @Callbackable
   async listBucket(): Promise<Bucket[]> {
-    const data = await this.requestBody('get', {
-      host: `${this.options.host}`,
-    }, {})
+    const data = await this.requestBody(
+      'get',
+      {
+        host: `${this.options.host}`,
+      },
+      {}
+    )
 
     let buckets = normalizeArray(data.listAllMyBucketsResult.buckets.bucket)
 
@@ -48,11 +53,10 @@ export class NosClientBucketExt extends NosBaseClient {
 
     await this.requestBody('put', headers, resource, {
       createBucketConfiguration: {
-        locationConstraint: params.location || BucketLocation.HZ
-      }
+        locationConstraint: params.location || BucketLocation.HZ,
+      },
     })
   }
-
 
   /**
    * Ensure bucket exist, create bucket when no such bucket
@@ -73,7 +77,7 @@ export class NosClientBucketExt extends NosBaseClient {
 
   @Callbackable
   async isBucketExist(params: OperateBucketParams): Promise<boolean> {
-    const { headers, resource} = this.validateParams(params)
+    const { headers, resource } = this.validateParams(params)
     const resp = await this._request('head', headers, resource)
 
     if (resp.status === 404) return false
@@ -83,7 +87,7 @@ export class NosClientBucketExt extends NosBaseClient {
 
   @Callbackable
   async deleteBucket(params: OperateBucketParams): Promise<void> {
-    const { headers, resource} = this.validateParams(params)
+    const { headers, resource } = this.validateParams(params)
 
     try {
       await this.request('delete', headers, resource)
@@ -98,7 +102,6 @@ export class NosClientBucketExt extends NosBaseClient {
   @Callbackable
   async getBucketAcl(params: OperateBucketParams): Promise<BucketAcl> {
     const { headers, resource } = this.validateParams(params)
-
     ;(resource as ResourceBucket).acl = true
 
     const resp = await this.request('get', headers, resource)
@@ -109,7 +112,7 @@ export class NosClientBucketExt extends NosBaseClient {
 
   @Callbackable
   async setBucketAcl(params: SetBucketAclParams): Promise<void> {
-    const {headers, resource} = this.validateParams(params)
+    const { headers, resource } = this.validateParams(params)
     Object.assign(resource, { acl: true })
     headers['x-nos-acl'] = params.acl
     await this.request('put', headers, resource)
@@ -117,28 +120,28 @@ export class NosClientBucketExt extends NosBaseClient {
 
   @Callbackable
   async getBucketLocation(params: OperateBucketParams): Promise<BucketLocation> {
-    const { headers,resource} = this.validateParams(params)
-    Object.assign(resource, {location: true})
+    const { headers, resource } = this.validateParams(params)
+    Object.assign(resource, { location: true })
     const result = await this.requestBody('get', headers, resource)
     return result.locationConstraint
   }
 
   @Callbackable
   async getBucketDefault404(params: OperateBucketParams): Promise<string> {
-    const { headers, resource} = this.validateParams(params)
-    Object.assign(resource, {default404: true})
+    const { headers, resource } = this.validateParams(params)
+    Object.assign(resource, { default404: true })
     const result = await this.requestBody('get', headers, resource)
     return result.default404Configuration.key || ''
   }
 
   @Callbackable
   async setBucketDefault404(params: SetBucketDefault404Params): Promise<void> {
-    const {headers, resource} = this.validateParams(params)
-    Object.assign(resource, {default404: true})
+    const { headers, resource } = this.validateParams(params)
+    Object.assign(resource, { default404: true })
     await this.request('put', headers, resource, {
       default404Configuration: {
-        key: params.objectKey
-      }
+        key: params.objectKey,
+      },
     })
   }
 

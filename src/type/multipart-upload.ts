@@ -1,17 +1,13 @@
 import { BucketLocation } from './bucket'
 import { OperateOptionalBucketParams, OperateObjectParams } from './object'
 
-export interface InitMultipartUploadParams extends OperateObjectParams {
-
-}
+export interface InitMultipartUploadParams extends OperateObjectParams {}
 
 export interface MultipartUploadParams extends OperateObjectParams {
   uploadId: string
 }
 
-export interface AbortMultipartUploadParams extends MultipartUploadParams {
-
-}
+export interface AbortMultipartUploadParams extends MultipartUploadParams {}
 
 export interface UploadMultipartParams extends MultipartUploadParams {
   partNumber: number
@@ -22,7 +18,7 @@ export interface ListPartsOptions extends MultipartUploadParams {
   limit?: number
 }
 
-export interface CompleteMultipartParams extends MultipartUploadParams{
+export interface CompleteMultipartParams extends MultipartUploadParams {
   parts: Part[]
 }
 
@@ -31,9 +27,9 @@ export interface ListMultipartParams extends OperateOptionalBucketParams {
 }
 
 export interface Part {
-  partNumber: number,
-  lastModified: Date,
-  eTag: string,
+  partNumber: number
+  lastModified: Date
+  eTag: string
   size: number
 }
 
@@ -46,7 +42,7 @@ export interface MultipartUpload {
 
 export interface MultipartUploadObject {
   eTag: string
-  bucket: string,
-  key: string,
+  bucket: string
+  key: string
   location: string
 }

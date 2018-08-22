@@ -10,7 +10,7 @@ export async function newTempFile(
     ext?: string
   } = {}
 ) {
-  const filePath = tempy.file({extension: options.ext || ''})
+  const filePath = tempy.file({ extension: options.ext || '' })
 
   if (options.content) {
     await writeFile(filePath, options.content)

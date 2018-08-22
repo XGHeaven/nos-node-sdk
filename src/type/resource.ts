@@ -1,7 +1,6 @@
 export type Resource = ResourceEmpty | ResourceBucket | ResourceObject
 
-export interface ResourceEmpty {
-}
+export interface ResourceEmpty {}
 
 export interface ResourceBucket {
   bucket: string
