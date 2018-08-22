@@ -27,6 +27,7 @@ src/release/**/*.log
 src/release/*/*.js
 src/release/mobile/cache.json
 npm-debug.log
+yarn-error.log
 package-lock.json
 version.conf
 

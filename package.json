@@ -1,49 +1,43 @@
 {
-  "_from": "nos-node-sdk@0.0.4",
-  "_id": "nos-node-sdk@0.0.4",
-  "_inBundle": false,
-  "_integrity": "sha512-Jw3yzGfNscuIuigFWNawI/2KD4UcxJlm/2hr3BEeVD9709WkadTDFc2a+7HyEKbLU9TnEWR/CLqcbCCjI3Ciyw==",
-  "_location": "/nos-node-sdk",
-  "_phantomChildren": {},
-  "_requested": {
-    "type": "version",
-    "registry": true,
-    "raw": "nos-node-sdk@0.0.4",
-    "name": "nos-node-sdk",
-    "escapedName": "nos-node-sdk",
-    "rawSpec": "0.0.4",
-    "saveSpec": null,
-    "fetchSpec": "0.0.4"
-  },
-  "_requiredBy": [
-    "/"
-  ],
-  "_resolved": "https://registry.npmjs.org/nos-node-sdk/-/nos-node-sdk-0.0.4.tgz",
-  "_shasum": "117d4b428f5e533f1c237f63eb8976b037d88cf9",
-  "_spec": "nos-node-sdk@0.0.4",
-  "_where": "D:\\project\\node-nos",
   "author": {
-    "name": "hzlichaolin"
+    "name": "XGHeaven"
   },
-  "bundleDependencies": false,
   "dependencies": {
-    "node-fetch": "~1.3.3",
-    "q": "1.4.1",
-    "superagent": "~1.4.0",
-    "validator": "5.5.0",
-    "xml2js": "~0.4.17"
+    "axios": "^0.18.0",
+    "date-fns": "^1.29.0",
+    "fast-xml-parser": "^3.12.0",
+    "mime": "^2.3.1",
+    "node-fetch": "^2.2.0",
+    "ramda": "^0.25.0",
+    "ramda-adjunct": "^2.9.0",
+    "validator": "5.5.0"
   },
-  "deprecated": false,
   "description": "NOS Node.js SDK实现了NOS对象操作接口，基于此SDK能方便快速地实现JavaScript应用程序来使用NOS的对象存储服务。",
   "devDependencies": {
-    "babel-cli": "^6.5.1",
-    "babel-core": "~6.2.1",
-    "babel-polyfill": "^6.3.14",
-    "babel-preset-es2015": "^6.3.13",
+    "@types/dotenv": "^4.0.3",
+    "@types/http-proxy-agent": "^2.0.0",
+    "@types/jest": "^23.3.1",
+    "@types/mime": "^2.0.0",
+    "@types/node": "^10.7.0",
+    "@types/node-fetch": "^2.1.2",
+    "@types/ramda": "^0.25.36",
+    "@types/tempy": "^0.1.0",
+    "@types/tmp": "^0.0.33",
+    "ava": "^0.25.0",
+    "ava-ts": "^0.25.1",
     "chai": "^3.5.0",
+    "dotenv": "^6.0.0",
+    "http-proxy-agent": "^2.1.0",
     "istanbul": "^1.0.0-alpha",
+    "jest": "^23.5.0",
+    "jest-extended": "^0.8.1",
     "mocha": "^3.1.2",
-    "mochawesome": "~1.2.1"
+    "mochawesome": "~1.2.1",
+    "prettier": "^1.14.2",
+    "tempy": "^0.2.1",
+    "ts-jest": "^23.1.3",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.0.1"
   },
   "directories": {
     "test": "test"
@@ -51,7 +45,7 @@
   "keywords": [
     "nos"
   ],
-  "license": "UNLICENSED",
+  "license": "MIT",
   "main": "index.js",
   "name": "nos-node-sdk",
   "repository": {
@@ -59,8 +53,34 @@
     "url": "ssh://git@g.hz.netease.com:22222/nos/nos-nodejs-sdk.git"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "test:coverage": "istanbul cover ./node_modules/.bin/_mocha"
+    "test": "jest",
+    "test:coverage": "istanbul cover ./node_modules/.bin/_mocha",
+    "play": "ts-node -r dotenv/config src/play.ts",
+    "format": "prettier \"**/*.ts\" --write"
   },
-  "version": "0.0.4"
+  "version": "0.0.4",
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ],
+    "setupTestFrameworkScriptFile": "./test/helpers/setup.ts"
+  },
+  "prettier": {
+    "tabWidth": 2,
+    "trailingComma": "es5",
+    "semi": false,
+    "singleQuote": true,
+    "bracketSpacing": true,
+    "arrowParens": "avoid",
+    "printWidth": 120
+  }
 }
