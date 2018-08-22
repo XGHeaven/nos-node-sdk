@@ -1,6 +1,6 @@
 import { OperateBinaryObjectParams, OperateObjectParams } from './object'
 
-export interface CopyObjectOptions extends OperateBinaryObjectParams {
+export interface CopyObjectParams extends OperateBinaryObjectParams {
   sourceObjectKey: string
   sourceBucket?: string
   targetObjectKey: string

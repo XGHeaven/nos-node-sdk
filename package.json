@@ -3,28 +3,22 @@
     "name": "XGHeaven"
   },
   "dependencies": {
-    "axios": "^0.18.0",
     "date-fns": "^1.29.0",
     "fast-xml-parser": "^3.12.0",
     "mime": "^2.3.1",
     "node-fetch": "^2.2.0",
     "ramda": "^0.25.0",
-    "ramda-adjunct": "^2.9.0",
-    "validator": "5.5.0"
+    "ramda-adjunct": "^2.9.0"
   },
   "description": "NOS Node.js SDK实现了NOS对象操作接口，基于此SDK能方便快速地实现JavaScript应用程序来使用NOS的对象存储服务。",
   "devDependencies": {
     "@types/dotenv": "^4.0.3",
-    "@types/http-proxy-agent": "^2.0.0",
     "@types/jest": "^23.3.1",
     "@types/mime": "^2.0.0",
     "@types/node": "^10.7.0",
     "@types/node-fetch": "^2.1.2",
     "@types/ramda": "^0.25.36",
     "@types/tempy": "^0.1.0",
-    "@types/tmp": "^0.0.33",
-    "ava": "^0.25.0",
-    "ava-ts": "^0.25.1",
     "chai": "^3.5.0",
     "dotenv": "^6.0.0",
     "http-proxy-agent": "^2.1.0",

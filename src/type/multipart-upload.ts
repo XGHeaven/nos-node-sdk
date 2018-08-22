@@ -1,5 +1,4 @@
-import { BucketLocation } from './bucket'
-import { OperateOptionalBucketParams, OperateObjectParams } from './object'
+import { OperateObjectParams, OperateOptionalBucketParams } from './object'
 
 export interface InitMultipartUploadParams extends OperateObjectParams {}
 

@@ -7,7 +7,7 @@ import { makeNosError, NoBucketError } from './lib/error'
 import { parseBody } from './lib/request'
 import { getResourceUri } from './lib/resource'
 import { CamelCaseObject, isHttpStatusOk, md5sum } from './lib/util'
-import { OperateBinaryObjectParams, OperateOptionalBucketParams, OperateObjectParams } from './type/object'
+import { OperateBinaryObjectParams, OperateObjectParams, OperateOptionalBucketParams } from './type/object'
 import { Resource } from './type/resource'
 
 declare module 'node-fetch' {

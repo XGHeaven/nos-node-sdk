@@ -1,10 +1,8 @@
 import { parse } from 'date-fns'
-import * as xml from 'fast-xml-parser'
 import { type } from 'ramda'
 import { NosBaseClient } from '../client'
-import { Callbackable, CamelCaseObject, normalizeArray } from '../lib/util'
+import { Callbackable, normalizeArray } from '../lib/util'
 import { Callback } from '../type/callback'
-import { DeleteMultiObjectErrorInfo, DeleteMultiObjectParams } from '../type/delete-multi-object'
 import {
   AbortMultipartUploadParams,
   CompleteMultipartParams,
@@ -40,7 +38,6 @@ export class NosClientMultipartUploadExt extends NosBaseClient {
     })
 
     const result = await this.requestBody('delete', headers, resource)
-    console.log(result)
 
     return true
   }
@@ -56,7 +53,6 @@ export class NosClientMultipartUploadExt extends NosBaseClient {
 
     const resp = await this.request('put', headers, resource, params.body)
 
-    console.log(resp.headers.raw())
     return {
       partNumber: params.partNumber,
       eTag: (resp.headers.get('etag') as string).slice(1, -1),

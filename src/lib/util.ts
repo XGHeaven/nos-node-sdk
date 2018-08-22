@@ -1,7 +1,7 @@
 import * as crypto from 'crypto'
 import { Headers } from 'node-fetch'
-import { renameKeysWith, isNull, isUndefined } from 'ramda-adjunct'
-import { map, concat, type, filter, identical, pickBy, pipe } from 'ramda'
+import { concat, filter, pipe, type } from 'ramda'
+import { isNull, isUndefined, renameKeysWith } from 'ramda-adjunct'
 import { ObjectMetadata } from '../type/object'
 import ReadableStream = NodeJS.ReadableStream
 

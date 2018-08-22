@@ -6,12 +6,11 @@ import {
   Bucket,
   BucketAcl,
   BucketLocation,
-  BucketWebsite,
   OperateBucketParams,
   SetBucketAclParams,
   SetBucketDefault404Params,
 } from '../type/bucket'
-import { Callback, CallbackUnary } from '../type/callback'
+import { Callback } from '../type/callback'
 import { PutBucketParams } from '../type/put-bucket'
 import { ResourceBucket } from '../type/resource'
 

@@ -2,7 +2,7 @@ import { parse } from 'date-fns'
 import * as xml from 'fast-xml-parser'
 import fs from 'fs'
 import * as querystring from 'querystring'
-import { pick, type } from 'ramda'
+import { pick } from 'ramda'
 import * as url from 'url'
 import { NosBaseClient } from '../client'
 import { NosError } from '../lib/error'
@@ -18,7 +18,7 @@ import {
   stream2Buffer,
 } from '../lib/util'
 import { Callback } from '../type/callback'
-import { CopyObjectOptions } from '../type/copy-object'
+import { CopyObjectParams } from '../type/copy-object'
 import { DeleteMultiObjectErrorInfo, DeleteMultiObjectParams } from '../type/delete-multi-object'
 import { DeleteObjectParams } from '../type/delete-object'
 import {
@@ -145,7 +145,7 @@ export class NosClientObjectExt extends NosBaseClient {
   }
 
   @Callbackable
-  async copyObject(params: CopyObjectOptions): Promise<void> {
+  async copyObject(params: CopyObjectParams): Promise<void> {
     const { resource, headers, sourceBucket } = this.validateBinaryParams(params)
     headers['x-nos-copy-source'] = querystring.escape(`/${sourceBucket}/${params.sourceObjectKey}`)
     await this.requestBody('put', headers, resource)
@@ -228,7 +228,7 @@ export interface NosClientObjectExt {
   getObject(params: GetObjectStringParams, cb: Callback<string>): void
   headObject(params: HeadObjectParams, cb: Callback<HeadObjectResult>): void
   isObjectExist(params: OperateObjectParams, cb: Callback<boolean>): void
-  copyObject(params: CopyObjectOptions, cb: Callback<void>): void
+  copyObject(params: CopyObjectParams, cb: Callback<void>): void
   getObjectUrl(params: GetObjectUrlParams, cb: Callback<string>): void
   deleteObject(params: DeleteObjectParams, cb: Callback<void>): void
   moveObject(params: MoveObjectParams, cb: Callback<void>): void

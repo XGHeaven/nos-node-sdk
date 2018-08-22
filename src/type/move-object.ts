@@ -1,3 +1,3 @@
-import { OperateBinaryObjectParams, OperateObjectParams } from './object'
+import { OperateBinaryObjectParams } from './object'
 
 export interface MoveObjectParams extends OperateBinaryObjectParams {}

@@ -1,8 +1,6 @@
-import fetch, { Body, BodyInit, Response } from 'node-fetch'
-// import axios from 'axios'
 import * as xml from 'fast-xml-parser'
+import fetch, { BodyInit, Response } from 'node-fetch'
 import { camelCaseObject } from './util'
-// import * as xml from 'xml-js'
 
 export async function request(method: string, url: string, headers: any, body?: BodyInit) {
   const resp = await requestResponse(method, url, headers, body)

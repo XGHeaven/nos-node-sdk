@@ -1,5 +1,5 @@
 import { createHmac } from 'crypto'
-import { join, map, pickBy, pipe, prop, sortBy, startsWith, toLower, toPairs } from 'ramda'
+import { join, map, pickBy, pipe, prop, sortBy, toLower, toPairs } from 'ramda'
 import { renameKeysWith } from 'ramda-adjunct'
 import { Resource } from '../type/resource'
 import { getResourceString } from './resource'
