@@ -18,7 +18,7 @@ export interface ListPartsOptions extends MultipartUploadParams {
 }
 
 export interface CompleteMultipartParams extends MultipartUploadParams {
-  parts: Part[]
+  parts: Array<Pick<Part, 'partNumber' | 'eTag'>>
 }
 
 export interface ListMultipartParams extends OperateOptionalBucketParams {
@@ -45,3 +45,26 @@ export interface MultipartUploadObject {
   key: string
   location: string
 }
+
+export interface Progress {
+  lengthComputable: boolean
+  uploaded: number
+  total: number
+}
+
+export interface PutBigObjectBaseParams extends OperateObjectParams {
+  maxPart?: number
+  onProgress?: (progress: Progress) => void
+  // parallel size, default is unlimited
+  parallel?: number
+}
+
+export interface PutBigObjectFileParams {
+  file: string
+}
+
+export interface PutBigObjectStreamParams {
+  body: NodeJS.ReadableStream
+}
+
+export type PutBigObjectParams = (PutBigObjectFileParams | PutBigObjectStreamParams) & PutBigObjectBaseParams

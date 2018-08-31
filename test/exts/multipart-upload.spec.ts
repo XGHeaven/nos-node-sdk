@@ -1,5 +1,6 @@
 import { NosClient } from '../../src'
 import { cleanClient, newClient, randomObjectKey } from '../helpers/client'
+import { newReadableStream, newTempFile } from '../helpers/runtime'
 
 let client: NosClient
 let bucket: string
@@ -67,4 +68,24 @@ it('complete upload multipart', async () => {
 it('list multipart', async () => {
   const list = await client.listMultipartUpload()
   expect(list).toHaveProperty('length')
+})
+
+describe('putBigObject', async () => {
+  it('should upload success', async () => {
+    jest.setTimeout(20 * 1000)
+    const body = newReadableStream(1024 * 1024) // 1M
+    const key = randomObjectKey()
+
+    const res = await client.putBigObject({
+      body,
+      objectKey: key,
+      maxPart: 1024 * 128, // 128k
+      onProgress: console.log,
+      parallel: 1
+    })
+
+    expect(res.key).toEqual(key)
+
+    await expect(client.isObjectExist({objectKey: key})).resolves.toBeTrue()
+  })
 })

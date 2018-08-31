@@ -40,7 +40,7 @@
     "nos"
   ],
   "license": "MIT",
-  "main": "index.js",
+  "main": "dest/index.js",
   "name": "nos-node-sdk",
   "repository": {
     "type": "git",
@@ -48,14 +48,19 @@
   },
   "scripts": {
     "test": "jest",
-    "test:coverage": "istanbul cover ./node_modules/.bin/_mocha",
     "play": "ts-node -r dotenv/config src/play.ts",
-    "format": "prettier \"**/*.ts\" --write"
+    "format": "prettier \"**/*.ts\" --write",
+    "build": "tsc"
   },
   "version": "0.0.4",
   "jest": {
     "transform": {
       "^.+\\.tsx?$": "ts-jest"
+    },
+    "globals": {
+      "ts-jest": {
+        "tsConfigFile": "tsconfig.test.json"
+      }
     },
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
     "moduleFileExtensions": [
@@ -66,7 +71,13 @@
       "json",
       "node"
     ],
-    "setupTestFrameworkScriptFile": "./test/helpers/setup.ts"
+    "setupTestFrameworkScriptFile": "./test/helpers/setup.ts",
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.ts",
+      "!src/play.ts",
+      "!src/index.ts"
+    ]
   },
   "prettier": {
     "tabWidth": 2,
