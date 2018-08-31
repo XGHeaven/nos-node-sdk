@@ -18,21 +18,25 @@ import {
   stream2Buffer,
 } from '../lib/util'
 import { Callback } from '../type/callback'
-import { CopyObjectParams } from '../type/copy-object'
-import { DeleteMultiObjectErrorInfo, DeleteMultiObjectParams } from '../type/delete-multi-object'
-import { DeleteObjectParams } from '../type/delete-object'
 import {
+  CopyObjectParams,
+  DeleteMultiObjectErrorInfo,
+  DeleteMultiObjectParams,
+  DeleteObjectParams,
   GetObjectBufferParams,
   GetObjectParams,
   GetObjectStreamParams,
   GetObjectStringParams,
-} from '../type/get-object'
-import { GetObjectUrlParams } from '../type/get-object-url'
-import { HeadObjectParams, HeadObjectResult } from '../type/head-object'
-import { ListObjectParams } from '../type/list-object'
-import { MoveObjectParams } from '../type/move-object'
-import { ObjectContent, OperateObjectParams } from '../type/object'
-import { PutObjectParams, PutObjectResult } from '../type/put-object'
+  GetObjectUrlParams,
+  HeadObjectParams,
+  HeadObjectResult,
+  ListObjectParams,
+  MoveObjectParams,
+  ObjectContent,
+  OperateObjectParams,
+  PutObjectParams,
+  PutObjectResult,
+} from '../type/object'
 
 export class NosClientObjectExt extends NosBaseClient {
   @Callbackable

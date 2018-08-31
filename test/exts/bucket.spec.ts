@@ -1,14 +1,6 @@
 import { NosClient } from '../../src'
 import { BucketAcl, BucketLocation } from '../../src/type/bucket'
-import {
-  cleanBucket,
-  cleanClient,
-  deleteBucket,
-  newBucket,
-  newClient,
-  randomBucketName,
-  randomObjectKey,
-} from '../helpers/client'
+import { cleanClient, deleteBucket, newClient, randomBucketName } from '../helpers/client'
 
 let client: NosClient
 let bucket: string
@@ -92,30 +84,30 @@ describe('getBucketLocation', () => {
   })
 })
 
-describe('getBucketDefault404', () => {
-  let bucket: string
-
-  beforeAll(async () => {
-    bucket = await newBucket(client)
-  })
-
-  afterAll(async () => {
-    await deleteBucket(client, bucket)
-  })
-
-  it('should return empty bucket default 404', async () => {
-    const default404 = await client.getBucketDefault404({ bucket })
-    expect(default404).toBeEmpty()
-  })
+describe.skip('getBucketDefault404', () => {
+  // let bucket: string
+  //
+  // beforeAll(async () => {
+  //   bucket = await newBucket(client)
+  // })
+  //
+  // afterAll(async () => {
+  //   await deleteBucket(client, bucket)
+  // })
+  //
+  // it('should return empty bucket default 404', async () => {
+  //   const default404 = await client.getBucketDefault404({ bucket })
+  //   expect(default404).toBeEmpty()
+  // })
 })
 
-describe('setBucketDefault404', () => {
-  it('set bucket default 404', async () => {
-    const key = randomObjectKey('.html')
-    await client.setBucketDefault404({ bucket, objectKey: key })
-
-    await expect(client.getBucketDefault404({ bucket })).resolves.toBe(key)
-  })
+describe.skip('setBucketDefault404', () => {
+  // it('set bucket default 404', async () => {
+  //   const key = randomObjectKey('.html')
+  //   await client.setBucketDefault404({ bucket, objectKey: key })
+  //
+  //   await expect(client.getBucketDefault404({ bucket })).resolves.toBe(key)
+  // })
 })
 
 describe('isBucketExist', () => {

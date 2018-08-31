@@ -1,3 +1,5 @@
+import { OperateOptionalBucketParams } from './object'
+
 export interface Bucket {
   creationDate: Date
   name: string
@@ -29,4 +31,21 @@ export interface SetBucketDefault404Params extends OperateBucketParams {
 export interface BucketWebsite {
   indexDocument: string
   errorDocument?: string
+}
+
+export interface ListBucketParams extends OperateOptionalBucketParams {
+}
+
+export interface ListBucketResult {
+  owner: {
+    displayName: string
+    id: string
+  }
+  buckets: Bucket[]
+}
+
+export interface PutBucketParams {
+  bucket: string
+  acl?: BucketAcl
+  location?: BucketLocation
 }

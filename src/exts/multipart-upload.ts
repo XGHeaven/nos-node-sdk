@@ -14,7 +14,8 @@ import {
   ListPartsOptions,
   MultipartUpload,
   MultipartUploadObject,
-  Part, PutBigObjectParams,
+  Part,
+  PutBigObjectParams,
   UploadMultipartParams,
 } from '../type/multipart-upload'
 
@@ -142,7 +143,6 @@ export class NosClientMultipartUploadExt extends NosBaseClient {
   @Callbackable
   async putBigObject(params: PutBigObjectParams): Promise<MultipartUploadObject> {
     const uploadId = await this.initMultipartUpload(params)
-    console.log(uploadId)
     const stream: NodeJS.ReadableStream = 'body' in params ? params.body : fs.createReadStream(params.file)
     const lengthComputable = 'file' in params
     const {parallel = Infinity, maxPart = MAX_PART_LENGTH} = params
@@ -173,7 +173,6 @@ export class NosClientMultipartUploadExt extends NosBaseClient {
       const tPartNumber = partNumber++
       bufs.length = 0
       length = 0
-      console.log(tBuf.length, tPartNumber)
 
       if (++workers >= parallel) {
         stream.pause()
@@ -200,7 +199,6 @@ export class NosClientMultipartUploadExt extends NosBaseClient {
           total: totalLength,
         })
       }
-      console.log(part)
 
       return part
     }

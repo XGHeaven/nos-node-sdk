@@ -80,7 +80,6 @@ describe('putBigObject', async () => {
       body,
       objectKey: key,
       maxPart: 1024 * 128, // 128k
-      onProgress: console.log,
       parallel: 1
     })
 

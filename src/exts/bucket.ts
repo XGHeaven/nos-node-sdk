@@ -7,11 +7,10 @@ import {
   BucketAcl,
   BucketLocation,
   OperateBucketParams,
+  PutBucketParams,
   SetBucketAclParams,
-  SetBucketDefault404Params,
 } from '../type/bucket'
 import { Callback } from '../type/callback'
-import { PutBucketParams } from '../type/put-bucket'
 import { ResourceBucket } from '../type/resource'
 
 export class NosClientBucketExt extends NosBaseClient {
@@ -125,6 +124,7 @@ export class NosClientBucketExt extends NosBaseClient {
     return result.locationConstraint
   }
 
+  /*
   @Callbackable
   async getBucketDefault404(params: OperateBucketParams): Promise<string> {
     const { headers, resource } = this.validateParams(params)
@@ -142,7 +142,7 @@ export class NosClientBucketExt extends NosBaseClient {
         key: params.objectKey,
       },
     })
-  }
+  }*/
 
   /*
   async getBucketWebsite(params: OperateBucketParams): Promise<BucketWebsite> {
@@ -166,6 +166,6 @@ export interface NosClientBucketExt {
   getBucketAcl(params: OperateBucketParams, cb: Callback<BucketAcl>): void
   setBucketAcl(params: SetBucketAclParams, cb: Callback<void>): void
   getBucketLocation(params: OperateBucketParams, cb: Callback<BucketLocation>): void
-  getBucketDefault404(params: OperateBucketParams, cb: Callback<string>): void
-  setBucketDefault404(params: SetBucketDefault404Params, cb: Callback<void>): void
+  // getBucketDefault404(params: OperateBucketParams, cb: Callback<string>): void
+  // setBucketDefault404(params: SetBucketDefault404Params, cb: Callback<void>): void
 }

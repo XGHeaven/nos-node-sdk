@@ -84,8 +84,7 @@ export function getMetadataFromHeaders(headers: Headers): ObjectMetadata {
 }
 
 export function isHttpStatusOk(status: number): boolean {
-  const firstNumber = Math.trunc(status / 100)
-  return firstNumber === 2 || firstNumber === 3
+  return status >= 200 && status < 400
 }
 
 export function md5sum(data: Buffer | string): string {
