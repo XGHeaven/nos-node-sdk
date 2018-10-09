@@ -47,12 +47,12 @@ client.putObject({
 })
 ```
 
-更多文档，请查看 Typescript Definition file.
+更多文档，请查看[API 文档](http://nos-node-sdk.xgheaven.com)(Typedoc generated).
 
 ## TODO
 
 - [ ] HTTPS Endpoint 支持
-- [ ] 文档支持
+- [x] [文档支持](http://nos-node-sdk.xgheaven.com)
 - [ ] 增加测试用例
 - [ ] 国际化翻译
 
