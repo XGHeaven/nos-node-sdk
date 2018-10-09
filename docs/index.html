@@ -1,0 +1,257 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>@xgheaven/nos-node-sdk</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">@xgheaven/nos-node-sdk</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="globals.html">Globals</a>
+				</li>
+			</ul>
+			<h1> @xgheaven/nos-node-sdk</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<h1 id="nos-node-js-sdk">NOS Node.js SDK</h1>
+				<p>NOS Node.js SDK 实现了 NOS 对象操作接口，基于此 SDK 能方便快速地实现 JavaScript 应用程序来使用 NOS 的对象存储服务。</p>
+				<blockquote>
+					<p>NOS 是网易云推出的对象存储服务，稳定可靠</p>
+				</blockquote>
+				<h2 id="-">为什么会有这个项目？</h2>
+				<p>主要原因是官方的 <code>nos-node-sdk</code> 有如下问题</p>
+				<ul>
+					<li>不符合 JavaScript 命名规范，不支持 Promise</li>
+					<li>代码质量过差</li>
+					<li>代码提示能力不足</li>
+					<li>不支持 TypeScript</li>
+					<li>年久失修</li>
+				</ul>
+				<h2 id="feature">Feature</h2>
+				<ul>
+					<li>Full Typescript 支持，几乎不需要文档就可以上手</li>
+					<li>Support Async/Await or Callback</li>
+					<li>操作简单专注，不会给你返回额外的信息</li>
+					<li>丰富的测试用例</li>
+				</ul>
+				<h2 id="usage">Usage</h2>
+				<pre><code class="language-typescript">
+<span class="hljs-keyword">import</span> { NosClient } <span class="hljs-keyword">from</span> <span class="hljs-string">'@xgheaven/nos-node-sdk'</span>
+
+<span class="hljs-keyword">const</span> client = <span class="hljs-keyword">new</span> NosClient({
+  accessKey: <span class="hljs-string">'your-access-key'</span>,
+  accessSecret: <span class="hljs-string">'your-access-secret'</span>,
+  endpoint: <span class="hljs-string">'http://nos-eastchina1.126.net'</span>, <span class="hljs-comment">// endpoint，不同地域不同</span>
+  defaultBucket: <span class="hljs-string">'nos-test'</span>, <span class="hljs-comment">// 默认的 Bucket，如果不设置，那么需要在单独的每次请求中进行设置 </span>
+})
+
+client.putObject({
+  key: <span class="hljs-string">'test-file.txt'</span>,
+  body: Buffer.from(<span class="hljs-string">'test'</span>), <span class="hljs-comment">// 支持 Buffer/Readable/string</span>
+}).then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+  <span class="hljs-keyword">return</span> client.getObject({
+    key: <span class="hljs-string">'test-file.txt'</span>,
+    encode: <span class="hljs-string">'utf-8'</span>, <span class="hljs-comment">// 支持 'buffer' | 编码 | 'stream'</span>
+  })
+}).then(<span class="hljs-function"><span class="hljs-params">content</span> =&gt;</span> {
+  <span class="hljs-built_in">console</span>.log(content)
+})</code></pre>
+				<p>更多文档，请查看 Typescript Definition file.</p>
+				<h2 id="todo">TODO</h2>
+				<ul>
+					<li><input disabled="" type="checkbox"> HTTPS Endpoint 支持</li>
+					<li><input disabled="" type="checkbox"> 文档支持</li>
+					<li><input disabled="" type="checkbox"> 增加测试用例</li>
+					<li><input disabled="" type="checkbox"> 国际化翻译</li>
+				</ul>
+				<h2 id="thanks">Thanks</h2>
+				<p>欢迎大家使用和反馈</p>
+				<blockquote>
+					<p>虽然不认为很多人都知道 NOS，哈哈哈</p>
+				</blockquote>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_client_.html">"client"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_exts_bucket_.html">"exts/bucket"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_exts_multipart_upload_.html">"exts/multipart-<wbr>upload"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_exts_object_.html">"exts/object"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_index_.html">"index"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_lib_authorization_.html">"lib/authorization"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_lib_constant_.html">"lib/constant"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_lib_error_.html">"lib/error"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_lib_request_.html">"lib/request"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_lib_resource_.html">"lib/resource"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_lib_util_.html">"lib/util"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_play_.html">"play"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_type_bucket_.html">"type/bucket"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_type_callback_.html">"type/callback"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_type_multipart_upload_.html">"type/multipart-<wbr>upload"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_type_object_.html">"type/object"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_type_resource_.html">"type/resource"</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>
