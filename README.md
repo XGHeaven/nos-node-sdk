@@ -21,7 +21,7 @@ NOS Node.js SDK 实现了 NOS 对象操作接口，基于此 SDK 能方便快速
 - 操作简单专注，不会给你返回额外的信息
 - 丰富的测试用例
 
-## Usage
+## QuickStart
 
 ```typescript
 
@@ -45,9 +45,18 @@ client.putObject({
 }).then(content => {
   console.log(content)
 })
+
+client.listObject({
+  limit: 10
+}).then(ret => {
+  console.log(ret)
+  // 所有的 List 操作接口返回的数据都是类似的，比如 listObject, listBucket, listParts, listMultipart
+  // 其中包括 items(元素)，limit(请求的数量)，nextMarker(下一个标记)
+  // 通过 limit 和 nextMarker 的配合，可以实现翻页的效果
+})
 ```
 
-更多文档，请查看[API 文档](http://nos-node-sdk.xgheaven.com)(Typedoc generated).
+更多信息，请查看[API 文档](http://nos-node-sdk.xgheaven.com)(Typedoc generated).
 
 ## TODO
 
@@ -58,6 +67,7 @@ client.putObject({
 
 ## Thanks
 
-欢迎大家使用和反馈
+项目还比较年轻，如果有任何考虑不周的地方欢迎大家进行反馈，我也会积极处理。
+争取有一天能够替代原先的 SDK，减轻大家使用上的烦恼。
 
 > 虽然不认为很多人都知道 NOS，哈哈哈

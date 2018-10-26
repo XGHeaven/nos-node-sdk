@@ -1,17 +1,19 @@
 import { parse } from 'date-fns'
 import * as fs from 'fs'
-import { type } from 'ramda'
+import { type, pick } from 'ramda'
 import * as util from 'util'
 import { NosBaseClient } from '../client'
 import { MAX_PART_LENGTH } from '../lib/constant'
-import { Callbackable, normalizeArray } from '../lib/util'
+import { Callbackable, compactObject, normalizeArray } from '../lib/util'
 import { Callback } from '../type/callback'
 import {
   AbortMultipartUploadParams,
   CompleteMultipartParams,
   InitMultipartUploadParams,
   ListMultipartParams,
+  ListMultipartResult,
   ListPartsOptions,
+  ListPartsResult,
   MultipartUpload,
   MultipartUploadObject,
   Part,
@@ -74,17 +76,21 @@ export class NosClientMultipartUploadExt extends NosBaseClient {
    * @param params
    */
   @Callbackable
-  async listParts(params: ListPartsOptions): Promise<Part[]> {
+  async listParts(params: ListPartsOptions): Promise<ListPartsResult> {
     const { bucket, headers, resource } = this.validateParams(params)
 
-    Object.assign(resource, {
-      uploadId: params.uploadId,
-      'max-parts': params.limit || 1000,
-    })
+    Object.assign(
+      resource,
+      compactObject({
+        uploadId: params.uploadId,
+        'max-parts': params.limit,
+        'part-number-marker': params.marker,
+      })
+    )
 
-    const result = await this.requestBody('get', headers, resource)
+    const { listPartsResult: result } = await this.requestBody('get', headers, resource)
 
-    let parts = result.listPartsResult.part
+    let parts = result.part
 
     if (type(parts) !== 'Array') {
       parts = [parts]
@@ -94,23 +100,34 @@ export class NosClientMultipartUploadExt extends NosBaseClient {
       part.lastModified = parse(part.lastModified)
     }
 
-    return parts
+    return {
+      ...(pick(['isTruncated', 'owner', 'storageClass', 'bucket'], result) as any),
+      limit: result.maxParts,
+      nextMarker: result.nextPartNumberMarker,
+      items: parts,
+    }
   }
 
   @Callbackable
-  async listMultipartUpload(params: ListMultipartParams = {}): Promise<MultipartUpload[]> {
+  async listMultipartUpload(params: ListMultipartParams = {}): Promise<ListMultipartResult> {
     const { bucket, headers, resource } = this.validateParams(params)
-    Object.assign(resource, {
-      uploads: true,
-    })
+    Object.assign(
+      resource,
+      compactObject({
+        uploads: true,
+        prefix: params.prefix,
+        'key-marker': params.marker,
+        'max-uploads': params.limit,
+      })
+    )
 
     if (params.limit) {
       headers['max-uploads'] = params.limit
     }
 
-    const result = await this.requestBody('get', headers, resource)
+    const { listMultipartUploadsResult: result } = await this.requestBody('get', headers, resource)
 
-    let uploads = normalizeArray(result.listMultipartUploadsResult.upload)
+    let uploads = normalizeArray(result.upload)
 
     if (type(uploads) !== 'Array') {
       uploads = [uploads]
@@ -120,7 +137,13 @@ export class NosClientMultipartUploadExt extends NosBaseClient {
       upload.initiated = parse(upload.initiated)
     }
 
-    return uploads
+    return {
+      ...(pick(['isTruncated'], result) as any),
+      items: uploads,
+      nextMarker: result.nextKeyMarker,
+      bucket: result.bucket,
+      limit: params.limit || 1000,
+    }
   }
 
   @Callbackable
@@ -145,7 +168,7 @@ export class NosClientMultipartUploadExt extends NosBaseClient {
     const uploadId = await this.initMultipartUpload(params)
     const stream: NodeJS.ReadableStream = 'body' in params ? params.body : fs.createReadStream(params.file)
     const lengthComputable = 'file' in params
-    const {parallel = Infinity, maxPart = MAX_PART_LENGTH} = params
+    const { parallel = Infinity, maxPart = MAX_PART_LENGTH } = params
 
     let totalLength = 0
 

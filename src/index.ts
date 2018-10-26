@@ -5,7 +5,7 @@ import { NosClientObjectExt } from './exts/object'
 import { applyMixins } from './lib/util'
 
 export { NosClientOptions } from './client'
-export *  from './type/object'
+export * from './type/object'
 export * from './type/multipart-upload'
 export * from './type/bucket'
 export * from './type/callback'

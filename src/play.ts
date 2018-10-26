@@ -11,7 +11,10 @@ const client = new NosClient({
 async function run() {
   // const list = await client.listObject({bucket})
   // const result = await client.putObject(Buffer.from('abc'), 'test.txt', {bucket})
-  const result = await client.deleteObject({objectKey: 'test.txt'})
+  const result = await client.listObject({
+    delimiter: '/',
+    limit: 2,
+  })
   console.log(JSON.stringify(result, null, 2))
 }
 

@@ -1,4 +1,5 @@
 import { OperateOptionalBucketParams } from './object'
+import { ListOperationResponse } from './request'
 
 export interface Bucket {
   creationDate: Date
@@ -33,15 +34,13 @@ export interface BucketWebsite {
   errorDocument?: string
 }
 
-export interface ListBucketParams extends OperateOptionalBucketParams {
-}
+export interface ListBucketParams extends OperateOptionalBucketParams {}
 
-export interface ListBucketResult {
+export interface ListBucketResult extends ListOperationResponse<Bucket> {
   owner: {
     displayName: string
     id: string
   }
-  buckets: Bucket[]
 }
 
 export interface PutBucketParams {

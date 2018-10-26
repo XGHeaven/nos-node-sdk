@@ -40,6 +40,14 @@ export class NosBaseClient {
     )
   }
 
+  /**
+   * 底层请求方法包装
+   * @param method 请求方法
+   * @param headers 头信息
+   * @param resource 资源信息，也会序列化到 Url 上面
+   * @param [body] 请求体
+   * @private
+   */
   protected async _request(method: string, headers: any, resource: Resource, body?: any): Promise<Response> {
     headers['date'] = new Date().toUTCString()
 
@@ -75,7 +83,7 @@ export class NosBaseClient {
       const errObj = (await parseBody(resp)).error || {}
       errObj.status = resp.status
       errObj.response = resp
-      throw await makeNosError(errObj)
+      throw makeNosError(errObj)
     }
 
     return resp
@@ -83,7 +91,7 @@ export class NosBaseClient {
 
   protected async request(method: string, headers: any, resource: Resource, body?: any): Promise<Response> {
     const resp = await this._request(method, headers, resource, body)
-    return this.handleRequestError(resp)
+    return await this.handleRequestError(resp)
   }
 
   protected async requestBody(method: string, headers: any, resource: Resource, body?: any): Promise<any> {

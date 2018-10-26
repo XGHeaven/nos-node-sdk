@@ -1,5 +1,6 @@
 import { NosClient } from '../../src'
 import * as dotenv from 'dotenv'
+import 'jest-extended'
 dotenv.config()
 
 export function randomBucketName() {
@@ -19,7 +20,7 @@ export async function newClient() {
     defaultBucket: bucket,
   })
 
-  await client.ensureBucket({ bucket })
+  // await client.ensureBucket({ bucket })
 
   return client
 }
@@ -46,13 +47,32 @@ export async function newBucket(client: NosClient, bucket: string = randomBucket
 }
 
 export async function cleanBucket(client: NosClient, bucket: string): Promise<void> {
-  const list = await client.listObject({ bucket })
-  for (const obj of list) {
-    await client.deleteObject({ objectKey: obj.key, bucket })
-  }
+  let hasMore = false
+  do {
+    const { items, isTruncated } = await client.listObject({ bucket, limit: 1000 })
+    await client.deleteMultiObject({
+      objectKeys: items.map(obj => obj.key),
+    })
+
+    hasMore = isTruncated
+  } while (hasMore)
 }
 
 export async function deleteBucket(client: NosClient, bucket: string): Promise<void> {
   await cleanBucket(client, bucket)
   await client.deleteBucket({ bucket })
+}
+
+export async function putRandomObject(
+  client: NosClient,
+  times: number = 1,
+  keyGen: () => string = randomObjectKey
+): Promise<void> {
+  // 串行添加，减轻请求的压力，懒得弄成限流并行了
+  for (let i = 0; i < times; i++) {
+    await client.putObject({
+      objectKey: keyGen(),
+      body: 'random-object-' + Date.now(),
+    })
+  }
 }
