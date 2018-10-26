@@ -1,4 +1,6 @@
+import { MultipartUpload } from '../../dest'
 import { OperateObjectParams, OperateOptionalBucketParams } from './object'
+import { ListOperationResponse } from './request'
 
 export interface InitMultipartUploadParams extends OperateObjectParams {}
 
@@ -15,6 +17,16 @@ export interface UploadMultipartParams extends MultipartUploadParams {
 
 export interface ListPartsOptions extends MultipartUploadParams {
   limit?: number
+  marker?: number
+}
+
+export interface ListPartsResult extends ListOperationResponse<Part, number> {
+  bucket: string
+  owner: {
+    id: string
+    displayName: string
+  }
+  storageClass: string
 }
 
 export interface CompleteMultipartParams extends MultipartUploadParams {
@@ -23,6 +35,12 @@ export interface CompleteMultipartParams extends MultipartUploadParams {
 
 export interface ListMultipartParams extends OperateOptionalBucketParams {
   limit?: number
+  marker?: string
+  prefix?: string
+}
+
+export interface ListMultipartResult extends ListOperationResponse<MultipartUpload> {
+  bucket: string
 }
 
 export interface Part {
@@ -54,8 +72,15 @@ export interface Progress {
 
 export interface PutBigObjectBaseParams extends OperateObjectParams {
   maxPart?: number
+  /**
+   * 当有块上传完成的时候，会调用 onProgress 回调，并传入进度信息，可以依据这个信息做一些定制化的操作。
+   * 虽然不是很符合规范，但也不失为一种办法
+   * @param progress 进度信息。
+   */
   onProgress?: (progress: Progress) => void
-  // parallel size, default is unlimited
+  /**
+   * 并行上传的数量，默认是不限制的
+   */
   parallel?: number
 }
 

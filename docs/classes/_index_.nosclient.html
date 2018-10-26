@@ -110,7 +110,7 @@
 						<section class="tsd-index-section tsd-is-inherited">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited tsd-is-protected"><a href="_index_.nosclient.html#_request" class="tsd-kind-icon">_request</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited tsd-is-private"><a href="_index_.nosclient.html#_request" class="tsd-kind-icon">_request</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited"><a href="_index_.nosclient.html#abortmultipartupload" class="tsd-kind-icon">abort<wbr>Multipart<wbr>Upload</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited"><a href="_index_.nosclient.html#completemultipartupload" class="tsd-kind-icon">complete<wbr>Multipart<wbr>Upload</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited"><a href="_index_.nosclient.html#copyobject" class="tsd-kind-icon">copy<wbr>Object</a></li>
@@ -160,7 +160,7 @@
 								<p>Inherited from <a href="_client_.nosbaseclient.html">NosBaseClient</a>.<a href="_client_.nosbaseclient.html#constructor">constructor</a></p>
 								<p>Overrides <a href="_client_.nosbaseclient.html">NosBaseClient</a>.<a href="_client_.nosbaseclient.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/client.ts#L30">client.ts:30</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/client.ts#L30">client.ts:30</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -184,17 +184,17 @@
 						<p>Inherited from <a href="_client_.nosbaseclient.html">NosBaseClient</a>.<a href="_client_.nosbaseclient.html#options">options</a></p>
 						<p>Overrides <a href="_client_.nosbaseclient.html">NosBaseClient</a>.<a href="_client_.nosbaseclient.html#options">options</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/client.ts#L27">client.ts:27</a></li>
+							<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/client.ts#L27">client.ts:27</a></li>
 						</ul>
 					</aside>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group tsd-is-inherited">
 				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited tsd-is-protected">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited tsd-is-private">
 					<a name="_request" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagProtected">Protected</span> _request</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited tsd-is-protected">
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _request</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited tsd-is-private">
 						<li class="tsd-signature tsd-kind-icon">_request<span class="tsd-signature-symbol">(</span>method<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, headers<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, resource<span class="tsd-signature-symbol">: </span><a href="../modules/_type_resource_.html#resource" class="tsd-signature-type">Resource</a>, body<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Response</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
@@ -203,19 +203,33 @@
 								<p>Inherited from <a href="_client_.nosbaseclient.html">NosBaseClient</a>.<a href="_client_.nosbaseclient.html#_request">_request</a></p>
 								<p>Overrides <a href="_client_.nosbaseclient.html">NosBaseClient</a>.<a href="_client_.nosbaseclient.html#_request">_request</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/client.ts#L43">client.ts:43</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/client.ts#L51">client.ts:51</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>底层请求方法包装</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>method: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>请求方法</p>
+									</div>
 								</li>
 								<li>
 									<h5>headers: <span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>头信息</p>
+									</div>
 								</li>
 								<li>
 									<h5>resource: <a href="../modules/_type_resource_.html#resource" class="tsd-signature-type">Resource</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>资源信息，也会序列化到 Url 上面</p>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> body: <span class="tsd-signature-type">any</span></h5>
@@ -237,7 +251,7 @@
 								<p>Inherited from <a href="_exts_multipart_upload_.nosclientmultipartuploadext.html">NosClientMultipartUploadExt</a>.<a href="_exts_multipart_upload_.nosclientmultipartuploadext.html#abortmultipartupload">abortMultipartUpload</a></p>
 								<p>Overrides <a href="_exts_multipart_upload_.nosclientmultipartuploadext.html">NosClientMultipartUploadExt</a>.<a href="_exts_multipart_upload_.nosclientmultipartuploadext.html#abortmultipartupload">abortMultipartUpload</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/multipart-upload.ts#L41">exts/multipart-upload.ts:41</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/multipart-upload.ts#L43">exts/multipart-upload.ts:43</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -262,7 +276,7 @@
 								<p>Inherited from <a href="_exts_multipart_upload_.nosclientmultipartuploadext.html">NosClientMultipartUploadExt</a>.<a href="_exts_multipart_upload_.nosclientmultipartuploadext.html#completemultipartupload">completeMultipartUpload</a></p>
 								<p>Overrides <a href="_exts_multipart_upload_.nosclientmultipartuploadext.html">NosClientMultipartUploadExt</a>.<a href="_exts_multipart_upload_.nosclientmultipartuploadext.html#completemultipartupload">completeMultipartUpload</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/multipart-upload.ts#L127">exts/multipart-upload.ts:127</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/multipart-upload.ts#L150">exts/multipart-upload.ts:150</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -287,7 +301,7 @@
 								<p>Inherited from <a href="_exts_object_.nosclientobjectext.html">NosClientObjectExt</a>.<a href="_exts_object_.nosclientobjectext.html#copyobject">copyObject</a></p>
 								<p>Overrides <a href="_exts_object_.nosclientobjectext.html">NosClientObjectExt</a>.<a href="_exts_object_.nosclientobjectext.html#copyobject">copyObject</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/object.ts#L152">exts/object.ts:152</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/object.ts#L159">exts/object.ts:159</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -312,7 +326,7 @@
 								<p>Inherited from <a href="_exts_bucket_.nosclientbucketext.html">NosClientBucketExt</a>.<a href="_exts_bucket_.nosclientbucketext.html#deletebucket">deleteBucket</a></p>
 								<p>Overrides <a href="_exts_bucket_.nosclientbucketext.html">NosClientBucketExt</a>.<a href="_exts_bucket_.nosclientbucketext.html#deletebucket">deleteBucket</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/bucket.ts#L87">exts/bucket.ts:87</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/bucket.ts#L96">exts/bucket.ts:96</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -337,7 +351,7 @@
 								<p>Inherited from <a href="_exts_object_.nosclientobjectext.html">NosClientObjectExt</a>.<a href="_exts_object_.nosclientobjectext.html#deletemultiobject">deleteMultiObject</a></p>
 								<p>Overrides <a href="_exts_object_.nosclientobjectext.html">NosClientObjectExt</a>.<a href="_exts_object_.nosclientobjectext.html#deletemultiobject">deleteMultiObject</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/object.ts#L208">exts/object.ts:208</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/object.ts#L215">exts/object.ts:215</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -368,7 +382,7 @@
 								<p>Inherited from <a href="_exts_object_.nosclientobjectext.html">NosClientObjectExt</a>.<a href="_exts_object_.nosclientobjectext.html#deleteobject">deleteObject</a></p>
 								<p>Overrides <a href="_exts_object_.nosclientobjectext.html">NosClientObjectExt</a>.<a href="_exts_object_.nosclientobjectext.html#deleteobject">deleteObject</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/object.ts#L177">exts/object.ts:177</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/object.ts#L184">exts/object.ts:184</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -393,13 +407,13 @@
 								<p>Inherited from <a href="_exts_bucket_.nosclientbucketext.html">NosClientBucketExt</a>.<a href="_exts_bucket_.nosclientbucketext.html#ensurebucket">ensureBucket</a></p>
 								<p>Overrides <a href="_exts_bucket_.nosclientbucketext.html">NosClientBucketExt</a>.<a href="_exts_bucket_.nosclientbucketext.html#ensurebucket">ensureBucket</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/bucket.ts#L65">exts/bucket.ts:65</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/bucket.ts#L74">exts/bucket.ts:74</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Ensure bucket exist, create bucket when no such bucket
-									Please make sure you is a owner of bucket, or throw error</p>
+									<p>Ensure bucket exist,create bucket when no such bucket
+									Please make sure you is a owner of bucket,or throw error</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -426,7 +440,7 @@
 								<p>Inherited from <a href="_exts_bucket_.nosclientbucketext.html">NosClientBucketExt</a>.<a href="_exts_bucket_.nosclientbucketext.html#getbucketacl">getBucketAcl</a></p>
 								<p>Overrides <a href="_exts_bucket_.nosclientbucketext.html">NosClientBucketExt</a>.<a href="_exts_bucket_.nosclientbucketext.html#getbucketacl">getBucketAcl</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/bucket.ts#L101">exts/bucket.ts:101</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/bucket.ts#L110">exts/bucket.ts:110</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -451,7 +465,7 @@
 								<p>Inherited from <a href="_exts_bucket_.nosclientbucketext.html">NosClientBucketExt</a>.<a href="_exts_bucket_.nosclientbucketext.html#getbucketlocation">getBucketLocation</a></p>
 								<p>Overrides <a href="_exts_bucket_.nosclientbucketext.html">NosClientBucketExt</a>.<a href="_exts_bucket_.nosclientbucketext.html#getbucketlocation">getBucketLocation</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/bucket.ts#L120">exts/bucket.ts:120</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/bucket.ts#L129">exts/bucket.ts:129</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -478,7 +492,7 @@
 								<p>Inherited from <a href="_exts_object_.nosclientobjectext.html">NosClientObjectExt</a>.<a href="_exts_object_.nosclientobjectext.html#getobject">getObject</a></p>
 								<p>Overrides <a href="_exts_object_.nosclientobjectext.html">NosClientObjectExt</a>.<a href="_exts_object_.nosclientobjectext.html#getobject">getObject</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/object.ts#L87">exts/object.ts:87</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/object.ts#L94">exts/object.ts:94</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -494,7 +508,7 @@
 								<p>Inherited from <a href="_exts_object_.nosclientobjectext.html">NosClientObjectExt</a>.<a href="_exts_object_.nosclientobjectext.html#getobject">getObject</a></p>
 								<p>Overrides <a href="_exts_object_.nosclientobjectext.html">NosClientObjectExt</a>.<a href="_exts_object_.nosclientobjectext.html#getobject">getObject</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/object.ts#L88">exts/object.ts:88</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/object.ts#L95">exts/object.ts:95</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -510,7 +524,7 @@
 								<p>Inherited from <a href="_exts_object_.nosclientobjectext.html">NosClientObjectExt</a>.<a href="_exts_object_.nosclientobjectext.html#getobject">getObject</a></p>
 								<p>Overrides <a href="_exts_object_.nosclientobjectext.html">NosClientObjectExt</a>.<a href="_exts_object_.nosclientobjectext.html#getobject">getObject</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/object.ts#L89">exts/object.ts:89</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/object.ts#L96">exts/object.ts:96</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -535,7 +549,7 @@
 								<p>Inherited from <a href="_exts_object_.nosclientobjectext.html">NosClientObjectExt</a>.<a href="_exts_object_.nosclientobjectext.html#getobjecturl">getObjectUrl</a></p>
 								<p>Overrides <a href="_exts_object_.nosclientobjectext.html">NosClientObjectExt</a>.<a href="_exts_object_.nosclientobjectext.html#getobjecturl">getObjectUrl</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/object.ts#L159">exts/object.ts:159</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/object.ts#L166">exts/object.ts:166</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -560,7 +574,7 @@
 								<p>Inherited from <a href="_client_.nosbaseclient.html">NosBaseClient</a>.<a href="_client_.nosbaseclient.html#handlerequesterror">handleRequestError</a></p>
 								<p>Overrides <a href="_client_.nosbaseclient.html">NosBaseClient</a>.<a href="_client_.nosbaseclient.html#handlerequesterror">handleRequestError</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/client.ts#L73">client.ts:73</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/client.ts#L81">client.ts:81</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -585,7 +599,7 @@
 								<p>Inherited from <a href="_exts_object_.nosclientobjectext.html">NosClientObjectExt</a>.<a href="_exts_object_.nosclientobjectext.html#headobject">headObject</a></p>
 								<p>Overrides <a href="_exts_object_.nosclientobjectext.html">NosClientObjectExt</a>.<a href="_exts_object_.nosclientobjectext.html#headobject">headObject</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/object.ts#L118">exts/object.ts:118</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/object.ts#L125">exts/object.ts:125</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -610,7 +624,7 @@
 								<p>Inherited from <a href="_exts_multipart_upload_.nosclientmultipartuploadext.html">NosClientMultipartUploadExt</a>.<a href="_exts_multipart_upload_.nosclientmultipartuploadext.html#initmultipartupload">initMultipartUpload</a></p>
 								<p>Overrides <a href="_exts_multipart_upload_.nosclientmultipartuploadext.html">NosClientMultipartUploadExt</a>.<a href="_exts_multipart_upload_.nosclientmultipartuploadext.html#initmultipartupload">initMultipartUpload</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/multipart-upload.ts#L28">exts/multipart-upload.ts:28</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/multipart-upload.ts#L30">exts/multipart-upload.ts:30</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -638,7 +652,7 @@
 								<p>Inherited from <a href="_exts_bucket_.nosclientbucketext.html">NosClientBucketExt</a>.<a href="_exts_bucket_.nosclientbucketext.html#isbucketexist">isBucketExist</a></p>
 								<p>Overrides <a href="_exts_bucket_.nosclientbucketext.html">NosClientBucketExt</a>.<a href="_exts_bucket_.nosclientbucketext.html#isbucketexist">isBucketExist</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/bucket.ts#L77">exts/bucket.ts:77</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/bucket.ts#L86">exts/bucket.ts:86</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -663,7 +677,7 @@
 								<p>Inherited from <a href="_exts_object_.nosclientobjectext.html">NosClientObjectExt</a>.<a href="_exts_object_.nosclientobjectext.html#isobjectexist">isObjectExist</a></p>
 								<p>Overrides <a href="_exts_object_.nosclientobjectext.html">NosClientObjectExt</a>.<a href="_exts_object_.nosclientobjectext.html#isobjectexist">isObjectExist</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/object.ts#L139">exts/object.ts:139</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/object.ts#L146">exts/object.ts:146</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -680,7 +694,7 @@
 					<a name="listbucket" class="tsd-anchor"></a>
 					<h3>list<wbr>Bucket</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">list<wbr>Bucket<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_type_bucket_.bucket.html" class="tsd-signature-type">Bucket</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">list<wbr>Bucket<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_type_bucket_.listbucketresult.html" class="tsd-signature-type">ListBucketResult</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
@@ -688,15 +702,15 @@
 								<p>Inherited from <a href="_exts_bucket_.nosclientbucketext.html">NosClientBucketExt</a>.<a href="_exts_bucket_.nosclientbucketext.html#listbucket">listBucket</a></p>
 								<p>Overrides <a href="_exts_bucket_.nosclientbucketext.html">NosClientBucketExt</a>.<a href="_exts_bucket_.nosclientbucketext.html#listbucket">listBucket</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/bucket.ts#L21">exts/bucket.ts:21</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/bucket.ts#L23">exts/bucket.ts:23</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>get all buckets</p>
+									<p>获取全部 Bucket</p>
 								</div>
 							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_type_bucket_.bucket.html" class="tsd-signature-type">Bucket</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_type_bucket_.listbucketresult.html" class="tsd-signature-type">ListBucketResult</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -704,7 +718,7 @@
 					<a name="listmultipartupload" class="tsd-anchor"></a>
 					<h3>list<wbr>Multipart<wbr>Upload</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">list<wbr>Multipart<wbr>Upload<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_type_multipart_upload_.listmultipartparams.html" class="tsd-signature-type">ListMultipartParams</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_type_multipart_upload_.multipartupload.html" class="tsd-signature-type">MultipartUpload</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">list<wbr>Multipart<wbr>Upload<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_type_multipart_upload_.listmultipartparams.html" class="tsd-signature-type">ListMultipartParams</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_type_multipart_upload_.listmultipartresult.html" class="tsd-signature-type">ListMultipartResult</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
@@ -712,7 +726,7 @@
 								<p>Inherited from <a href="_exts_multipart_upload_.nosclientmultipartuploadext.html">NosClientMultipartUploadExt</a>.<a href="_exts_multipart_upload_.nosclientmultipartuploadext.html#listmultipartupload">listMultipartUpload</a></p>
 								<p>Overrides <a href="_exts_multipart_upload_.nosclientmultipartuploadext.html">NosClientMultipartUploadExt</a>.<a href="_exts_multipart_upload_.nosclientmultipartuploadext.html#listmultipartupload">listMultipartUpload</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/multipart-upload.ts#L101">exts/multipart-upload.ts:101</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/multipart-upload.ts#L112">exts/multipart-upload.ts:112</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -721,7 +735,7 @@
 									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> params: <a href="../interfaces/_type_multipart_upload_.listmultipartparams.html" class="tsd-signature-type">ListMultipartParams</a><span class="tsd-signature-symbol"> =&nbsp;{}</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_type_multipart_upload_.multipartupload.html" class="tsd-signature-type">MultipartUpload</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_type_multipart_upload_.listmultipartresult.html" class="tsd-signature-type">ListMultipartResult</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -729,7 +743,7 @@
 					<a name="listobject" class="tsd-anchor"></a>
 					<h3>list<wbr>Object</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">list<wbr>Object<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_type_object_.listobjectparams.html" class="tsd-signature-type">ListObjectParams</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_type_object_.objectcontent.html" class="tsd-signature-type">ObjectContent</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">list<wbr>Object<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_type_object_.listobjectparams.html" class="tsd-signature-type">ListObjectParams</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_type_object_.listobjectresult.html" class="tsd-signature-type">ListObjectResult</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
@@ -737,7 +751,7 @@
 								<p>Inherited from <a href="_exts_object_.nosclientobjectext.html">NosClientObjectExt</a>.<a href="_exts_object_.nosclientobjectext.html#listobject">listObject</a></p>
 								<p>Overrides <a href="_exts_object_.nosclientobjectext.html">NosClientObjectExt</a>.<a href="_exts_object_.nosclientobjectext.html#listobject">listObject</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/object.ts#L43">exts/object.ts:43</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/object.ts#L43">exts/object.ts:43</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -746,7 +760,7 @@
 									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> params: <a href="../interfaces/_type_object_.listobjectparams.html" class="tsd-signature-type">ListObjectParams</a><span class="tsd-signature-symbol"> =&nbsp;{}</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_type_object_.objectcontent.html" class="tsd-signature-type">ObjectContent</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_type_object_.listobjectresult.html" class="tsd-signature-type">ListObjectResult</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -754,7 +768,7 @@
 					<a name="listparts" class="tsd-anchor"></a>
 					<h3>list<wbr>Parts</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">list<wbr>Parts<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><a href="../interfaces/_type_multipart_upload_.listpartsoptions.html" class="tsd-signature-type">ListPartsOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_type_multipart_upload_.part.html" class="tsd-signature-type">Part</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">list<wbr>Parts<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><a href="../interfaces/_type_multipart_upload_.listpartsoptions.html" class="tsd-signature-type">ListPartsOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_type_multipart_upload_.listpartsresult.html" class="tsd-signature-type">ListPartsResult</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
@@ -762,7 +776,7 @@
 								<p>Inherited from <a href="_exts_multipart_upload_.nosclientmultipartuploadext.html">NosClientMultipartUploadExt</a>.<a href="_exts_multipart_upload_.nosclientmultipartuploadext.html#listparts">listParts</a></p>
 								<p>Overrides <a href="_exts_multipart_upload_.nosclientmultipartuploadext.html">NosClientMultipartUploadExt</a>.<a href="_exts_multipart_upload_.nosclientmultipartuploadext.html#listparts">listParts</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/multipart-upload.ts#L77">exts/multipart-upload.ts:77</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/multipart-upload.ts#L79">exts/multipart-upload.ts:79</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -778,7 +792,7 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_type_multipart_upload_.part.html" class="tsd-signature-type">Part</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_type_multipart_upload_.listpartsresult.html" class="tsd-signature-type">ListPartsResult</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -794,7 +808,7 @@
 								<p>Inherited from <a href="_exts_object_.nosclientobjectext.html">NosClientObjectExt</a>.<a href="_exts_object_.nosclientobjectext.html#moveobject">moveObject</a></p>
 								<p>Overrides <a href="_exts_object_.nosclientobjectext.html">NosClientObjectExt</a>.<a href="_exts_object_.nosclientobjectext.html#moveobject">moveObject</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/object.ts#L191">exts/object.ts:191</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/object.ts#L198">exts/object.ts:198</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -819,7 +833,7 @@
 								<p>Inherited from <a href="_exts_multipart_upload_.nosclientmultipartuploadext.html">NosClientMultipartUploadExt</a>.<a href="_exts_multipart_upload_.nosclientmultipartuploadext.html#putbigobject">putBigObject</a></p>
 								<p>Overrides <a href="_exts_multipart_upload_.nosclientmultipartuploadext.html">NosClientMultipartUploadExt</a>.<a href="_exts_multipart_upload_.nosclientmultipartuploadext.html#putbigobject">putBigObject</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/multipart-upload.ts#L144">exts/multipart-upload.ts:144</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/multipart-upload.ts#L167">exts/multipart-upload.ts:167</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -844,7 +858,7 @@
 								<p>Inherited from <a href="_exts_bucket_.nosclientbucketext.html">NosClientBucketExt</a>.<a href="_exts_bucket_.nosclientbucketext.html#putbucket">putBucket</a></p>
 								<p>Overrides <a href="_exts_bucket_.nosclientbucketext.html">NosClientBucketExt</a>.<a href="_exts_bucket_.nosclientbucketext.html#putbucket">putBucket</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/bucket.ts#L45">exts/bucket.ts:45</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/bucket.ts#L54">exts/bucket.ts:54</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -878,7 +892,7 @@
 								<p>Inherited from <a href="_exts_object_.nosclientobjectext.html">NosClientObjectExt</a>.<a href="_exts_object_.nosclientobjectext.html#putobject">putObject</a></p>
 								<p>Overrides <a href="_exts_object_.nosclientobjectext.html">NosClientObjectExt</a>.<a href="_exts_object_.nosclientobjectext.html#putobject">putObject</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/object.ts#L66">exts/object.ts:66</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/object.ts#L73">exts/object.ts:73</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -903,7 +917,7 @@
 								<p>Inherited from <a href="_client_.nosbaseclient.html">NosBaseClient</a>.<a href="_client_.nosbaseclient.html#request">request</a></p>
 								<p>Overrides <a href="_client_.nosbaseclient.html">NosBaseClient</a>.<a href="_client_.nosbaseclient.html#request">request</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/client.ts#L84">client.ts:84</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/client.ts#L92">client.ts:92</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -937,7 +951,7 @@
 								<p>Inherited from <a href="_client_.nosbaseclient.html">NosBaseClient</a>.<a href="_client_.nosbaseclient.html#requestbody">requestBody</a></p>
 								<p>Overrides <a href="_client_.nosbaseclient.html">NosBaseClient</a>.<a href="_client_.nosbaseclient.html#requestbody">requestBody</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/client.ts#L89">client.ts:89</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/client.ts#L97">client.ts:97</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -971,7 +985,7 @@
 								<p>Inherited from <a href="_exts_bucket_.nosclientbucketext.html">NosClientBucketExt</a>.<a href="_exts_bucket_.nosclientbucketext.html#setbucketacl">setBucketAcl</a></p>
 								<p>Overrides <a href="_exts_bucket_.nosclientbucketext.html">NosClientBucketExt</a>.<a href="_exts_bucket_.nosclientbucketext.html#setbucketacl">setBucketAcl</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/bucket.ts#L112">exts/bucket.ts:112</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/bucket.ts#L121">exts/bucket.ts:121</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -996,7 +1010,7 @@
 								<p>Inherited from <a href="_exts_multipart_upload_.nosclientmultipartuploadext.html">NosClientMultipartUploadExt</a>.<a href="_exts_multipart_upload_.nosclientmultipartuploadext.html#uploadmultipart">uploadMultipart</a></p>
 								<p>Overrides <a href="_exts_multipart_upload_.nosclientmultipartuploadext.html">NosClientMultipartUploadExt</a>.<a href="_exts_multipart_upload_.nosclientmultipartuploadext.html#uploadmultipart">uploadMultipart</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/multipart-upload.ts#L54">exts/multipart-upload.ts:54</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/multipart-upload.ts#L56">exts/multipart-upload.ts:56</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1021,7 +1035,7 @@
 								<p>Inherited from <a href="_client_.nosbaseclient.html">NosBaseClient</a>.<a href="_client_.nosbaseclient.html#validatebinaryparams">validateBinaryParams</a></p>
 								<p>Overrides <a href="_client_.nosbaseclient.html">NosBaseClient</a>.<a href="_client_.nosbaseclient.html#validatebinaryparams">validateBinaryParams</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/client.ts#L123">client.ts:123</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/client.ts#L131">client.ts:131</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1060,7 +1074,7 @@
 								<p>Inherited from <a href="_client_.nosbaseclient.html">NosBaseClient</a>.<a href="_client_.nosbaseclient.html#validateparams">validateParams</a></p>
 								<p>Overrides <a href="_client_.nosbaseclient.html">NosBaseClient</a>.<a href="_client_.nosbaseclient.html#validateparams">validateParams</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/client.ts#L94">client.ts:94</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/client.ts#L102">client.ts:102</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1141,6 +1155,9 @@
 						<a href="../modules/_type_object_.html">"type/object"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
+						<a href="../modules/_type_request_.html">"type/request"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/_type_resource_.html">"type/resource"</a>
 					</li>
 				</ul>
@@ -1158,7 +1175,7 @@
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited">
 								<a href="_index_.nosclient.html#options" class="tsd-kind-icon">options</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited tsd-is-protected">
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited tsd-is-private">
 								<a href="_index_.nosclient.html#_request" class="tsd-kind-icon">_request</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited">

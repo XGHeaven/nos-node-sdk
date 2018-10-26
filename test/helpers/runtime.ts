@@ -26,18 +26,18 @@ export function newReadableStream(length: number) {
     read(size) {
       let shouldEnd = false
 
-      if ((usedSize + size) >= length) {
-        size = length - usedSize;
-        shouldEnd = true;
+      if (usedSize + size >= length) {
+        size = length - usedSize
+        shouldEnd = true
       }
 
-      usedSize += size;
-      this.push(Buffer.alloc(size));
+      usedSize += size
+      this.push(Buffer.alloc(size))
 
       if (shouldEnd) {
-        this.push(null);
+        this.push(null)
       }
-    }
+    },
   })
 
   return readable

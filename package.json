@@ -1,9 +1,11 @@
 {
   "name": "@xgheaven/nos-node-sdk",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": {
     "name": "XGHeaven<xgheaven@gmail.com>"
   },
+  "main": "./dest/index.js",
+  "types": "./dest/index.d.ts",
   "description": "NOS Node.js SDK实现了NOS对象操作接口，基于此SDK能方便快速地实现JavaScript应用程序来使用NOS的对象存储服务。",
   "dependencies": {
     "date-fns": "^1.29.0",
@@ -41,7 +43,6 @@
     "nos-node-sdk"
   ],
   "license": "MIT",
-  "main": "dest/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/XGHeaven/nos-node-sdk"
@@ -76,7 +77,6 @@
       "json",
       "node"
     ],
-    "setupTestFrameworkScriptFile": "./test/helpers/setup.ts",
     "collectCoverage": true,
     "collectCoverageFrom": [
       "src/**/*.ts",

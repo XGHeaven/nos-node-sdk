@@ -1,3 +1,5 @@
+import { ListOperationResponse } from './request'
+
 export interface OperateObjectParams extends OperateOptionalBucketParams {
   objectKey: string
 }
@@ -25,6 +27,10 @@ export interface ObjectContent {
   storageClass: string
 }
 
+export interface CommonPrefixContent {
+  prefix: string
+}
+
 export interface CopyObjectParams extends OperateBinaryObjectParams {
   sourceObjectKey: string
   sourceBucket?: string
@@ -32,21 +38,20 @@ export interface CopyObjectParams extends OperateBinaryObjectParams {
   targetBucket?: string
 }
 
-export interface DeleteObjectParams extends OperateObjectParams {
-}
+export interface DeleteObjectParams extends OperateObjectParams {}
 
 export type GetObjectParams = GetObjectStreamParams | GetObjectBufferParams | GetObjectStringParams
 
 export interface GetObjectBaseOptions extends OperateObjectParams {
   range?:
     | {
-    first: number
-    last?: number
-  }
+        first: number
+        last?: number
+      }
     | {
-    first?: number
-    last: number
-  }
+        first?: number
+        last: number
+      }
     | string
 
   // not use?
@@ -85,16 +90,6 @@ export interface HeadObjectResult {
   }
 }
 
-export interface ListObjectResult {
-  // Bucket name
-  name: string
-  prefix: string
-  marker: string
-  maxKeys: number
-  isTruncated: boolean
-  contents: ObjectContent[]
-}
-
 export interface ListObjectParams extends OperateOptionalBucketParams {
   delimiter?: string
   marker?: string
@@ -102,8 +97,14 @@ export interface ListObjectParams extends OperateOptionalBucketParams {
   prefix?: string
 }
 
-export interface MoveObjectParams extends OperateBinaryObjectParams {
+export interface ListObjectResult extends ListOperationResponse<ObjectContent> {
+  delimiter: string
+  prefix: string
+  bucket: string
+  commonPrefixes: CommonPrefixContent[]
 }
+
+export interface MoveObjectParams extends OperateBinaryObjectParams {}
 
 export type PutObjectParams = PutObjectBodyOptions | PutObjectFileOptions | PutObjectStreamOptions
 

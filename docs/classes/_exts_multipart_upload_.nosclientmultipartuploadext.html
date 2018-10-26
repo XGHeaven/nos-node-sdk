@@ -106,7 +106,7 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_exts_multipart_upload_.nosclientmultipartuploadext.html#_request" class="tsd-kind-icon">_request</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="_exts_multipart_upload_.nosclientmultipartuploadext.html#_request" class="tsd-kind-icon">_request</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_exts_multipart_upload_.nosclientmultipartuploadext.html#abortmultipartupload" class="tsd-kind-icon">abort<wbr>Multipart<wbr>Upload</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_exts_multipart_upload_.nosclientmultipartuploadext.html#completemultipartupload" class="tsd-kind-icon">complete<wbr>Multipart<wbr>Upload</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_exts_multipart_upload_.nosclientmultipartuploadext.html#handlerequesterror" class="tsd-kind-icon">handle<wbr>Request<wbr>Error</a></li>
@@ -137,7 +137,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_client_.nosbaseclient.html">NosBaseClient</a>.<a href="_client_.nosbaseclient.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/client.ts#L30">client.ts:30</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/client.ts#L30">client.ts:30</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -160,17 +160,17 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_client_.nosbaseclient.html">NosBaseClient</a>.<a href="_client_.nosbaseclient.html#options">options</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/client.ts#L27">client.ts:27</a></li>
+							<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/client.ts#L27">client.ts:27</a></li>
 						</ul>
 					</aside>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private">
 					<a name="_request" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagProtected">Protected</span> _request</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _request</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private">
 						<li class="tsd-signature tsd-kind-icon">_request<span class="tsd-signature-symbol">(</span>method<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, headers<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, resource<span class="tsd-signature-symbol">: </span><a href="../modules/_type_resource_.html#resource" class="tsd-signature-type">Resource</a>, body<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Response</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
@@ -178,19 +178,33 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_client_.nosbaseclient.html">NosBaseClient</a>.<a href="_client_.nosbaseclient.html#_request">_request</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/client.ts#L43">client.ts:43</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/client.ts#L51">client.ts:51</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>底层请求方法包装</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>method: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>请求方法</p>
+									</div>
 								</li>
 								<li>
 									<h5>headers: <span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>头信息</p>
+									</div>
 								</li>
 								<li>
 									<h5>resource: <a href="../modules/_type_resource_.html#resource" class="tsd-signature-type">Resource</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>资源信息，也会序列化到 Url 上面</p>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> body: <span class="tsd-signature-type">any</span></h5>
@@ -211,7 +225,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/multipart-upload.ts#L41">exts/multipart-upload.ts:41</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/multipart-upload.ts#L43">exts/multipart-upload.ts:43</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -225,7 +239,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/multipart-upload.ts#L255">exts/multipart-upload.ts:255</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/multipart-upload.ts#L278">exts/multipart-upload.ts:278</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -252,7 +266,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/multipart-upload.ts#L127">exts/multipart-upload.ts:127</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/multipart-upload.ts#L150">exts/multipart-upload.ts:150</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -266,7 +280,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/multipart-upload.ts#L259">exts/multipart-upload.ts:259</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/multipart-upload.ts#L282">exts/multipart-upload.ts:282</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -293,7 +307,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_client_.nosbaseclient.html">NosBaseClient</a>.<a href="_client_.nosbaseclient.html#handlerequesterror">handleRequestError</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/client.ts#L73">client.ts:73</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/client.ts#L81">client.ts:81</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -317,7 +331,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/multipart-upload.ts#L28">exts/multipart-upload.ts:28</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/multipart-upload.ts#L30">exts/multipart-upload.ts:30</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -334,7 +348,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/multipart-upload.ts#L254">exts/multipart-upload.ts:254</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/multipart-upload.ts#L277">exts/multipart-upload.ts:277</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -354,14 +368,14 @@
 					<a name="listmultipartupload" class="tsd-anchor"></a>
 					<h3>list<wbr>Multipart<wbr>Upload</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">list<wbr>Multipart<wbr>Upload<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_type_multipart_upload_.listmultipartparams.html" class="tsd-signature-type">ListMultipartParams</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_type_multipart_upload_.multipartupload.html" class="tsd-signature-type">MultipartUpload</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">list<wbr>Multipart<wbr>Upload<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_type_multipart_upload_.listmultipartparams.html" class="tsd-signature-type">ListMultipartParams</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_type_multipart_upload_.listmultipartresult.html" class="tsd-signature-type">ListMultipartResult</a><span class="tsd-signature-symbol">&gt;</span></li>
 						<li class="tsd-signature tsd-kind-icon">list<wbr>Multipart<wbr>Upload<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><a href="../interfaces/_type_multipart_upload_.listmultipartparams.html" class="tsd-signature-type">ListMultipartParams</a>, cb<span class="tsd-signature-symbol">: </span><a href="../modules/_type_callback_.html#callback" class="tsd-signature-type">Callback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_type_multipart_upload_.multipartupload.html" class="tsd-signature-type">MultipartUpload</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/multipart-upload.ts#L101">exts/multipart-upload.ts:101</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/multipart-upload.ts#L112">exts/multipart-upload.ts:112</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -370,12 +384,12 @@
 									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> params: <a href="../interfaces/_type_multipart_upload_.listmultipartparams.html" class="tsd-signature-type">ListMultipartParams</a><span class="tsd-signature-symbol"> =&nbsp;{}</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_type_multipart_upload_.multipartupload.html" class="tsd-signature-type">MultipartUpload</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_type_multipart_upload_.listmultipartresult.html" class="tsd-signature-type">ListMultipartResult</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/multipart-upload.ts#L258">exts/multipart-upload.ts:258</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/multipart-upload.ts#L281">exts/multipart-upload.ts:281</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -395,14 +409,14 @@
 					<a name="listparts" class="tsd-anchor"></a>
 					<h3>list<wbr>Parts</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">list<wbr>Parts<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><a href="../interfaces/_type_multipart_upload_.listpartsoptions.html" class="tsd-signature-type">ListPartsOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_type_multipart_upload_.part.html" class="tsd-signature-type">Part</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">list<wbr>Parts<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><a href="../interfaces/_type_multipart_upload_.listpartsoptions.html" class="tsd-signature-type">ListPartsOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_type_multipart_upload_.listpartsresult.html" class="tsd-signature-type">ListPartsResult</a><span class="tsd-signature-symbol">&gt;</span></li>
 						<li class="tsd-signature tsd-kind-icon">list<wbr>Parts<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><a href="../interfaces/_type_multipart_upload_.listpartsoptions.html" class="tsd-signature-type">ListPartsOptions</a>, cb<span class="tsd-signature-symbol">: </span><a href="../modules/_type_callback_.html#callback" class="tsd-signature-type">Callback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_type_multipart_upload_.part.html" class="tsd-signature-type">Part</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/multipart-upload.ts#L77">exts/multipart-upload.ts:77</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/multipart-upload.ts#L79">exts/multipart-upload.ts:79</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -418,12 +432,12 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_type_multipart_upload_.part.html" class="tsd-signature-type">Part</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_type_multipart_upload_.listpartsresult.html" class="tsd-signature-type">ListPartsResult</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/multipart-upload.ts#L257">exts/multipart-upload.ts:257</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/multipart-upload.ts#L280">exts/multipart-upload.ts:280</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -450,7 +464,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/multipart-upload.ts#L144">exts/multipart-upload.ts:144</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/multipart-upload.ts#L167">exts/multipart-upload.ts:167</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -464,7 +478,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/multipart-upload.ts#L260">exts/multipart-upload.ts:260</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/multipart-upload.ts#L283">exts/multipart-upload.ts:283</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -491,7 +505,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_client_.nosbaseclient.html">NosBaseClient</a>.<a href="_client_.nosbaseclient.html#request">request</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/client.ts#L84">client.ts:84</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/client.ts#L92">client.ts:92</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -524,7 +538,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_client_.nosbaseclient.html">NosBaseClient</a>.<a href="_client_.nosbaseclient.html#requestbody">requestBody</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/client.ts#L89">client.ts:89</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/client.ts#L97">client.ts:97</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -557,7 +571,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/multipart-upload.ts#L54">exts/multipart-upload.ts:54</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/multipart-upload.ts#L56">exts/multipart-upload.ts:56</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -571,7 +585,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/multipart-upload.ts#L256">exts/multipart-upload.ts:256</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/multipart-upload.ts#L279">exts/multipart-upload.ts:279</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -598,7 +612,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_client_.nosbaseclient.html">NosBaseClient</a>.<a href="_client_.nosbaseclient.html#validatebinaryparams">validateBinaryParams</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/client.ts#L123">client.ts:123</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/client.ts#L131">client.ts:131</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -636,7 +650,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_client_.nosbaseclient.html">NosBaseClient</a>.<a href="_client_.nosbaseclient.html#validateparams">validateParams</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/client.ts#L94">client.ts:94</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/client.ts#L102">client.ts:102</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -717,6 +731,9 @@
 						<a href="../modules/_type_object_.html">"type/object"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
+						<a href="../modules/_type_request_.html">"type/request"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/_type_resource_.html">"type/resource"</a>
 					</li>
 				</ul>
@@ -734,7 +751,7 @@
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 								<a href="_exts_multipart_upload_.nosclientmultipartuploadext.html#options" class="tsd-kind-icon">options</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private">
 								<a href="_exts_multipart_upload_.nosclientmultipartuploadext.html#_request" class="tsd-kind-icon">_request</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
