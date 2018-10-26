@@ -62,18 +62,31 @@
 					<a href="_type_bucket_.listbucketresult.html">ListBucketResult</a>
 				</li>
 			</ul>
-			<h1>Interface ListBucketResult</h1>
+			<h1>Interface ListBucketResult&lt;NextMarkerType&gt;</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-type-parameters">
+				<h3>Type parameters</h3>
+				<ul class="tsd-type-parameters">
+					<li>
+						<h4>NextMarkerType</h4>
+					</li>
+				</ul>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">ListBucketResult</span>
+						<a href="_type_request_.listoperationresponse.html" class="tsd-signature-type">ListOperationResponse</a><span class="tsd-signature-symbol">&lt;</span><a href="_type_bucket_.bucket.html" class="tsd-signature-type">Bucket</a><span class="tsd-signature-symbol">&gt;</span>
+						<ul class="tsd-hierarchy">
+							<li>
+								<span class="target">ListBucketResult</span>
+							</li>
+						</ul>
 					</li>
 				</ul>
 			</section>
@@ -84,7 +97,10 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_type_bucket_.listbucketresult.html#buckets" class="tsd-kind-icon">buckets</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_type_bucket_.listbucketresult.html#istruncated" class="tsd-kind-icon">is<wbr>Truncated</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_type_bucket_.listbucketresult.html#items" class="tsd-kind-icon">items</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_type_bucket_.listbucketresult.html#limit" class="tsd-kind-icon">limit</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_type_bucket_.listbucketresult.html#nextmarker" class="tsd-kind-icon">next<wbr>Marker</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_type_bucket_.listbucketresult.html#owner" class="tsd-kind-icon">owner</a></li>
 							</ul>
 						</section>
@@ -93,13 +109,52 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="buckets" class="tsd-anchor"></a>
-					<h3>buckets</h3>
-					<div class="tsd-signature tsd-kind-icon">buckets<span class="tsd-signature-symbol">:</span> <a href="_type_bucket_.bucket.html" class="tsd-signature-type">Bucket</a><span class="tsd-signature-symbol">[]</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="istruncated" class="tsd-anchor"></a>
+					<h3>is<wbr>Truncated</h3>
+					<div class="tsd-signature tsd-kind-icon">is<wbr>Truncated<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="_type_request_.listoperationresponse.html">ListOperationResponse</a>.<a href="_type_request_.listoperationresponse.html#istruncated">isTruncated</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/type/bucket.ts#L44">type/bucket.ts:44</a></li>
+							<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/type/request.ts#L13">type/request.ts:13</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>是否被截断，只有当还有数据的时候为真</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="items" class="tsd-anchor"></a>
+					<h3>items</h3>
+					<div class="tsd-signature tsd-kind-icon">items<span class="tsd-signature-symbol">:</span> <a href="_type_bucket_.bucket.html" class="tsd-signature-type">Bucket</a><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_type_request_.listoperationresponse.html">ListOperationResponse</a>.<a href="_type_request_.listoperationresponse.html#items">items</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/type/request.ts#L7">type/request.ts:7</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="limit" class="tsd-anchor"></a>
+					<h3>limit</h3>
+					<div class="tsd-signature tsd-kind-icon">limit<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_type_request_.listoperationresponse.html">ListOperationResponse</a>.<a href="_type_request_.listoperationresponse.html#limit">limit</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/type/request.ts#L9">type/request.ts:9</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="nextmarker" class="tsd-anchor"></a>
+					<h3>next<wbr>Marker</h3>
+					<div class="tsd-signature tsd-kind-icon">next<wbr>Marker<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">NextMarkerType</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_type_request_.listoperationresponse.html">ListOperationResponse</a>.<a href="_type_request_.listoperationresponse.html#nextmarker">nextMarker</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/type/request.ts#L15">type/request.ts:15</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -109,7 +164,7 @@
 					<div class="tsd-signature tsd-kind-icon">owner<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/type/bucket.ts#L40">type/bucket.ts:40</a></li>
+							<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/type/bucket.ts#L40">type/bucket.ts:40</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -181,6 +236,9 @@
 						<a href="../modules/_type_object_.html">"type/object"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
+						<a href="../modules/_type_request_.html">"type/request"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/_type_resource_.html">"type/resource"</a>
 					</li>
 				</ul>
@@ -204,11 +262,20 @@
 					</li>
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
+					<li class="current tsd-kind-interface tsd-parent-kind-external-module tsd-has-type-parameter">
 						<a href="_type_bucket_.listbucketresult.html" class="tsd-kind-icon">List<wbr>Bucket<wbr>Result</a>
 						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_type_bucket_.listbucketresult.html#buckets" class="tsd-kind-icon">buckets</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_type_bucket_.listbucketresult.html#istruncated" class="tsd-kind-icon">is<wbr>Truncated</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_type_bucket_.listbucketresult.html#items" class="tsd-kind-icon">items</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_type_bucket_.listbucketresult.html#limit" class="tsd-kind-icon">limit</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_type_bucket_.listbucketresult.html#nextmarker" class="tsd-kind-icon">next<wbr>Marker</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="_type_bucket_.listbucketresult.html#owner" class="tsd-kind-icon">owner</a>

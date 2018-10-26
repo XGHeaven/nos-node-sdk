@@ -72,8 +72,15 @@ export interface Progress {
 
 export interface PutBigObjectBaseParams extends OperateObjectParams {
   maxPart?: number
+  /**
+   * 当有块上传完成的时候，会调用 onProgress 回调，并传入进度信息，可以依据这个信息做一些定制化的操作。
+   * 虽然不是很符合规范，但也不失为一种办法
+   * @param progress 进度信息。
+   */
   onProgress?: (progress: Progress) => void
-  // parallel size, default is unlimited
+  /**
+   * 并行上传的数量，默认是不限制的
+   */
   parallel?: number
 }
 

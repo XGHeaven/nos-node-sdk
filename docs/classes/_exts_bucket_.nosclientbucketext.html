@@ -106,7 +106,7 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_exts_bucket_.nosclientbucketext.html#_request" class="tsd-kind-icon">_request</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="_exts_bucket_.nosclientbucketext.html#_request" class="tsd-kind-icon">_request</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_exts_bucket_.nosclientbucketext.html#deletebucket" class="tsd-kind-icon">delete<wbr>Bucket</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_exts_bucket_.nosclientbucketext.html#ensurebucket" class="tsd-kind-icon">ensure<wbr>Bucket</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_exts_bucket_.nosclientbucketext.html#getbucketacl" class="tsd-kind-icon">get<wbr>Bucket<wbr>Acl</a></li>
@@ -138,7 +138,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_client_.nosbaseclient.html">NosBaseClient</a>.<a href="_client_.nosbaseclient.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/client.ts#L30">client.ts:30</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/client.ts#L30">client.ts:30</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -161,17 +161,17 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_client_.nosbaseclient.html">NosBaseClient</a>.<a href="_client_.nosbaseclient.html#options">options</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/client.ts#L27">client.ts:27</a></li>
+							<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/client.ts#L27">client.ts:27</a></li>
 						</ul>
 					</aside>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private">
 					<a name="_request" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagProtected">Protected</span> _request</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _request</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private">
 						<li class="tsd-signature tsd-kind-icon">_request<span class="tsd-signature-symbol">(</span>method<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, headers<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, resource<span class="tsd-signature-symbol">: </span><a href="../modules/_type_resource_.html#resource" class="tsd-signature-type">Resource</a>, body<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Response</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
@@ -179,19 +179,33 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_client_.nosbaseclient.html">NosBaseClient</a>.<a href="_client_.nosbaseclient.html#_request">_request</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/client.ts#L43">client.ts:43</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/client.ts#L51">client.ts:51</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>底层请求方法包装</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>method: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>请求方法</p>
+									</div>
 								</li>
 								<li>
 									<h5>headers: <span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>头信息</p>
+									</div>
 								</li>
 								<li>
 									<h5>resource: <a href="../modules/_type_resource_.html#resource" class="tsd-signature-type">Resource</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>资源信息，也会序列化到 Url 上面</p>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> body: <span class="tsd-signature-type">any</span></h5>
@@ -212,7 +226,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/bucket.ts#L87">exts/bucket.ts:87</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/bucket.ts#L96">exts/bucket.ts:96</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -226,7 +240,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/bucket.ts#L165">exts/bucket.ts:165</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/bucket.ts#L174">exts/bucket.ts:174</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -253,13 +267,13 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/bucket.ts#L65">exts/bucket.ts:65</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/bucket.ts#L74">exts/bucket.ts:74</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Ensure bucket exist, create bucket when no such bucket
-									Please make sure you is a owner of bucket, or throw error</p>
+									<p>Ensure bucket exist,create bucket when no such bucket
+									Please make sure you is a owner of bucket,or throw error</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -275,7 +289,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/bucket.ts#L163">exts/bucket.ts:163</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/bucket.ts#L172">exts/bucket.ts:172</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -302,7 +316,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/bucket.ts#L101">exts/bucket.ts:101</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/bucket.ts#L110">exts/bucket.ts:110</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -316,7 +330,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/bucket.ts#L166">exts/bucket.ts:166</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/bucket.ts#L175">exts/bucket.ts:175</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -343,7 +357,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/bucket.ts#L120">exts/bucket.ts:120</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/bucket.ts#L129">exts/bucket.ts:129</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -357,7 +371,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/bucket.ts#L168">exts/bucket.ts:168</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/bucket.ts#L177">exts/bucket.ts:177</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -384,7 +398,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_client_.nosbaseclient.html">NosBaseClient</a>.<a href="_client_.nosbaseclient.html#handlerequesterror">handleRequestError</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/client.ts#L73">client.ts:73</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/client.ts#L81">client.ts:81</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -408,7 +422,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/bucket.ts#L77">exts/bucket.ts:77</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/bucket.ts#L86">exts/bucket.ts:86</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -422,7 +436,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/bucket.ts#L164">exts/bucket.ts:164</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/bucket.ts#L173">exts/bucket.ts:173</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -442,27 +456,27 @@
 					<a name="listbucket" class="tsd-anchor"></a>
 					<h3>list<wbr>Bucket</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">list<wbr>Bucket<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_type_bucket_.bucket.html" class="tsd-signature-type">Bucket</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">list<wbr>Bucket<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_type_bucket_.listbucketresult.html" class="tsd-signature-type">ListBucketResult</a><span class="tsd-signature-symbol">&gt;</span></li>
 						<li class="tsd-signature tsd-kind-icon">list<wbr>Bucket<span class="tsd-signature-symbol">(</span>cb<span class="tsd-signature-symbol">: </span><a href="../modules/_type_callback_.html#callback" class="tsd-signature-type">Callback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_type_bucket_.bucket.html" class="tsd-signature-type">Bucket</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/bucket.ts#L21">exts/bucket.ts:21</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/bucket.ts#L23">exts/bucket.ts:23</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>get all buckets</p>
+									<p>获取全部 Bucket</p>
 								</div>
 							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_type_bucket_.bucket.html" class="tsd-signature-type">Bucket</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_type_bucket_.listbucketresult.html" class="tsd-signature-type">ListBucketResult</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/bucket.ts#L161">exts/bucket.ts:161</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/bucket.ts#L170">exts/bucket.ts:170</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -486,7 +500,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/bucket.ts#L45">exts/bucket.ts:45</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/bucket.ts#L54">exts/bucket.ts:54</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -509,7 +523,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/bucket.ts#L162">exts/bucket.ts:162</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/bucket.ts#L171">exts/bucket.ts:171</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -536,7 +550,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_client_.nosbaseclient.html">NosBaseClient</a>.<a href="_client_.nosbaseclient.html#request">request</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/client.ts#L84">client.ts:84</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/client.ts#L92">client.ts:92</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -569,7 +583,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_client_.nosbaseclient.html">NosBaseClient</a>.<a href="_client_.nosbaseclient.html#requestbody">requestBody</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/client.ts#L89">client.ts:89</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/client.ts#L97">client.ts:97</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -602,7 +616,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/bucket.ts#L112">exts/bucket.ts:112</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/bucket.ts#L121">exts/bucket.ts:121</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -616,7 +630,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/bucket.ts#L167">exts/bucket.ts:167</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/bucket.ts#L176">exts/bucket.ts:176</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -643,7 +657,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_client_.nosbaseclient.html">NosBaseClient</a>.<a href="_client_.nosbaseclient.html#validatebinaryparams">validateBinaryParams</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/client.ts#L123">client.ts:123</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/client.ts#L131">client.ts:131</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -681,7 +695,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_client_.nosbaseclient.html">NosBaseClient</a>.<a href="_client_.nosbaseclient.html#validateparams">validateParams</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/client.ts#L94">client.ts:94</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/client.ts#L102">client.ts:102</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -762,6 +776,9 @@
 						<a href="../modules/_type_object_.html">"type/object"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
+						<a href="../modules/_type_request_.html">"type/request"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/_type_resource_.html">"type/resource"</a>
 					</li>
 				</ul>
@@ -779,7 +796,7 @@
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 								<a href="_exts_bucket_.nosclientbucketext.html#options" class="tsd-kind-icon">options</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private">
 								<a href="_exts_bucket_.nosclientbucketext.html#_request" class="tsd-kind-icon">_request</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
