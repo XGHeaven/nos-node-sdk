@@ -1,4 +1,3 @@
-import { MultipartUpload } from '../../dest'
 import { OperateObjectParams, OperateOptionalBucketParams } from './object'
 import { ListOperationResponse } from './request'
 

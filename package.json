@@ -52,8 +52,8 @@
     "play": "ts-node -r dotenv/config src/play.ts",
     "format": "prettier \"**/*.ts\" --write",
     "build": "yarn run build:ts && yarn run build:doc",
-    "build:ts": "tsc",
-    "build:doc": "typedoc --out docs src/ && echo \"nos-node-sdk.xgheaven.com\" > docs/CNAME"
+    "build:ts": "rm -rf dest && tsc",
+    "build:doc": "typedoc --out docs src/ && echo \"nos-node-sdk.xgheaven.com\" > docs/CNAME && touch docs/.nojekyll"
   },
   "files": [
     "package.json",
