@@ -62,18 +62,31 @@
 					<a href="_type_object_.listobjectresult.html">ListObjectResult</a>
 				</li>
 			</ul>
-			<h1>Interface ListObjectResult</h1>
+			<h1>Interface ListObjectResult&lt;NextMarkerType&gt;</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-type-parameters">
+				<h3>Type parameters</h3>
+				<ul class="tsd-type-parameters">
+					<li>
+						<h4>NextMarkerType</h4>
+					</li>
+				</ul>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">ListObjectResult</span>
+						<a href="_type_request_.listoperationresponse.html" class="tsd-signature-type">ListOperationResponse</a><span class="tsd-signature-symbol">&lt;</span><a href="_type_object_.objectcontent.html" class="tsd-signature-type">ObjectContent</a><span class="tsd-signature-symbol">&gt;</span>
+						<ul class="tsd-hierarchy">
+							<li>
+								<span class="target">ListObjectResult</span>
+							</li>
+						</ul>
 					</li>
 				</ul>
 			</section>
@@ -84,11 +97,13 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_type_object_.listobjectresult.html#contents" class="tsd-kind-icon">contents</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_type_object_.listobjectresult.html#istruncated" class="tsd-kind-icon">is<wbr>Truncated</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_type_object_.listobjectresult.html#marker" class="tsd-kind-icon">marker</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_type_object_.listobjectresult.html#maxkeys" class="tsd-kind-icon">max<wbr>Keys</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_type_object_.listobjectresult.html#name" class="tsd-kind-icon">name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_type_object_.listobjectresult.html#bucket" class="tsd-kind-icon">bucket</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_type_object_.listobjectresult.html#commonprefixes" class="tsd-kind-icon">common<wbr>Prefixes</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_type_object_.listobjectresult.html#delimiter" class="tsd-kind-icon">delimiter</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_type_object_.listobjectresult.html#istruncated" class="tsd-kind-icon">is<wbr>Truncated</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_type_object_.listobjectresult.html#items" class="tsd-kind-icon">items</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_type_object_.listobjectresult.html#limit" class="tsd-kind-icon">limit</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_type_object_.listobjectresult.html#nextmarker" class="tsd-kind-icon">next<wbr>Marker</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_type_object_.listobjectresult.html#prefix" class="tsd-kind-icon">prefix</a></li>
 							</ul>
 						</section>
@@ -98,52 +113,81 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="contents" class="tsd-anchor"></a>
-					<h3>contents</h3>
-					<div class="tsd-signature tsd-kind-icon">contents<span class="tsd-signature-symbol">:</span> <a href="_type_object_.objectcontent.html" class="tsd-signature-type">ObjectContent</a><span class="tsd-signature-symbol">[]</span></div>
+					<a name="bucket" class="tsd-anchor"></a>
+					<h3>bucket</h3>
+					<div class="tsd-signature tsd-kind-icon">bucket<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/type/object.ts#L95">type/object.ts:95</a></li>
+							<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/type/object.ts#L103">type/object.ts:103</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="commonprefixes" class="tsd-anchor"></a>
+					<h3>common<wbr>Prefixes</h3>
+					<div class="tsd-signature tsd-kind-icon">common<wbr>Prefixes<span class="tsd-signature-symbol">:</span> <a href="_type_object_.commonprefixcontent.html" class="tsd-signature-type">CommonPrefixContent</a><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/type/object.ts#L104">type/object.ts:104</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="delimiter" class="tsd-anchor"></a>
+					<h3>delimiter</h3>
+					<div class="tsd-signature tsd-kind-icon">delimiter<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/type/object.ts#L101">type/object.ts:101</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="istruncated" class="tsd-anchor"></a>
 					<h3>is<wbr>Truncated</h3>
 					<div class="tsd-signature tsd-kind-icon">is<wbr>Truncated<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="_type_request_.listoperationresponse.html">ListOperationResponse</a>.<a href="_type_request_.listoperationresponse.html#istruncated">isTruncated</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/type/object.ts#L94">type/object.ts:94</a></li>
+							<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/type/request.ts#L13">type/request.ts:13</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>是否被截断，只有当还有数据的时候为真</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="items" class="tsd-anchor"></a>
+					<h3>items</h3>
+					<div class="tsd-signature tsd-kind-icon">items<span class="tsd-signature-symbol">:</span> <a href="_type_object_.objectcontent.html" class="tsd-signature-type">ObjectContent</a><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_type_request_.listoperationresponse.html">ListOperationResponse</a>.<a href="_type_request_.listoperationresponse.html#items">items</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/type/request.ts#L7">type/request.ts:7</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="marker" class="tsd-anchor"></a>
-					<h3>marker</h3>
-					<div class="tsd-signature tsd-kind-icon">marker<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="limit" class="tsd-anchor"></a>
+					<h3>limit</h3>
+					<div class="tsd-signature tsd-kind-icon">limit<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="_type_request_.listoperationresponse.html">ListOperationResponse</a>.<a href="_type_request_.listoperationresponse.html#limit">limit</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/type/object.ts#L92">type/object.ts:92</a></li>
+							<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/type/request.ts#L9">type/request.ts:9</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="maxkeys" class="tsd-anchor"></a>
-					<h3>max<wbr>Keys</h3>
-					<div class="tsd-signature tsd-kind-icon">max<wbr>Keys<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="nextmarker" class="tsd-anchor"></a>
+					<h3>next<wbr>Marker</h3>
+					<div class="tsd-signature tsd-kind-icon">next<wbr>Marker<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">NextMarkerType</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="_type_request_.listoperationresponse.html">ListOperationResponse</a>.<a href="_type_request_.listoperationresponse.html#nextmarker">nextMarker</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/type/object.ts#L93">type/object.ts:93</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="name" class="tsd-anchor"></a>
-					<h3>name</h3>
-					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/type/object.ts#L90">type/object.ts:90</a></li>
+							<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/type/request.ts#L15">type/request.ts:15</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -153,7 +197,7 @@
 					<div class="tsd-signature tsd-kind-icon">prefix<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/type/object.ts#L91">type/object.ts:91</a></li>
+							<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/type/object.ts#L102">type/object.ts:102</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -214,12 +258,18 @@
 						<a href="../modules/_type_object_.html">"type/object"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
+						<a href="../modules/_type_request_.html">"type/request"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/_type_resource_.html">"type/resource"</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_type_object_.commonprefixcontent.html" class="tsd-kind-icon">Common<wbr>Prefix<wbr>Content</a>
+					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
 						<a href="_type_object_.copyobjectparams.html" class="tsd-kind-icon">Copy<wbr>Object<wbr>Params</a>
 					</li>
@@ -258,23 +308,29 @@
 					</li>
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
+					<li class="current tsd-kind-interface tsd-parent-kind-external-module tsd-has-type-parameter">
 						<a href="_type_object_.listobjectresult.html" class="tsd-kind-icon">List<wbr>Object<wbr>Result</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_type_object_.listobjectresult.html#contents" class="tsd-kind-icon">contents</a>
+								<a href="_type_object_.listobjectresult.html#bucket" class="tsd-kind-icon">bucket</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_type_object_.listobjectresult.html#commonprefixes" class="tsd-kind-icon">common<wbr>Prefixes</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_type_object_.listobjectresult.html#delimiter" class="tsd-kind-icon">delimiter</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 								<a href="_type_object_.listobjectresult.html#istruncated" class="tsd-kind-icon">is<wbr>Truncated</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_type_object_.listobjectresult.html#marker" class="tsd-kind-icon">marker</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_type_object_.listobjectresult.html#items" class="tsd-kind-icon">items</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_type_object_.listobjectresult.html#maxkeys" class="tsd-kind-icon">max<wbr>Keys</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_type_object_.listobjectresult.html#limit" class="tsd-kind-icon">limit</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_type_object_.listobjectresult.html#name" class="tsd-kind-icon">name</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_type_object_.listobjectresult.html#nextmarker" class="tsd-kind-icon">next<wbr>Marker</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="_type_object_.listobjectresult.html#prefix" class="tsd-kind-icon">prefix</a>

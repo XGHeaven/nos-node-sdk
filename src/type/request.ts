@@ -7,7 +7,9 @@ export interface ListOperationResponse<ItemType = any, NextMarkerType = string> 
   items: ItemType[]
 
   limit: number
-  // 是否被截断，只有当还有数据的时候为真
+  /**
+   * 是否被截断，只有当还有数据的时候为真
+   */
   isTruncated: boolean
 
   nextMarker: NextMarkerType

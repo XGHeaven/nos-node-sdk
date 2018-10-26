@@ -106,7 +106,7 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_exts_object_.nosclientobjectext.html#_request" class="tsd-kind-icon">_request</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="_exts_object_.nosclientobjectext.html#_request" class="tsd-kind-icon">_request</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_exts_object_.nosclientobjectext.html#copyobject" class="tsd-kind-icon">copy<wbr>Object</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_exts_object_.nosclientobjectext.html#deletemultiobject" class="tsd-kind-icon">delete<wbr>Multi<wbr>Object</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_exts_object_.nosclientobjectext.html#deleteobject" class="tsd-kind-icon">delete<wbr>Object</a></li>
@@ -140,7 +140,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_client_.nosbaseclient.html">NosBaseClient</a>.<a href="_client_.nosbaseclient.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/client.ts#L30">client.ts:30</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/client.ts#L30">client.ts:30</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -163,17 +163,17 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_client_.nosbaseclient.html">NosBaseClient</a>.<a href="_client_.nosbaseclient.html#options">options</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/client.ts#L27">client.ts:27</a></li>
+							<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/client.ts#L27">client.ts:27</a></li>
 						</ul>
 					</aside>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private">
 					<a name="_request" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagProtected">Protected</span> _request</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _request</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private">
 						<li class="tsd-signature tsd-kind-icon">_request<span class="tsd-signature-symbol">(</span>method<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, headers<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, resource<span class="tsd-signature-symbol">: </span><a href="../modules/_type_resource_.html#resource" class="tsd-signature-type">Resource</a>, body<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Response</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
@@ -181,19 +181,33 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_client_.nosbaseclient.html">NosBaseClient</a>.<a href="_client_.nosbaseclient.html#_request">_request</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/client.ts#L43">client.ts:43</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/client.ts#L51">client.ts:51</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>底层请求方法包装</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>method: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>请求方法</p>
+									</div>
 								</li>
 								<li>
 									<h5>headers: <span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>头信息</p>
+									</div>
 								</li>
 								<li>
 									<h5>resource: <a href="../modules/_type_resource_.html#resource" class="tsd-signature-type">Resource</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>资源信息，也会序列化到 Url 上面</p>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> body: <span class="tsd-signature-type">any</span></h5>
@@ -214,7 +228,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/object.ts#L152">exts/object.ts:152</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/object.ts#L159">exts/object.ts:159</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -228,7 +242,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/object.ts#L235">exts/object.ts:235</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/object.ts#L249">exts/object.ts:249</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -255,7 +269,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/object.ts#L208">exts/object.ts:208</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/object.ts#L215">exts/object.ts:215</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -275,7 +289,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/object.ts#L239">exts/object.ts:239</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/object.ts#L253">exts/object.ts:253</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -302,7 +316,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/object.ts#L177">exts/object.ts:177</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/object.ts#L184">exts/object.ts:184</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -316,7 +330,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/object.ts#L237">exts/object.ts:237</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/object.ts#L251">exts/object.ts:251</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -347,7 +361,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/object.ts#L87">exts/object.ts:87</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/object.ts#L94">exts/object.ts:94</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -361,7 +375,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/object.ts#L88">exts/object.ts:88</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/object.ts#L95">exts/object.ts:95</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -375,7 +389,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/object.ts#L89">exts/object.ts:89</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/object.ts#L96">exts/object.ts:96</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -389,7 +403,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/object.ts#L230">exts/object.ts:230</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/object.ts#L244">exts/object.ts:244</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -406,7 +420,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/object.ts#L231">exts/object.ts:231</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/object.ts#L245">exts/object.ts:245</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -423,7 +437,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/object.ts#L232">exts/object.ts:232</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/object.ts#L246">exts/object.ts:246</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -450,7 +464,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/object.ts#L159">exts/object.ts:159</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/object.ts#L166">exts/object.ts:166</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -464,7 +478,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/object.ts#L236">exts/object.ts:236</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/object.ts#L250">exts/object.ts:250</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -491,7 +505,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_client_.nosbaseclient.html">NosBaseClient</a>.<a href="_client_.nosbaseclient.html#handlerequesterror">handleRequestError</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/client.ts#L73">client.ts:73</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/client.ts#L81">client.ts:81</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -515,7 +529,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/object.ts#L118">exts/object.ts:118</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/object.ts#L125">exts/object.ts:125</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -529,7 +543,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/object.ts#L233">exts/object.ts:233</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/object.ts#L247">exts/object.ts:247</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -556,7 +570,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/object.ts#L139">exts/object.ts:139</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/object.ts#L146">exts/object.ts:146</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -570,7 +584,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/object.ts#L234">exts/object.ts:234</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/object.ts#L248">exts/object.ts:248</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -590,14 +604,14 @@
 					<a name="listobject" class="tsd-anchor"></a>
 					<h3>list<wbr>Object</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">list<wbr>Object<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_type_object_.listobjectparams.html" class="tsd-signature-type">ListObjectParams</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_type_object_.objectcontent.html" class="tsd-signature-type">ObjectContent</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
-						<li class="tsd-signature tsd-kind-icon">list<wbr>Object<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><a href="../interfaces/_type_object_.listobjectparams.html" class="tsd-signature-type">ListObjectParams</a>, cb<span class="tsd-signature-symbol">: </span><a href="../modules/_type_callback_.html#callback" class="tsd-signature-type">Callback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_type_object_.objectcontent.html" class="tsd-signature-type">ObjectContent</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">list<wbr>Object<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_type_object_.listobjectparams.html" class="tsd-signature-type">ListObjectParams</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_type_object_.listobjectresult.html" class="tsd-signature-type">ListObjectResult</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">list<wbr>Object<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><a href="../interfaces/_type_object_.listobjectparams.html" class="tsd-signature-type">ListObjectParams</a>, cb<span class="tsd-signature-symbol">: </span><a href="../modules/_type_callback_.html#callback" class="tsd-signature-type">Callback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_type_object_.listobjectresult.html" class="tsd-signature-type">ListObjectResult</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/object.ts#L43">exts/object.ts:43</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/object.ts#L43">exts/object.ts:43</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -606,12 +620,12 @@
 									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> params: <a href="../interfaces/_type_object_.listobjectparams.html" class="tsd-signature-type">ListObjectParams</a><span class="tsd-signature-symbol"> =&nbsp;{}</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_type_object_.objectcontent.html" class="tsd-signature-type">ObjectContent</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_type_object_.listobjectresult.html" class="tsd-signature-type">ListObjectResult</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/object.ts#L228">exts/object.ts:228</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/object.ts#L242">exts/object.ts:242</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -620,7 +634,7 @@
 									<h5>params: <a href="../interfaces/_type_object_.listobjectparams.html" class="tsd-signature-type">ListObjectParams</a></h5>
 								</li>
 								<li>
-									<h5>cb: <a href="../modules/_type_callback_.html#callback" class="tsd-signature-type">Callback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_type_object_.objectcontent.html" class="tsd-signature-type">ObjectContent</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>cb: <a href="../modules/_type_callback_.html#callback" class="tsd-signature-type">Callback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_type_object_.listobjectresult.html" class="tsd-signature-type">ListObjectResult</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -638,7 +652,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/object.ts#L191">exts/object.ts:191</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/object.ts#L198">exts/object.ts:198</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -652,7 +666,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/object.ts#L238">exts/object.ts:238</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/object.ts#L252">exts/object.ts:252</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -679,7 +693,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/object.ts#L66">exts/object.ts:66</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/object.ts#L73">exts/object.ts:73</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -693,7 +707,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/exts/object.ts#L229">exts/object.ts:229</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/exts/object.ts#L243">exts/object.ts:243</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -720,7 +734,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_client_.nosbaseclient.html">NosBaseClient</a>.<a href="_client_.nosbaseclient.html#request">request</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/client.ts#L84">client.ts:84</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/client.ts#L92">client.ts:92</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -753,7 +767,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_client_.nosbaseclient.html">NosBaseClient</a>.<a href="_client_.nosbaseclient.html#requestbody">requestBody</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/client.ts#L89">client.ts:89</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/client.ts#L97">client.ts:97</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -786,7 +800,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_client_.nosbaseclient.html">NosBaseClient</a>.<a href="_client_.nosbaseclient.html#validatebinaryparams">validateBinaryParams</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/client.ts#L123">client.ts:123</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/client.ts#L131">client.ts:131</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -824,7 +838,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_client_.nosbaseclient.html">NosBaseClient</a>.<a href="_client_.nosbaseclient.html#validateparams">validateParams</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/58df761/src/client.ts#L94">client.ts:94</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/e933efd/src/client.ts#L102">client.ts:102</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -905,6 +919,9 @@
 						<a href="../modules/_type_object_.html">"type/object"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
+						<a href="../modules/_type_request_.html">"type/request"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/_type_resource_.html">"type/resource"</a>
 					</li>
 				</ul>
@@ -922,7 +939,7 @@
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 								<a href="_exts_object_.nosclientobjectext.html#options" class="tsd-kind-icon">options</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private">
 								<a href="_exts_object_.nosclientobjectext.html#_request" class="tsd-kind-icon">_request</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
