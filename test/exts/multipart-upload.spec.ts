@@ -5,6 +5,11 @@ import { newReadableStream, newTempFile } from '../helpers/runtime'
 let client: NosClient
 let bucket: string
 
+async function cleanMultipart(client: NosClient) {
+  let hasMore = false
+  do {} while (hasMore)
+}
+
 beforeAll(async () => {
   client = await newClient()
   bucket = client.options.defaultBucket as string
@@ -33,17 +38,63 @@ it('upload multipart', async () => {
   await client.abortMultipartUpload({ objectKey: key, uploadId })
 })
 
-it('list parts', async () => {
-  const key = randomObjectKey()
-  const uploadId = await client.initMultipartUpload({ objectKey: key })
+describe('listParts', () => {
+  it('should return parts', async () => {
+    const key = randomObjectKey()
+    const uploadId = await client.initMultipartUpload({ objectKey: key })
 
-  await client.uploadMultipart({ objectKey: key, uploadId, partNumber: 1, body: Buffer.alloc(16 * 1024) })
+    await client.uploadMultipart({ objectKey: key, uploadId, partNumber: 1, body: Buffer.alloc(16 * 1024) })
 
-  const list = await client.listParts({ objectKey: key, uploadId: uploadId })
+    const ret = await client.listParts({ objectKey: key, uploadId: uploadId })
 
-  expect(list).toHaveLength(1)
+    expect(ret.items).toHaveLength(1)
+    expect(ret.bucket).toBe(bucket)
+    expect(ret.isTruncated).toBeFalse()
+    expect(ret.nextMarker).toBe(1)
+    expect(ret.limit).toBe(1000)
 
-  await client.abortMultipartUpload({ objectKey: key, uploadId })
+    await client.abortMultipartUpload({ objectKey: key, uploadId })
+  })
+
+  it('should return parts with limit', async () => {
+    const key = randomObjectKey()
+    const uploadId = await client.initMultipartUpload({ objectKey: key })
+
+    for (let i = 0; i < 5; i++) {
+      await client.uploadMultipart({ objectKey: key, uploadId, partNumber: i + 1, body: Buffer.alloc(16 * 1024) })
+    }
+
+    const ret = await client.listParts({ objectKey: key, uploadId, limit: 3 })
+
+    expect(ret.items).toHaveLength(3)
+    expect(ret.nextMarker).not.toBeEmpty()
+    expect(ret.isTruncated).toBeTrue()
+    expect(ret.limit).toBe(3)
+
+    await client.abortMultipartUpload({ objectKey: key, uploadId })
+  })
+
+  it('should return parts with marker', async () => {
+    const objectKey = randomObjectKey()
+    const uploadId = await client.initMultipartUpload({ objectKey })
+
+    for (let i = 0; i < 5; i++) {
+      await client.uploadMultipart({
+        objectKey,
+        uploadId,
+        partNumber: i + 1,
+        body: Buffer.alloc(16 * 1024),
+      })
+    }
+
+    const ret1 = await client.listParts({ objectKey, uploadId })
+
+    const ret2 = await client.listParts({ objectKey, uploadId, limit: 2 })
+
+    const ret3 = await client.listParts({ objectKey, uploadId, limit: 2, marker: ret2.nextMarker })
+
+    expect(ret3.items).toEqual(ret1.items.slice(2, 4))
+  })
 })
 
 it('complete upload multipart', async () => {
@@ -65,9 +116,37 @@ it('complete upload multipart', async () => {
   expect(file.key).toEqual(key)
 })
 
-it('list multipart', async () => {
-  const list = await client.listMultipartUpload()
-  expect(list).toHaveProperty('length')
+describe('listMultipart', () => {
+  it('should return listMultipart', async () => {
+    const ret = await client.listMultipartUpload()
+    expect(ret.items).toBeArray()
+    expect(ret.isTruncated).toBeFalse()
+    expect(ret.limit)
+  })
+
+  it('should return listMultipart with limit', async () => {
+    for (let i = 0; i < 5; i++) {
+      await client.initMultipartUpload({ objectKey: randomObjectKey() })
+    }
+
+    const ret = await client.listMultipartUpload({ limit: 3 })
+
+    expect(ret.items).toHaveLength(3)
+    expect(ret.isTruncated).toBeTrue()
+    expect(ret.limit).toBe(3)
+  })
+
+  it('should return listMultipart with marker', async () => {
+    for (let i = 0; i < 5; i++) {
+      await client.initMultipartUpload({ objectKey: randomObjectKey() })
+    }
+
+    const ret1 = await client.listMultipartUpload({ limit: 5 })
+    const ret2 = await client.listMultipartUpload({ limit: 2 })
+    const ret3 = await client.listMultipartUpload({ limit: 2, marker: ret2.nextMarker })
+
+    expect(ret3.items).toEqual(ret1.items.slice(2, 4))
+  })
 })
 
 describe('putBigObject', async () => {
@@ -80,11 +159,11 @@ describe('putBigObject', async () => {
       body,
       objectKey: key,
       maxPart: 1024 * 128, // 128k
-      parallel: 1
+      parallel: 1,
     })
 
     expect(res.key).toEqual(key)
 
-    await expect(client.isObjectExist({objectKey: key})).resolves.toBeTrue()
+    await expect(client.isObjectExist({ objectKey: key })).resolves.toBeTrue()
   })
 })

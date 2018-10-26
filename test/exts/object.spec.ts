@@ -2,7 +2,15 @@ import * as fs from 'fs'
 import fetch from 'node-fetch'
 import { NosClient } from '../../src'
 import { stream2Buffer } from '../../src/lib/util'
-import { cleanClient, deleteBucket, newBucket, newClient, randomObjectKey } from '../helpers/client'
+import {
+  cleanBucket,
+  cleanClient,
+  deleteBucket,
+  newBucket,
+  newClient,
+  putRandomObject,
+  randomObjectKey,
+} from '../helpers/client'
 import { newTempFile } from '../helpers/runtime'
 
 let client: NosClient
@@ -18,47 +26,85 @@ afterAll(async () => {
 })
 
 describe('listObject', async () => {
-  it('should return empty array when bucket is empty', async () => {
-    const bucket = await newBucket(client)
+  beforeEach(async () => {
+    await cleanBucket(client, client.options.defaultBucket as string)
+  })
 
-    try {
-      await expect(client.listObject({ bucket })).resolves.toHaveLength(0)
-      await deleteBucket(client, bucket)
-    } catch (e) {
-      // make sure delete bucket
-      await deleteBucket(client, bucket)
-      throw e
-    }
+  it('list objects when bucket is empty', async () => {
+    const ret = await client.listObject()
+    expect(ret.items).toHaveLength(0)
+    expect(ret.limit).toBe(100)
+    expect(ret.isTruncated).toBeFalse()
+    expect(ret.commonPrefixes).toBeEmpty()
+    expect(ret.prefix).toBe('')
+    expect(ret.bucket).toBe(client.options.defaultBucket)
   })
 
   it('list objects', async () => {
-    const objects = await client.listObject()
-    expect(objects).toBeArray()
+    await putRandomObject(client, 5)
+    const result = await client.listObject()
+    expect(result.items).toHaveLength(5)
+    expect(result.isTruncated).toBeFalse()
   })
 
   it('list objects with prefix', async () => {
     const objectKey = randomObjectKey()
     await client.putObject({ objectKey: `test-prefix-${objectKey}`, body: 'random' })
-    const objs = await client.listObject({ prefix: 'test-prefix' })
-    expect(objs).toBeArray()
-    expect(objs.length).toBeGreaterThan(0)
+    const result = await client.listObject({ prefix: 'test-prefix' })
+    expect(result.items.length).toBeGreaterThan(0)
   })
 
   it('list objects with dir prefix', async () => {
     const key = randomObjectKey()
     await client.putObject({ objectKey: `list-prefix/${key}`, body: 'dir' })
-    const objs = await client.listObject({ prefix: 'list-prefix/' })
-    expect(objs).toBeArray()
-    expect(objs.length).toBeGreaterThan(0)
+    const result = await client.listObject({ prefix: 'list-prefix/' })
+    expect(result.items).toBeArray()
+    expect(result.items.length).toBeGreaterThan(0)
   })
 
   it('list objects with limit', async () => {
-    for (let i = 0; i < 10; i++) {
-      await client.putObject({ objectKey: randomObjectKey(), body: 'list object' + i })
-    }
+    await putRandomObject(client, 6)
 
-    const objs = await client.listObject({ limit: 5 })
-    expect(objs).toHaveLength(5)
+    const result = await client.listObject({ limit: 5 })
+    expect(result.items).toHaveLength(5)
+    expect(result.isTruncated).toBeTrue()
+  })
+
+  it('list objects with delimiter', async () => {
+    const prefix = 'list-object-delimiter/'
+    await putRandomObject(client, 2, () => randomObjectKey('.txt', prefix))
+    await putRandomObject(client, 5)
+
+    const result = await client.listObject({
+      limit: 5,
+      delimiter: '/',
+    })
+
+    expect(result.items).toHaveLength(4)
+    expect(result.commonPrefixes).toHaveLength(1)
+    expect(result.commonPrefixes[0]).toEqual({ prefix })
+    expect(result.isTruncated).toBeTrue()
+    expect(result.delimiter).toBe('/')
+  })
+
+  it('list objects with marker', async () => {
+    await putRandomObject(client, 5)
+
+    const ret1 = await client.listObject({
+      limit: 3,
+    })
+
+    const ret2 = await client.listObject({
+      limit: 2,
+    })
+
+    const ret3 = await client.listObject({
+      limit: 2,
+      marker: ret2.nextMarker,
+    })
+
+    // 最后一个等于第一个
+    expect(ret1.items[2]).toEqual(ret3.items[0])
   })
 })
 

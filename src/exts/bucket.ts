@@ -6,19 +6,21 @@ import {
   Bucket,
   BucketAcl,
   BucketLocation,
+  ListBucketResult,
   OperateBucketParams,
   PutBucketParams,
   SetBucketAclParams,
 } from '../type/bucket'
 import { Callback } from '../type/callback'
 import { ResourceBucket } from '../type/resource'
+import { pick } from 'ramda'
 
 export class NosClientBucketExt extends NosBaseClient {
   /**
-   * get all buckets
+   * 获取全部 Bucket
    */
   @Callbackable
-  async listBucket(): Promise<Bucket[]> {
+  async listBucket(): Promise<ListBucketResult> {
     const data = await this.requestBody(
       'get',
       {
@@ -30,10 +32,17 @@ export class NosClientBucketExt extends NosBaseClient {
     let buckets = normalizeArray(data.listAllMyBucketsResult.buckets.bucket)
 
     for (const bkt of buckets) {
-      // creationDate is string get from request
+      // creationDate is string get from response
       bkt.creationDate = dateFns.parse(bkt.creationDate)
     }
-    return buckets
+
+    return {
+      ...(pick(['owner'], data.listAllMyBucketsResult) as any),
+      items: buckets,
+      isTruncated: false,
+      limit: buckets.length,
+      nextMarker: '',
+    }
   }
 
   /**
@@ -57,8 +66,8 @@ export class NosClientBucketExt extends NosBaseClient {
   }
 
   /**
-   * Ensure bucket exist, create bucket when no such bucket
-   * Please make sure you is a owner of bucket, or throw error
+   * Ensure bucket exist,create bucket when no such bucket
+   * Please make sure you is a owner of bucket,or throw error
    * @param params
    */
   @Callbackable

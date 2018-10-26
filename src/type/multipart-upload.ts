@@ -1,4 +1,6 @@
+import { MultipartUpload } from '../../dest'
 import { OperateObjectParams, OperateOptionalBucketParams } from './object'
+import { ListOperationResponse } from './request'
 
 export interface InitMultipartUploadParams extends OperateObjectParams {}
 
@@ -15,6 +17,16 @@ export interface UploadMultipartParams extends MultipartUploadParams {
 
 export interface ListPartsOptions extends MultipartUploadParams {
   limit?: number
+  marker?: number
+}
+
+export interface ListPartsResult extends ListOperationResponse<Part, number> {
+  bucket: string
+  owner: {
+    id: string
+    displayName: string
+  }
+  storageClass: string
 }
 
 export interface CompleteMultipartParams extends MultipartUploadParams {
@@ -23,6 +35,12 @@ export interface CompleteMultipartParams extends MultipartUploadParams {
 
 export interface ListMultipartParams extends OperateOptionalBucketParams {
   limit?: number
+  marker?: string
+  prefix?: string
+}
+
+export interface ListMultipartResult extends ListOperationResponse<MultipartUpload> {
+  bucket: string
 }
 
 export interface Part {

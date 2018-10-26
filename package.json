@@ -76,7 +76,6 @@
       "json",
       "node"
     ],
-    "setupTestFrameworkScriptFile": "./test/helpers/setup.ts",
     "collectCoverage": true,
     "collectCoverageFrom": [
       "src/**/*.ts",

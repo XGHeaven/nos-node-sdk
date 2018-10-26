@@ -21,8 +21,12 @@ afterAll(async () => {
 
 describe('listBucket', () => {
   it('should return buckets', async () => {
-    const buckets = await client.listBucket()
-    expect(buckets).toBeArray()
+    const ret = await client.listBucket()
+    expect(ret.items).toBeArray()
+    expect(ret.nextMarker).toBe('')
+    expect(ret.isTruncated).toBeFalse()
+    expect(ret.limit).toBe(ret.items.length)
+    expect(ret.nextMarker).toBe('')
   })
 })
 

@@ -31,8 +31,8 @@ import {
   HeadObjectParams,
   HeadObjectResult,
   ListObjectParams,
+  ListObjectResult,
   MoveObjectParams,
-  ObjectContent,
   OperateObjectParams,
   PutObjectParams,
   PutObjectResult,
@@ -40,7 +40,7 @@ import {
 
 export class NosClientObjectExt extends NosBaseClient {
   @Callbackable
-  async listObject(params: ListObjectParams = {}): Promise<ObjectContent[]> {
+  async listObject(params: ListObjectParams = {}): Promise<ListObjectResult> {
     const { bucket, headers, resource } = this.validateParams(params)
 
     Object.assign(
@@ -52,14 +52,21 @@ export class NosClientObjectExt extends NosBaseClient {
       })
     )
 
-    const data = await this.requestBody('get', headers, resource)
-    let objects = normalizeArray(data.listBucketResult.contents)
+    const { listBucketResult: result } = await this.requestBody('get', headers, resource)
+    const objects = normalizeArray(result.contents)
 
     for (const obj of objects) {
       obj.lastModified = parse(obj.lastModified)
     }
 
-    return objects
+    return {
+      ...(pick(['isTruncated', 'nextMarker', 'prefix'], result) as any),
+      bucket: result.name,
+      commonPrefixes: normalizeArray(result.commonPrefixes),
+      items: objects,
+      delimiter: params.delimiter || '',
+      limit: result.maxKeys,
+    }
   }
 
   @Callbackable
@@ -208,10 +215,17 @@ export class NosClientObjectExt extends NosBaseClient {
   async deleteMultiObject(params: DeleteMultiObjectParams): Promise<DeleteMultiObjectErrorInfo[]> {
     const { headers, resource } = this.validateParams(params)
 
+    if (!params.objectKeys.length) {
+      // 如果没有要删除的元素，那么直接返回空信息
+      return []
+    }
+
+    const objects = params.objectKeys.map(key => ({ key }))
+
     const reqData = {
       delete: {
         quiet: true,
-        object: params.objectKeys.map(key => ({ key })),
+        object: objects,
       },
     }
 
@@ -225,7 +239,7 @@ export class NosClientObjectExt extends NosBaseClient {
 }
 
 export interface NosClientObjectExt {
-  listObject(params: ListObjectParams, cb: Callback<ObjectContent[]>): void
+  listObject(params: ListObjectParams, cb: Callback<ListObjectResult>): void
   putObject(params: PutObjectParams, cb: Callback<PutObjectResult>): void
   getObject(params: GetObjectStreamParams, cb: Callback<NodeJS.ReadableStream>): void
   getObject(params: GetObjectBufferParams, cb: Callback<Buffer>): void
