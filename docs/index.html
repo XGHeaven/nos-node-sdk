@@ -85,19 +85,25 @@
 					<li>操作简单专注，不会给你返回额外的信息</li>
 					<li>丰富的测试用例</li>
 				</ul>
+				<h2 id="-">设计哲学</h2>
+				<p>在设计 API 的时候，遵循了一些设计原则。</p>
+				<ul>
+					<li><strong>Keep it Simple</strong> 一切都是那么直观，体现在接口上面就是见名明意。比如 getObject 就是获取对象内容，返回值便是 Buffer/string/Stream，而不是类似于 <code>{err: Error, data: xxx}</code> 的结构，你只是想得到内容体，为何要返回这么多数据。Believe me, It&#39;s a Trouble.</li>
+					<li><strong>Arguments Bus</strong> 参数总线或者参数公交。将参数都整合在一个对象中传递给函数，而不是散落在函数的参数中。这样有力于在后面版本的迭代中，保证接口的兼容性。例如 <code>getObject({objectKey: &#39;key&#39;, bucket: &#39;bucket&#39;})</code> 而不是 <code>getObject(&#39;key&#39;, &#39;bucket&#39;, options)</code></li>
+					<li><strong>Throw as Possible</strong> 如果有错误，能抛出就抛出，而不是内部转化，然后包装成返回参数。例如 <code>deleteObject(params).then(() =&gt; console.log(&#39;success&#39;)).catch(() =&gt; console.log(&#39;error&#39;))</code> 而不是 <code>deleteObject(params).then(success =&gt; console.log(success))</code></li>
+				</ul>
 				<h2 id="quickstart">QuickStart</h2>
-				<pre><code class="language-typescript">
-<span class="hljs-keyword">import</span> { NosClient } <span class="hljs-keyword">from</span> <span class="hljs-string">'@xgheaven/nos-node-sdk'</span>
+				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { NosClient } <span class="hljs-keyword">from</span> <span class="hljs-string">'@xgheaven/nos-node-sdk'</span>
 
 <span class="hljs-keyword">const</span> client = <span class="hljs-keyword">new</span> NosClient({
   accessKey: <span class="hljs-string">'your-access-key'</span>,
   accessSecret: <span class="hljs-string">'your-access-secret'</span>,
   endpoint: <span class="hljs-string">'http://nos-eastchina1.126.net'</span>, <span class="hljs-comment">// endpoint，不同地域不同</span>
-  defaultBucket: <span class="hljs-string">'nos-test'</span>, <span class="hljs-comment">// 默认的 Bucket，如果不设置，那么需要在单独的每次请求中进行设置 </span>
+  defaultBucket: <span class="hljs-string">'nos-test'</span>, <span class="hljs-comment">// 默认的 Bucket，如果不设置，那么需要在单独的每次请求中进行设置</span>
 })
 
 client.putObject({
-  key: <span class="hljs-string">'test-file.txt'</span>,
+  objectKey: <span class="hljs-string">'test-file.txt'</span>,
   body: Buffer.from(<span class="hljs-string">'test'</span>), <span class="hljs-comment">// 支持 Buffer/Readable/string</span>
 }).then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
   <span class="hljs-keyword">return</span> client.getObject({
@@ -113,18 +119,38 @@ client.listObject({
 }).then(<span class="hljs-function"><span class="hljs-params">ret</span> =&gt;</span> {
   <span class="hljs-built_in">console</span>.log(ret)
   <span class="hljs-comment">// 所有的 List 操作接口返回的数据都是类似的，比如 listObject, listBucket, listParts, listMultipart</span>
-  <span class="hljs-comment">// 其中包括 items(元素)，limit(请求的数量)，nextMarker(下一个标记)</span>
-  <span class="hljs-comment">// 通过 limit 和 nextMarker 的配合，可以实现翻页的效果</span>
+  <span class="hljs-comment">// ret 包括 items(元素)，limit(请求的数量)，nextMarker(下一个标记)</span>
+  <span class="hljs-comment">// 通过 limit 和 nextMarker 的配合，可以实现分页的效果</span>
 })</code></pre>
-				<p>更多信息，请查看<a href="http://nos-node-sdk.xgheaven.com">API 文档</a>(Typedoc generated).</p>
+				<p>更多信息，请查看 <a href="http://nos-node-sdk.xgheaven.com">API 文档</a>(Typedoc generated).</p>
 				<h2 id="todo">TODO</h2>
 				<ul>
 					<li><input disabled="" type="checkbox"> HTTPS Endpoint 支持</li>
 					<li><input checked="" disabled="" type="checkbox"> <a href="http://nos-node-sdk.xgheaven.com">文档支持</a></li>
 					<li><input disabled="" type="checkbox"> 增加测试用例</li>
-					<li><input disabled="" type="checkbox"> 国际化翻译</li>
+					<li><input checked="" disabled="" type="checkbox"> <del>国际化翻译</del> 觉得也没歪果仁会用</li>
 				</ul>
-				<h2 id="thanks">Thanks</h2>
+				<h2 id="coverage">Coverage</h2>
+				<pre><code>----------------------|<span class="hljs-string">----------</span>|<span class="hljs-string">----------</span>|<span class="hljs-string">----------</span>|<span class="hljs-string">----------</span>|<span class="hljs-string">-------------------</span>|
+File                  |<span class="hljs-string">  % Stmts </span>|<span class="hljs-string"> % Branch </span>|<span class="hljs-string">  % Funcs </span>|<span class="hljs-string">  % Lines </span>|<span class="hljs-string"> Uncovered Line #s </span>|
+----------------------|<span class="hljs-string">----------</span>|<span class="hljs-string">----------</span>|<span class="hljs-string">----------</span>|<span class="hljs-string">----------</span>|<span class="hljs-string">-------------------</span>|
+All files             |<span class="hljs-string">    91.81 </span>|<span class="hljs-string">    78.16 </span>|<span class="hljs-string">    88.24 </span>|<span class="hljs-string">    92.84 </span>|<span class="hljs-string">                   </span>|
+ src                  |<span class="hljs-string">       98 </span>|<span class="hljs-string">    94.12 </span>|<span class="hljs-string">      100 </span>|<span class="hljs-string">       98 </span>|<span class="hljs-string">                   </span>|
+  client.ts           |<span class="hljs-string">       98 </span>|<span class="hljs-string">    94.12 </span>|<span class="hljs-string">      100 </span>|<span class="hljs-string">       98 </span>|<span class="hljs-string">               143 </span>|
+ src/exts             |<span class="hljs-string">    91.63 </span>|<span class="hljs-string">    67.03 </span>|<span class="hljs-string">    93.94 </span>|<span class="hljs-string">    91.57 </span>|<span class="hljs-string">                   </span>|
+  bucket.ts           |<span class="hljs-string">    88.68 </span>|<span class="hljs-string">    64.29 </span>|<span class="hljs-string">     87.5 </span>|<span class="hljs-string">    88.46 </span>|<span class="hljs-string"> 62,79,80,82,83,85 </span>|
+  multipart-upload.ts |<span class="hljs-string">    91.82 </span>|<span class="hljs-string">    59.26 </span>|<span class="hljs-string">    92.86 </span>|<span class="hljs-string">    91.82 </span>|<span class="hljs-string">... 74,276,277,278 </span>|
+  object.ts           |<span class="hljs-string">    93.18 </span>|<span class="hljs-string">       72 </span>|<span class="hljs-string">      100 </span>|<span class="hljs-string">     93.1 </span>|<span class="hljs-string">... 82,233,234,236 </span>|
+ src/lib              |<span class="hljs-string">    89.88 </span>|<span class="hljs-string">    86.67 </span>|<span class="hljs-string">     81.4 </span>|<span class="hljs-string">     92.9 </span>|<span class="hljs-string">                   </span>|
+  authorization.ts    |<span class="hljs-string">      100 </span>|<span class="hljs-string">    83.33 </span>|<span class="hljs-string">      100 </span>|<span class="hljs-string">      100 </span>|<span class="hljs-string">                29 </span>|
+  constant.ts         |<span class="hljs-string">      100 </span>|<span class="hljs-string">      100 </span>|<span class="hljs-string">      100 </span>|<span class="hljs-string">      100 </span>|<span class="hljs-string">                   </span>|
+  error.ts            |<span class="hljs-string">      100 </span>|<span class="hljs-string">       80 </span>|<span class="hljs-string">      100 </span>|<span class="hljs-string">      100 </span>|<span class="hljs-string">                 3 </span>|
+  request.ts          |<span class="hljs-string">    56.25 </span>|<span class="hljs-string">      100 </span>|<span class="hljs-string">       25 </span>|<span class="hljs-string">    56.25 </span>|<span class="hljs-string">  6,7,8,9,21,23,27 </span>|
+  resource.ts         |<span class="hljs-string">    94.12 </span>|<span class="hljs-string">    81.25 </span>|<span class="hljs-string">      100 </span>|<span class="hljs-string">      100 </span>|<span class="hljs-string">          14,44,59 </span>|
+  util.ts             |<span class="hljs-string">     90.7 </span>|<span class="hljs-string">    94.44 </span>|<span class="hljs-string">    82.14 </span>|<span class="hljs-string">    94.67 </span>|<span class="hljs-string">      23,24,25,118 </span>|
+ src/type             |<span class="hljs-string">      100 </span>|<span class="hljs-string">      100 </span>|<span class="hljs-string">      100 </span>|<span class="hljs-string">      100 </span>|<span class="hljs-string">                   </span>|
+  bucket.ts           |<span class="hljs-string">      100 </span>|<span class="hljs-string">      100 </span>|<span class="hljs-string">      100 </span>|<span class="hljs-string">      100 </span>|<span class="hljs-string">                   </span>|
+----------------------|<span class="hljs-string">----------</span>|<span class="hljs-string">----------</span>|<span class="hljs-string">----------</span>|<span class="hljs-string">----------</span>|<span class="hljs-string">-------------------</span>|</code></pre><h2 id="thanks">Thanks</h2>
 				<p>项目还比较年轻，如果有任何考虑不周的地方欢迎大家进行反馈，我也会积极处理。
 				争取有一天能够替代原先的 SDK，减轻大家使用上的烦恼。</p>
 				<p><a href="./CHANGELOG.md">CHANGELOG</a></p>
