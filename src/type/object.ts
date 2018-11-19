@@ -69,6 +69,9 @@ export interface GetObjectBufferParams extends GetObjectBaseOptions {
 }
 
 export interface GetObjectStringParams extends GetObjectBaseOptions {
+  /**
+   * 文件的编码
+   */
   encode: string
 }
 

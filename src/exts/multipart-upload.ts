@@ -23,9 +23,11 @@ import {
 
 export class NosClientMultipartUploadExt extends NosBaseClient {
   /**
-   * @param params
-   * @return uploadId
+   * 初始化分片上传。一切分片上传操作都需要在初始化后获取到 uploadId 之后进行操作
+   * @return uploadId 上传 ID
    */
+  initMultipartUpload(params: InitMultipartUploadParams): Promise<string>
+  initMultipartUpload(params: InitMultipartUploadParams, cb: Callback<string>): void
   @Callbackable
   async initMultipartUpload(params: InitMultipartUploadParams): Promise<string> {
     const { bucket, headers, resource } = this.validateParams(params)
@@ -39,6 +41,12 @@ export class NosClientMultipartUploadExt extends NosBaseClient {
     return result.initiateMultipartUploadResult.uploadId
   }
 
+  /**
+   * 终止分片上传
+   * @return isSuccess 是否成功终止分片上传
+   */
+  abortMultipartUpload(params: AbortMultipartUploadParams): Promise<boolean>
+  abortMultipartUpload(params: AbortMultipartUploadParams, cb: Callback<boolean>): void
   @Callbackable
   async abortMultipartUpload(params: AbortMultipartUploadParams): Promise<boolean> {
     const { bucket, headers, resource } = this.validateParams(params)
@@ -52,6 +60,12 @@ export class NosClientMultipartUploadExt extends NosBaseClient {
     return true
   }
 
+  /**
+   * 上传分片，使用初始化得到的 uploadId
+   * @return part 上传的分片
+   */
+  uploadMultipart(params: UploadMultipartParams): Promise<Part>
+  uploadMultipart(params: UploadMultipartParams, cb: Callback<Part>): void
   @Callbackable
   async uploadMultipart(params: UploadMultipartParams): Promise<Part> {
     const { bucket, headers, resource } = this.validateParams(params)
@@ -72,9 +86,10 @@ export class NosClientMultipartUploadExt extends NosBaseClient {
   }
 
   /**
-   * list parts of object
-   * @param params
+   * 获取一个对象的所有分片，必须保证这个对象并未完成分片的全部上传
    */
+  listParts(params: ListPartsOptions): Promise<ListPartsResult>
+  listParts(params: ListPartsOptions, cb: Callback<ListPartsResult>): void
   @Callbackable
   async listParts(params: ListPartsOptions): Promise<ListPartsResult> {
     const { bucket, headers, resource } = this.validateParams(params)
@@ -108,6 +123,11 @@ export class NosClientMultipartUploadExt extends NosBaseClient {
     }
   }
 
+  /**
+   * 获取所有的未完成的分片对象
+   */
+  listMultipartUpload(params?: ListMultipartParams): Promise<ListMultipartResult>
+  listMultipartUpload(params: ListMultipartParams, cb: Callback<ListMultipartResult>): void
   @Callbackable
   async listMultipartUpload(params: ListMultipartParams = {}): Promise<ListMultipartResult> {
     const { bucket, headers, resource } = this.validateParams(params)
@@ -146,6 +166,11 @@ export class NosClientMultipartUploadExt extends NosBaseClient {
     }
   }
 
+  /**
+   * 完成分片上传。这是分片上传的结束，如果你上传完成之后但是没有执行完成上传，那么服务器并不会对分片进行拼接。
+   */
+  completeMultipartUpload(params: CompleteMultipartParams): Promise<MultipartUploadObject>
+  completeMultipartUpload(params: CompleteMultipartParams, cb: Callback<MultipartUploadObject>): void
   @Callbackable
   async completeMultipartUpload(params: CompleteMultipartParams): Promise<MultipartUploadObject> {
     const { bucket, headers, resource } = this.validateParams(params)
@@ -163,6 +188,12 @@ export class NosClientMultipartUploadExt extends NosBaseClient {
     return result.completeMultipartUploadResult
   }
 
+  /**
+   * 使用分片上传大文件。如果你不想自己手写分片文件的上传，你可以使用这个接口。
+   * 自动创建、上传、完成分片，省时省力，方便快捷。
+   */
+  putBigObject(params: PutBigObjectParams): Promise<MultipartUploadObject>
+  putBigObject(params: PutBigObjectParams, cb: Callback<MultipartUploadObject>): void
   @Callbackable
   async putBigObject(params: PutBigObjectParams): Promise<MultipartUploadObject> {
     const uploadId = await this.initMultipartUpload(params)
@@ -271,14 +302,4 @@ export class NosClientMultipartUploadExt extends NosBaseClient {
       stream.once('error', abortUpload)
     })
   }
-}
-
-export interface NosClientMultipartUploadExt {
-  initMultipartUpload(params: InitMultipartUploadParams, cb: Callback<string>): void
-  abortMultipartUpload(params: AbortMultipartUploadParams, cb: Callback<boolean>): void
-  uploadMultipart(params: UploadMultipartParams, cb: Callback<Part>): void
-  listParts(params: ListPartsOptions, cb: Callback<Part[]>): void
-  listMultipartUpload(params: ListMultipartParams, cb: Callback<MultipartUpload[]>): void
-  completeMultipartUpload(params: CompleteMultipartParams, cb: Callback<MultipartUploadObject>): void
-  putBigObject(params: PutBigObjectParams, cb: Callback<MultipartUploadObject>): void
 }

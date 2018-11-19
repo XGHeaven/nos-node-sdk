@@ -39,6 +39,11 @@ import {
 } from '../type/object'
 
 export class NosClientObjectExt extends NosBaseClient {
+  /**
+   * 获取对象列表
+   */
+  listObject(params?: ListObjectParams): Promise<ListObjectResult>
+  listObject(params: ListObjectParams, cb: Callback<ListObjectResult>): void
   @Callbackable
   async listObject(params: ListObjectParams = {}): Promise<ListObjectResult> {
     const { bucket, headers, resource } = this.validateParams(params)
@@ -69,6 +74,11 @@ export class NosClientObjectExt extends NosBaseClient {
     }
   }
 
+  /**
+   * 上传对象
+   */
+  putObject(params: PutObjectParams): Promise<PutObjectResult>
+  putObject(params: PutObjectParams, cb: Callback<PutObjectResult>): void
   @Callbackable
   async putObject(params: PutObjectParams): Promise<PutObjectResult> {
     const { headers, resource } = this.validateParams(params)
@@ -91,9 +101,17 @@ export class NosClientObjectExt extends NosBaseClient {
     }
   }
 
-  async getObject(params: GetObjectStreamParams): Promise<NodeJS.ReadableStream>
-  async getObject(params: GetObjectBufferParams): Promise<Buffer>
-  async getObject(params: GetObjectStringParams): Promise<string>
+  /**
+   * 获取对象内容。支持以 Buffer/string/Stream 的形式返回，建议使用 Stream 形式。
+   * 如果你能确保返回的文件大小在合理的范围，不会导致占用过多的内容，比如说一张图片，一个文本文件等，
+   * 可以直接使用 Buffer 或者 string，否则请使用 Stream
+   */
+  getObject(params: GetObjectStreamParams): Promise<NodeJS.ReadableStream>
+  getObject(params: GetObjectBufferParams): Promise<Buffer>
+  getObject(params: GetObjectStringParams): Promise<string>
+  getObject(params: GetObjectStreamParams, cb: Callback<NodeJS.ReadableStream>): void
+  getObject(params: GetObjectBufferParams, cb: Callback<Buffer>): void
+  getObject(params: GetObjectStringParams, cb: Callback<string>): void
   @Callbackable
   async getObject(params: GetObjectParams): Promise<Buffer | string | NodeJS.ReadableStream> {
     const encode = params.encode || 'stream'
@@ -121,6 +139,11 @@ export class NosClientObjectExt extends NosBaseClient {
     }
   }
 
+  /**
+   * 获取对象元信息。类似于 HTTP head 操作。
+   */
+  headObject(params: HeadObjectParams): Promise<HeadObjectResult>
+  headObject(params: HeadObjectParams, cb: Callback<HeadObjectResult>): void
   @Callbackable
   async headObject(params: HeadObjectParams): Promise<HeadObjectResult> {
     const { bucket, headers, resource } = this.validateParams(params)
@@ -142,6 +165,11 @@ export class NosClientObjectExt extends NosBaseClient {
     }
   }
 
+  /**
+   * 检查文件是否存在
+   */
+  isObjectExist(params: OperateObjectParams): Promise<boolean>
+  isObjectExist(params: OperateObjectParams, cb: Callback<boolean>): void
   @Callbackable
   async isObjectExist(params: OperateObjectParams): Promise<boolean> {
     try {
@@ -155,6 +183,11 @@ export class NosClientObjectExt extends NosBaseClient {
     }
   }
 
+  /**
+   * 复制对象
+   */
+  copyObject(params: CopyObjectParams): Promise<void>
+  copyObject(params: CopyObjectParams, cb: Callback<void>): void
   @Callbackable
   async copyObject(params: CopyObjectParams): Promise<void> {
     const { resource, headers, sourceBucket } = this.validateBinaryParams(params)
@@ -162,6 +195,11 @@ export class NosClientObjectExt extends NosBaseClient {
     await this.requestBody('put', headers, resource)
   }
 
+  /**
+   * 获取对象的可访问 Url
+   */
+  getObjectUrl(params: GetObjectUrlParams): Promise<string>
+  getObjectUrl(params: GetObjectUrlParams, cb: Callback<string>): void
   @Callbackable
   async getObjectUrl(params: GetObjectUrlParams): Promise<string> {
     const { bucket, headers, resource } = this.validateParams(params)
@@ -180,6 +218,11 @@ export class NosClientObjectExt extends NosBaseClient {
     })
   }
 
+  /**
+   * 删除对象
+   */
+  deleteObject(params: DeleteObjectParams): Promise<void>
+  deleteObject(params: DeleteObjectParams, cb: Callback<void>): void
   @Callbackable
   async deleteObject(params: DeleteObjectParams): Promise<void> {
     const { headers, resource } = this.validateParams(params)
@@ -194,6 +237,11 @@ export class NosClientObjectExt extends NosBaseClient {
     }
   }
 
+  /**
+   * 移动对象
+   */
+  moveObject(params: MoveObjectParams): Promise<void>
+  moveObject(params: MoveObjectParams, cb: Callback<void>): void
   @Callbackable
   async moveObject(params: MoveObjectParams): Promise<void> {
     const { sourceBucket, targetBucket, headers, resource } = this.validateBinaryParams(params)
@@ -207,10 +255,11 @@ export class NosClientObjectExt extends NosBaseClient {
   }
 
   /**
-   * delete multi object at once
-   * @param params
-   * @return return array which delete error
+   * 批量删除对象。
+   * @return errors 删除失败的错误列表
    */
+  deleteMultiObject(params: DeleteMultiObjectParams): Promise<DeleteMultiObjectErrorInfo[]>
+  deleteMultiObject(params: DeleteMultiObjectParams, cb: Callback<DeleteMultiObjectErrorInfo[]>): void
   @Callbackable
   async deleteMultiObject(params: DeleteMultiObjectParams): Promise<DeleteMultiObjectErrorInfo[]> {
     const { headers, resource } = this.validateParams(params)
@@ -236,19 +285,4 @@ export class NosClientObjectExt extends NosBaseClient {
     const result = await this.requestBody('post', headers, resource, reqString)
     return normalizeArray(result.deleteResult.error)
   }
-}
-
-export interface NosClientObjectExt {
-  listObject(params: ListObjectParams, cb: Callback<ListObjectResult>): void
-  putObject(params: PutObjectParams, cb: Callback<PutObjectResult>): void
-  getObject(params: GetObjectStreamParams, cb: Callback<NodeJS.ReadableStream>): void
-  getObject(params: GetObjectBufferParams, cb: Callback<Buffer>): void
-  getObject(params: GetObjectStringParams, cb: Callback<string>): void
-  headObject(params: HeadObjectParams, cb: Callback<HeadObjectResult>): void
-  isObjectExist(params: OperateObjectParams, cb: Callback<boolean>): void
-  copyObject(params: CopyObjectParams, cb: Callback<void>): void
-  getObjectUrl(params: GetObjectUrlParams, cb: Callback<string>): void
-  deleteObject(params: DeleteObjectParams, cb: Callback<void>): void
-  moveObject(params: MoveObjectParams, cb: Callback<void>): void
-  deleteMultiObject(params: DeleteMultiObjectParams, cb: Callback<DeleteMultiObjectErrorInfo[]>): void
 }
