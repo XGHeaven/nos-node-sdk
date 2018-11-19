@@ -12,8 +12,17 @@ export enum BucketAcl {
 }
 
 export enum BucketLocation {
+  /**
+   * 杭州
+   */
   HZ = 'HZ',
+  /**
+   * 北京
+   */
   BJ = 'BJ',
+  /**
+   * 广州
+   */
   GZ = 'GZ',
 }
 

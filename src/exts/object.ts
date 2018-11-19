@@ -39,6 +39,9 @@ import {
 } from '../type/object'
 
 export class NosClientObjectExt extends NosBaseClient {
+  /**
+   * 获取对象列表
+   */
   listObject(params: ListObjectParams): Promise<ListObjectResult>
   listObject(params: ListObjectParams, cb: Callback<ListObjectResult>): void
   @Callbackable
@@ -71,6 +74,9 @@ export class NosClientObjectExt extends NosBaseClient {
     }
   }
 
+  /**
+   * 上传对象
+   */
   putObject(params: PutObjectParams): Promise<PutObjectResult>
   putObject(params: PutObjectParams, cb: Callback<PutObjectResult>): void
   @Callbackable
@@ -95,6 +101,11 @@ export class NosClientObjectExt extends NosBaseClient {
     }
   }
 
+  /**
+   * 获取对象内容。支持以 Buffer/string/Stream 的形式返回，建议使用 Stream 形式。
+   * 如果你能确保返回的文件大小在合理的范围，不会导致占用过多的内容，比如说一张图片，一个文本文件等，
+   * 可以直接使用 Buffer 或者 string，否则请使用 Stream
+   */
   getObject(params: GetObjectStreamParams): Promise<NodeJS.ReadableStream>
   getObject(params: GetObjectBufferParams): Promise<Buffer>
   getObject(params: GetObjectStringParams): Promise<string>
@@ -128,6 +139,9 @@ export class NosClientObjectExt extends NosBaseClient {
     }
   }
 
+  /**
+   * 获取对象元信息。类似于 HTTP head 操作。
+   */
   headObject(params: HeadObjectParams): Promise<HeadObjectResult>
   headObject(params: HeadObjectParams, cb: Callback<HeadObjectResult>): void
   @Callbackable
@@ -151,6 +165,9 @@ export class NosClientObjectExt extends NosBaseClient {
     }
   }
 
+  /**
+   * 检查文件是否存在
+   */
   isObjectExist(params: OperateObjectParams): Promise<boolean>
   isObjectExist(params: OperateObjectParams, cb: Callback<boolean>): void
   @Callbackable
@@ -166,6 +183,9 @@ export class NosClientObjectExt extends NosBaseClient {
     }
   }
 
+  /**
+   * 复制对象
+   */
   copyObject(params: CopyObjectParams): Promise<void>
   copyObject(params: CopyObjectParams, cb: Callback<void>): void
   @Callbackable
@@ -175,6 +195,9 @@ export class NosClientObjectExt extends NosBaseClient {
     await this.requestBody('put', headers, resource)
   }
 
+  /**
+   * 获取对象的可访问 Url
+   */
   getObjectUrl(params: GetObjectUrlParams): Promise<string>
   getObjectUrl(params: GetObjectUrlParams, cb: Callback<string>): void
   @Callbackable
@@ -195,6 +218,9 @@ export class NosClientObjectExt extends NosBaseClient {
     })
   }
 
+  /**
+   * 删除对象
+   */
   deleteObject(params: DeleteObjectParams): Promise<void>
   deleteObject(params: DeleteObjectParams, cb: Callback<void>): void
   @Callbackable
@@ -211,6 +237,9 @@ export class NosClientObjectExt extends NosBaseClient {
     }
   }
 
+  /**
+   * 移动对象
+   */
   moveObject(params: MoveObjectParams): Promise<void>
   moveObject(params: MoveObjectParams, cb: Callback<void>): void
   @Callbackable
@@ -226,9 +255,8 @@ export class NosClientObjectExt extends NosBaseClient {
   }
 
   /**
-   * delete multi object at once
-   * @param params
-   * @return return array which delete error
+   * 批量删除对象。
+   * @return errors 删除失败的错误列表
    */
   deleteMultiObject(params: DeleteMultiObjectParams): Promise<DeleteMultiObjectErrorInfo[]>
   deleteMultiObject(params: DeleteMultiObjectParams, cb: Callback<DeleteMultiObjectErrorInfo[]>): void

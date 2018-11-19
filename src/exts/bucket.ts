@@ -48,7 +48,7 @@ export class NosClientBucketExt extends NosBaseClient {
   }
 
   /**
-   * add a bucket
+   * 添加一个 Bucket
    * @param params
    * @param params
    */
@@ -70,9 +70,7 @@ export class NosClientBucketExt extends NosBaseClient {
   }
 
   /**
-   * Ensure bucket exist,create bucket when no such bucket
-   * Please make sure you is a owner of bucket,or throw error
-   * @param params
+   * 确保 Bucket 存在。如果不存在，会自动创建，如果存在，不做任何操作。
    */
   ensureBucket(params: PutBucketParams): Promise<void>
   ensureBucket(params: PutBucketParams, cb: Callback<void>): void
@@ -88,6 +86,9 @@ export class NosClientBucketExt extends NosBaseClient {
     }
   }
 
+  /**
+   * 检查一个 Bucket 是否存在
+   */
   isBucketExist(params: OperateBucketParams): Promise<boolean>
   isBucketExist(params: OperateBucketParams, cb: Callback<boolean>): void
   @Callbackable
@@ -100,6 +101,9 @@ export class NosClientBucketExt extends NosBaseClient {
     return true
   }
 
+  /**
+   * 删除 Bucket
+   */
   deleteBucket(params: OperateBucketParams): Promise<void>
   deleteBucket(params: OperateBucketParams, cb: Callback<void>): void
   @Callbackable
@@ -116,6 +120,9 @@ export class NosClientBucketExt extends NosBaseClient {
     }
   }
 
+  /**
+   * 获取 Bucket 的权限
+   */
   getBucketAcl(params: OperateBucketParams): Promise<BucketAcl>
   getBucketAcl(params: OperateBucketParams, cb: Callback<BucketAcl>): void
   @Callbackable
@@ -129,6 +136,9 @@ export class NosClientBucketExt extends NosBaseClient {
     return resp.headers.get('x-nos-acl') as BucketAcl
   }
 
+  /**
+   * 设置 Bucket 的权限
+   */
   setBucketAcl(params: SetBucketAclParams): Promise<void>
   setBucketAcl(params: SetBucketAclParams, cb: Callback<void>): void
   @Callbackable
@@ -139,6 +149,9 @@ export class NosClientBucketExt extends NosBaseClient {
     await this.request('put', headers, resource)
   }
 
+  /**
+   * 获取 Bucket 的地域位置
+   */
   getBucketLocation(params: OperateBucketParams): Promise<BucketLocation>
   getBucketLocation(params: OperateBucketParams, cb: Callback<BucketLocation>): void
   @Callbackable
