@@ -42,7 +42,7 @@ export class NosClientObjectExt extends NosBaseClient {
   /**
    * 获取对象列表
    */
-  listObject(params: ListObjectParams): Promise<ListObjectResult>
+  listObject(params?: ListObjectParams): Promise<ListObjectResult>
   listObject(params: ListObjectParams, cb: Callback<ListObjectResult>): void
   @Callbackable
   async listObject(params: ListObjectParams = {}): Promise<ListObjectResult> {
