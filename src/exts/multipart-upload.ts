@@ -26,6 +26,8 @@ export class NosClientMultipartUploadExt extends NosBaseClient {
    * @param params
    * @return uploadId
    */
+  initMultipartUpload(params: InitMultipartUploadParams): Promise<string>
+  initMultipartUpload(params: InitMultipartUploadParams, cb: Callback<string>): void
   @Callbackable
   async initMultipartUpload(params: InitMultipartUploadParams): Promise<string> {
     const { bucket, headers, resource } = this.validateParams(params)
@@ -39,6 +41,8 @@ export class NosClientMultipartUploadExt extends NosBaseClient {
     return result.initiateMultipartUploadResult.uploadId
   }
 
+  abortMultipartUpload(params: AbortMultipartUploadParams): Promise<boolean>
+  abortMultipartUpload(params: AbortMultipartUploadParams, cb: Callback<boolean>): void
   @Callbackable
   async abortMultipartUpload(params: AbortMultipartUploadParams): Promise<boolean> {
     const { bucket, headers, resource } = this.validateParams(params)
@@ -52,6 +56,8 @@ export class NosClientMultipartUploadExt extends NosBaseClient {
     return true
   }
 
+  uploadMultipart(params: UploadMultipartParams): Promise<Part>
+  uploadMultipart(params: UploadMultipartParams, cb: Callback<Part>): void
   @Callbackable
   async uploadMultipart(params: UploadMultipartParams): Promise<Part> {
     const { bucket, headers, resource } = this.validateParams(params)
@@ -75,6 +81,8 @@ export class NosClientMultipartUploadExt extends NosBaseClient {
    * list parts of object
    * @param params
    */
+  listParts(params: ListPartsOptions): Promise<ListPartsResult>
+  listParts(params: ListPartsOptions, cb: Callback<ListPartsResult>): void
   @Callbackable
   async listParts(params: ListPartsOptions): Promise<ListPartsResult> {
     const { bucket, headers, resource } = this.validateParams(params)
@@ -108,6 +116,8 @@ export class NosClientMultipartUploadExt extends NosBaseClient {
     }
   }
 
+  listMultipartUpload(params?: ListMultipartParams): Promise<ListMultipartResult>
+  listMultipartUpload(params: ListMultipartParams, cb: Callback<ListMultipartResult>): void
   @Callbackable
   async listMultipartUpload(params: ListMultipartParams = {}): Promise<ListMultipartResult> {
     const { bucket, headers, resource } = this.validateParams(params)
@@ -146,6 +156,8 @@ export class NosClientMultipartUploadExt extends NosBaseClient {
     }
   }
 
+  completeMultipartUpload(params: CompleteMultipartParams): Promise<MultipartUploadObject>
+  completeMultipartUpload(params: CompleteMultipartParams, cb: Callback<MultipartUploadObject>): void
   @Callbackable
   async completeMultipartUpload(params: CompleteMultipartParams): Promise<MultipartUploadObject> {
     const { bucket, headers, resource } = this.validateParams(params)
@@ -163,6 +175,8 @@ export class NosClientMultipartUploadExt extends NosBaseClient {
     return result.completeMultipartUploadResult
   }
 
+  putBigObject(params: PutBigObjectParams): Promise<MultipartUploadObject>
+  putBigObject(params: PutBigObjectParams, cb: Callback<MultipartUploadObject>): void
   @Callbackable
   async putBigObject(params: PutBigObjectParams): Promise<MultipartUploadObject> {
     const uploadId = await this.initMultipartUpload(params)
@@ -271,14 +285,4 @@ export class NosClientMultipartUploadExt extends NosBaseClient {
       stream.once('error', abortUpload)
     })
   }
-}
-
-export interface NosClientMultipartUploadExt {
-  initMultipartUpload(params: InitMultipartUploadParams, cb: Callback<string>): void
-  abortMultipartUpload(params: AbortMultipartUploadParams, cb: Callback<boolean>): void
-  uploadMultipart(params: UploadMultipartParams, cb: Callback<Part>): void
-  listParts(params: ListPartsOptions, cb: Callback<Part[]>): void
-  listMultipartUpload(params: ListMultipartParams, cb: Callback<MultipartUpload[]>): void
-  completeMultipartUpload(params: CompleteMultipartParams, cb: Callback<MultipartUploadObject>): void
-  putBigObject(params: PutBigObjectParams, cb: Callback<MultipartUploadObject>): void
 }

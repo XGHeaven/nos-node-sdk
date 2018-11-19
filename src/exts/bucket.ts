@@ -19,6 +19,8 @@ export class NosClientBucketExt extends NosBaseClient {
   /**
    * 获取全部 Bucket
    */
+  listBucket(): Promise<ListBucketResult>
+  listBucket(cb: Callback<ListBucketResult>): void
   @Callbackable
   async listBucket(): Promise<ListBucketResult> {
     const data = await this.requestBody(
@@ -50,6 +52,8 @@ export class NosClientBucketExt extends NosBaseClient {
    * @param params
    * @param params
    */
+  putBucket(params: PutBucketParams): Promise<void>
+  putBucket(params: PutBucketParams, cb: Callback<void>): void
   @Callbackable
   async putBucket(params: PutBucketParams): Promise<void> {
     const { headers, resource } = this.validateParams(params)
@@ -70,6 +74,8 @@ export class NosClientBucketExt extends NosBaseClient {
    * Please make sure you is a owner of bucket,or throw error
    * @param params
    */
+  ensureBucket(params: PutBucketParams): Promise<void>
+  ensureBucket(params: PutBucketParams, cb: Callback<void>): void
   @Callbackable
   async ensureBucket(params: PutBucketParams): Promise<void> {
     try {
@@ -82,6 +88,8 @@ export class NosClientBucketExt extends NosBaseClient {
     }
   }
 
+  isBucketExist(params: OperateBucketParams): Promise<boolean>
+  isBucketExist(params: OperateBucketParams, cb: Callback<boolean>): void
   @Callbackable
   async isBucketExist(params: OperateBucketParams): Promise<boolean> {
     const { headers, resource } = this.validateParams(params)
@@ -92,6 +100,8 @@ export class NosClientBucketExt extends NosBaseClient {
     return true
   }
 
+  deleteBucket(params: OperateBucketParams): Promise<void>
+  deleteBucket(params: OperateBucketParams, cb: Callback<void>): void
   @Callbackable
   async deleteBucket(params: OperateBucketParams): Promise<void> {
     const { headers, resource } = this.validateParams(params)
@@ -106,6 +116,8 @@ export class NosClientBucketExt extends NosBaseClient {
     }
   }
 
+  getBucketAcl(params: OperateBucketParams): Promise<BucketAcl>
+  getBucketAcl(params: OperateBucketParams, cb: Callback<BucketAcl>): void
   @Callbackable
   async getBucketAcl(params: OperateBucketParams): Promise<BucketAcl> {
     const { headers, resource } = this.validateParams(params)
@@ -117,6 +129,8 @@ export class NosClientBucketExt extends NosBaseClient {
     return resp.headers.get('x-nos-acl') as BucketAcl
   }
 
+  setBucketAcl(params: SetBucketAclParams): Promise<void>
+  setBucketAcl(params: SetBucketAclParams, cb: Callback<void>): void
   @Callbackable
   async setBucketAcl(params: SetBucketAclParams): Promise<void> {
     const { headers, resource } = this.validateParams(params)
@@ -125,6 +139,8 @@ export class NosClientBucketExt extends NosBaseClient {
     await this.request('put', headers, resource)
   }
 
+  getBucketLocation(params: OperateBucketParams): Promise<BucketLocation>
+  getBucketLocation(params: OperateBucketParams, cb: Callback<BucketLocation>): void
   @Callbackable
   async getBucketLocation(params: OperateBucketParams): Promise<BucketLocation> {
     const { headers, resource } = this.validateParams(params)
@@ -164,17 +180,4 @@ export class NosClientBucketExt extends NosBaseClient {
     }
   }
   */
-}
-
-export interface NosClientBucketExt {
-  listBucket(cb: Callback<Bucket[]>): void
-  putBucket(params: PutBucketParams, cb: Callback<void>): void
-  ensureBucket(params: PutBucketParams, cb: Callback<void>): void
-  isBucketExist(params: OperateBucketParams, cb: Callback<boolean>): void
-  deleteBucket(params: OperateBucketParams, cb: Callback<void>): void
-  getBucketAcl(params: OperateBucketParams, cb: Callback<BucketAcl>): void
-  setBucketAcl(params: SetBucketAclParams, cb: Callback<void>): void
-  getBucketLocation(params: OperateBucketParams, cb: Callback<BucketLocation>): void
-  // getBucketDefault404(params: OperateBucketParams, cb: Callback<string>): void
-  // setBucketDefault404(params: SetBucketDefault404Params, cb: Callback<void>): void
 }

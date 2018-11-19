@@ -39,6 +39,8 @@ import {
 } from '../type/object'
 
 export class NosClientObjectExt extends NosBaseClient {
+  listObject(params: ListObjectParams): Promise<ListObjectResult>
+  listObject(params: ListObjectParams, cb: Callback<ListObjectResult>): void
   @Callbackable
   async listObject(params: ListObjectParams = {}): Promise<ListObjectResult> {
     const { bucket, headers, resource } = this.validateParams(params)
@@ -69,6 +71,8 @@ export class NosClientObjectExt extends NosBaseClient {
     }
   }
 
+  putObject(params: PutObjectParams): Promise<PutObjectResult>
+  putObject(params: PutObjectParams, cb: Callback<PutObjectResult>): void
   @Callbackable
   async putObject(params: PutObjectParams): Promise<PutObjectResult> {
     const { headers, resource } = this.validateParams(params)
@@ -91,9 +95,12 @@ export class NosClientObjectExt extends NosBaseClient {
     }
   }
 
-  async getObject(params: GetObjectStreamParams): Promise<NodeJS.ReadableStream>
-  async getObject(params: GetObjectBufferParams): Promise<Buffer>
-  async getObject(params: GetObjectStringParams): Promise<string>
+  getObject(params: GetObjectStreamParams): Promise<NodeJS.ReadableStream>
+  getObject(params: GetObjectBufferParams): Promise<Buffer>
+  getObject(params: GetObjectStringParams): Promise<string>
+  getObject(params: GetObjectStreamParams, cb: Callback<NodeJS.ReadableStream>): void
+  getObject(params: GetObjectBufferParams, cb: Callback<Buffer>): void
+  getObject(params: GetObjectStringParams, cb: Callback<string>): void
   @Callbackable
   async getObject(params: GetObjectParams): Promise<Buffer | string | NodeJS.ReadableStream> {
     const encode = params.encode || 'stream'
@@ -121,6 +128,8 @@ export class NosClientObjectExt extends NosBaseClient {
     }
   }
 
+  headObject(params: HeadObjectParams): Promise<HeadObjectResult>
+  headObject(params: HeadObjectParams, cb: Callback<HeadObjectResult>): void
   @Callbackable
   async headObject(params: HeadObjectParams): Promise<HeadObjectResult> {
     const { bucket, headers, resource } = this.validateParams(params)
@@ -142,6 +151,8 @@ export class NosClientObjectExt extends NosBaseClient {
     }
   }
 
+  isObjectExist(params: OperateObjectParams): Promise<boolean>
+  isObjectExist(params: OperateObjectParams, cb: Callback<boolean>): void
   @Callbackable
   async isObjectExist(params: OperateObjectParams): Promise<boolean> {
     try {
@@ -155,6 +166,8 @@ export class NosClientObjectExt extends NosBaseClient {
     }
   }
 
+  copyObject(params: CopyObjectParams): Promise<void>
+  copyObject(params: CopyObjectParams, cb: Callback<void>): void
   @Callbackable
   async copyObject(params: CopyObjectParams): Promise<void> {
     const { resource, headers, sourceBucket } = this.validateBinaryParams(params)
@@ -162,6 +175,8 @@ export class NosClientObjectExt extends NosBaseClient {
     await this.requestBody('put', headers, resource)
   }
 
+  getObjectUrl(params: GetObjectUrlParams): Promise<string>
+  getObjectUrl(params: GetObjectUrlParams, cb: Callback<string>): void
   @Callbackable
   async getObjectUrl(params: GetObjectUrlParams): Promise<string> {
     const { bucket, headers, resource } = this.validateParams(params)
@@ -180,6 +195,8 @@ export class NosClientObjectExt extends NosBaseClient {
     })
   }
 
+  deleteObject(params: DeleteObjectParams): Promise<void>
+  deleteObject(params: DeleteObjectParams, cb: Callback<void>): void
   @Callbackable
   async deleteObject(params: DeleteObjectParams): Promise<void> {
     const { headers, resource } = this.validateParams(params)
@@ -194,6 +211,8 @@ export class NosClientObjectExt extends NosBaseClient {
     }
   }
 
+  moveObject(params: MoveObjectParams): Promise<void>
+  moveObject(params: MoveObjectParams, cb: Callback<void>): void
   @Callbackable
   async moveObject(params: MoveObjectParams): Promise<void> {
     const { sourceBucket, targetBucket, headers, resource } = this.validateBinaryParams(params)
@@ -211,6 +230,8 @@ export class NosClientObjectExt extends NosBaseClient {
    * @param params
    * @return return array which delete error
    */
+  deleteMultiObject(params: DeleteMultiObjectParams): Promise<DeleteMultiObjectErrorInfo[]>
+  deleteMultiObject(params: DeleteMultiObjectParams, cb: Callback<DeleteMultiObjectErrorInfo[]>): void
   @Callbackable
   async deleteMultiObject(params: DeleteMultiObjectParams): Promise<DeleteMultiObjectErrorInfo[]> {
     const { headers, resource } = this.validateParams(params)
@@ -236,19 +257,4 @@ export class NosClientObjectExt extends NosBaseClient {
     const result = await this.requestBody('post', headers, resource, reqString)
     return normalizeArray(result.deleteResult.error)
   }
-}
-
-export interface NosClientObjectExt {
-  listObject(params: ListObjectParams, cb: Callback<ListObjectResult>): void
-  putObject(params: PutObjectParams, cb: Callback<PutObjectResult>): void
-  getObject(params: GetObjectStreamParams, cb: Callback<NodeJS.ReadableStream>): void
-  getObject(params: GetObjectBufferParams, cb: Callback<Buffer>): void
-  getObject(params: GetObjectStringParams, cb: Callback<string>): void
-  headObject(params: HeadObjectParams, cb: Callback<HeadObjectResult>): void
-  isObjectExist(params: OperateObjectParams, cb: Callback<boolean>): void
-  copyObject(params: CopyObjectParams, cb: Callback<void>): void
-  getObjectUrl(params: GetObjectUrlParams, cb: Callback<string>): void
-  deleteObject(params: DeleteObjectParams, cb: Callback<void>): void
-  moveObject(params: MoveObjectParams, cb: Callback<void>): void
-  deleteMultiObject(params: DeleteMultiObjectParams, cb: Callback<DeleteMultiObjectErrorInfo[]>): void
 }
