@@ -6,7 +6,7 @@ import { signature } from './lib/authorization'
 import { makeNosError, NoBucketError } from './lib/error'
 import { parseBody } from './lib/request'
 import { getResourceUri } from './lib/resource'
-import { CamelCaseObject, isHttpStatusOk, md5sum } from './lib/util'
+import { CamelCaseObject, encodeKey, isHttpStatusOk, md5sum } from './lib/util'
 import { OperateBinaryObjectParams, OperateObjectParams, OperateOptionalBucketParams } from './type/object'
 import { Resource } from './type/resource'
 
@@ -116,7 +116,7 @@ export class NosBaseClient {
     }
 
     if ('objectKey' in params) {
-      resource.objectKey = params.objectKey
+      resource.objectKey = encodeKey(params.objectKey)
     }
 
     return {

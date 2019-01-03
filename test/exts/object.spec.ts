@@ -109,6 +109,22 @@ describe('listObject', async () => {
 })
 
 describe('putObject', () => {
+  it.each([
+    ['chinese', '中文'],
+    ['()', 'char(0)()'],
+    ['!@#$%', 'char!@#$%!@#$%'],
+    ['^&*()', 'xx^&*()'],
+    ['~`[]{}\\|', 'xx~`[]{}\\|'],
+    [',.<>?', 'xx,.<>?']
+  ])('upload file which objectKey has %s', async (type, char) => {
+    const objectKey = `${char}-${randomObjectKey()}`
+    const content = 'xxxx'
+    await client.putObject({
+      objectKey,
+      body: content,
+    })
+  })
+
   it('upload file with string', async () => {
     const objectKey = randomObjectKey()
     const content = 'test-upload-file-with-string'
