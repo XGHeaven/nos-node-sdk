@@ -5,6 +5,15 @@ import { isNull, isUndefined, renameKeysWith } from 'ramda-adjunct'
 import { ObjectMetadata } from '../type/object'
 import ReadableStream = NodeJS.ReadableStream
 
+const encodeCharCode = new Map<RegExp, string>(
+  '_!\'()&^~'
+    .split('')
+    .map(char => [
+      new RegExp(`\\${char}`, 'g'),
+      `%${char.charCodeAt(0).toString(16).toUpperCase()}`
+    ] as [RegExp, string])
+)
+
 export function camelCase(name: string): string {
   if (name === 'ID') return 'id'
   name = name.replace(/^[A-Z]/, m => m.toLowerCase())
@@ -137,4 +146,12 @@ export function normalizeArray(value: any): Array<any> {
   }
 
   return value
+}
+
+export function encodeKey(key: string) {
+  key = encodeURIComponent(key)
+  for (const [reg, str] of encodeCharCode) {
+    key = key.replace(reg, str)
+  }
+  return key
 }

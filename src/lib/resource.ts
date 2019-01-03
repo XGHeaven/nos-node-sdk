@@ -60,7 +60,7 @@ export function getResourceString(resource: Resource) {
   const query = resourceQueryStringify(resource)
   if ('objectKey' in resource) {
     return url.format({
-      pathname: path.posix.join('/', resource.bucket, qs.escape(normalizeObjectKey(resource.objectKey))),
+      pathname: path.posix.join('/', resource.bucket, normalizeObjectKey(resource.objectKey)),
       search: query,
     })
     // return `/${resource.bucket}/${qs.escape(resource.objectKey)}${query ? '?' + query : ''}`
