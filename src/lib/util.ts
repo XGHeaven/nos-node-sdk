@@ -1,4 +1,4 @@
-import * as crypto from 'crypto'
+import { createHash } from 'crypto'
 import { Headers } from 'node-fetch'
 import { concat, filter, pipe, type } from 'ramda'
 import { isNull, isUndefined, renameKeysWith } from 'ramda-adjunct'
@@ -97,8 +97,7 @@ export function isHttpStatusOk(status: number): boolean {
 }
 
 export function md5sum(data: Buffer | string): string {
-  return crypto
-    .createHash('md5')
+  return createHash('md5')
     .update(data)
     .digest('hex')
 }
