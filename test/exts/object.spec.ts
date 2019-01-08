@@ -14,8 +14,6 @@ import {
 import { newTempFile } from '../helpers/runtime'
 
 let client: NosClient
-let bucket1: string
-let bucket2: string
 
 beforeAll(async () => {
   client = await newClient()
@@ -367,6 +365,9 @@ describe('moveObject', () => {
 })
 
 describe('copyObject', () => {
+  let bucket1: string
+  let bucket2: string
+
   beforeAll(async () => {
     bucket1 = client.options.defaultBucket as string
     bucket2 = await newBucket(client)
@@ -377,15 +378,15 @@ describe('copyObject', () => {
   })
 
   it.each([
-    ['in same bucket', {}, { bucket: bucket1 }],
+    ['in same bucket', {}, { bucket: () => bucket1 }],
     ['in different bucket', {}, {}],
     ['source object in a folder', { key: randomObjectKey('', 'copy-file-folder') }, {}],
     ['target object in a folder', {}, { key: randomObjectKey('', 'copy-file-folder') }],
   ])('should ok when %s', async (title, source, target) => {
     const sourceKey = source.key || randomObjectKey()
     const targetKey = target.key || randomObjectKey()
-    const sourceBucket = source.bucket || bucket1
-    const targetBucket = target.bucket || bucket2
+    const sourceBucket = typeof source.bucket === 'function' ? source.bucket() : (source.bucket || bucket1)
+    const targetBucket = typeof target.bucket === 'function' ? target.bucket() : (target.bucket || bucket2)
     const content = 'copy file ' + title
 
     await client.putObject({ objectKey: sourceKey, body: content, bucket: sourceBucket })

@@ -269,6 +269,7 @@ export class NosClientObjectExt extends NosBaseClient {
       return []
     }
 
+    // TODO: check chinese objectKey
     const objects = params.objectKeys.map(key => ({ key }))
 
     const reqData = {

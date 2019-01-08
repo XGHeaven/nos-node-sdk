@@ -147,10 +147,18 @@ export function normalizeArray(value: any): Array<any> {
   return value
 }
 
+/**
+ * @param key
+ */
 export function encodeKey(key: string) {
+  if (key[0] === '/' && key.length > 1) {
+    key = key.slice(1)
+  }
   key = encodeURIComponent(key)
   for (const [reg, str] of encodeCharCode) {
     key = key.replace(reg, str)
   }
+  // 恢复 /
+  key = key.replace(/%2F/g, '/')
   return key
 }

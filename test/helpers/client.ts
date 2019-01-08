@@ -52,6 +52,7 @@ export async function cleanBucket(client: NosClient, bucket: string): Promise<vo
     const { items, isTruncated } = await client.listObject({ bucket, limit: 1000 })
     await client.deleteMultiObject({
       objectKeys: items.map(obj => obj.key),
+      bucket
     })
 
     hasMore = isTruncated

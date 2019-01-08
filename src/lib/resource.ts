@@ -33,13 +33,17 @@ const resourceQueryStringify = pipe(
 /**
  * normalize object key
  * 1. remove prefix /
- *  /obj => obj, /dir/obj => dir/obj
+ *  /obj => obj, dir/obj => dir%2Fobj
  * @param key
  */
-export function normalizeObjectKey(key: string) {
-  return path.posix.join(...key.split('/'))
+export function escapeObjectKey(key: string) {
+  return key.replace(/\//g, '%2F')
 }
 
+/**
+ * 获取资源路径，不对 / 进行转义
+ * @param resource
+ */
 export function getResourceUri(resource: Resource) {
   if (typeof resource === 'string') return resource
 
@@ -49,18 +53,22 @@ export function getResourceUri(resource: Resource) {
     search: query,
   }
   if ('objectKey' in resource) {
-    urlObj.pathname = url.resolve(urlObj.pathname, normalizeObjectKey(resource.objectKey))
+    urlObj.pathname = url.resolve(urlObj.pathname, resource.objectKey)
   }
 
   return url.format(urlObj)
 }
 
+/**
+ * 获取资源字符串，对 objectKey 进行转义，保证 objectKey 没有前置 /
+ * @param resource
+ */
 export function getResourceString(resource: Resource) {
   if (typeof resource === 'string') return resource
   const query = resourceQueryStringify(resource)
   if ('objectKey' in resource) {
     return url.format({
-      pathname: path.posix.join('/', resource.bucket, normalizeObjectKey(resource.objectKey)),
+      pathname: path.posix.join('/', resource.bucket, escapeObjectKey(resource.objectKey)),
       search: query,
     })
     // return `/${resource.bucket}/${qs.escape(resource.objectKey)}${query ? '?' + query : ''}`
