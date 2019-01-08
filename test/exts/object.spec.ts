@@ -245,6 +245,16 @@ describe('deleteObject', () => {
     await expect(client.isObjectExist({ objectKey })).resolves.toBeFalse()
   })
 
+  it('should success when delete objectKey with special character', async () => {
+    const objectKey = randomObjectKey('.txt', '中文@#$%^/*(0)/')
+    await client.putObject({ objectKey, body: 'special character'})
+
+    await expect(client.isObjectExist({objectKey})).resolves.toBeTrue()
+
+    await client.deleteObject({objectKey})
+    await expect(client.isObjectExist({objectKey})).resolves.toBeFalse()
+  })
+
   it.skip('should return false when delete object that do not exist', async () => {
     const objectKey = randomObjectKey()
     client.deleteObject({ objectKey })
@@ -334,6 +344,8 @@ describe('moveObject', () => {
     // NOT IMPLEMENTED ['in different bucket', {}, {}],
     ['source object in a folder', { key: randomObjectKey('', 'move-folder/') }, {}],
     ['target object in a folder', {}, { key: randomObjectKey('', 'move-folder/') }],
+    ['source objectKey is special string', { key: randomObjectKey('', '中文@#$%/') }, {}],
+    ['target objectKey is special string', {}, { key: randomObjectKey('', '中国^&*(0)/') }],
   ])('should ok when %s', async (title, source, target) => {
     const sourceKey = source.key || randomObjectKey()
     const targetKey = target.key || randomObjectKey()
@@ -382,6 +394,8 @@ describe('copyObject', () => {
     ['in different bucket', {}, {}],
     ['source object in a folder', { key: randomObjectKey('', 'copy-file-folder') }, {}],
     ['target object in a folder', {}, { key: randomObjectKey('', 'copy-file-folder') }],
+    ['source objectKey is special string', { key: randomObjectKey('', '中文@#$%/') }, {}],
+    ['target objectKey is special string', {}, { key: randomObjectKey('', '中国^&*(0)/') }],
   ])('should ok when %s', async (title, source, target) => {
     const sourceKey = source.key || randomObjectKey()
     const targetKey = target.key || randomObjectKey()
@@ -424,7 +438,7 @@ describe('deleteMultiObject', () => {
   it('should return empty array when delete multi object all success', async () => {
     const file1 = randomObjectKey()
     const file2 = randomObjectKey()
-    const file3 = randomObjectKey()
+    const file3 = randomObjectKey('', '中文!@#%^$/#^$*@#(0)/')
     const data = Buffer.from('test-content')
     await Promise.all([
       client.putObject({ objectKey: file1, body: data }),
