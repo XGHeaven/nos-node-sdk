@@ -1,5 +1,8 @@
 # NOS Node.js SDK
 
+[![Coverage Status](https://coveralls.io/repos/github/XGHeaven/nos-node-sdk/badge.svg?branch=master)](https://coveralls.io/github/XGHeaven/nos-node-sdk?branch=master)
+[![Build Status](https://travis-ci.org/XGHeaven/nos-node-sdk.svg?branch=master)](https://travis-ci.org/XGHeaven/nos-node-sdk)
+
 NOS Node.js SDK 实现了 NOS 对象操作接口，基于此 SDK 能方便快速地实现 JavaScript 应用程序来使用 NOS 的对象存储服务。
 
 > NOS 是网易云推出的对象存储服务，稳定可靠
