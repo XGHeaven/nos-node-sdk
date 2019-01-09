@@ -82,7 +82,8 @@
       "src/**/*.ts",
       "!src/play.ts",
       "!src/index.ts"
-    ]
+    ],
+    "setupTestFrameworkScriptFile": "<rootDir>/test/helpers/setup.ts"
   },
   "prettier": {
     "tabWidth": 2,

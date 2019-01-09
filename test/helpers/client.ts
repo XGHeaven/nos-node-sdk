@@ -12,7 +12,7 @@ export function randomObjectKey(ext: string = '', prefix: string = '') {
 }
 
 export async function newClient() {
-  const bucket = 'nos-node-sdk-test' //randomBucketName()
+  const bucket = process.env.TEST_RANDOM_BUCKET ? randomBucketName() : 'nos-node-sdk-test' //randomBucketName()
   const client = new NosClient({
     accessKey: process.env.NOS_ACCESS_KEY as string,
     accessSecret: process.env.NOS_ACCESS_SECRET as string,
@@ -20,7 +20,7 @@ export async function newClient() {
     defaultBucket: bucket,
   })
 
-  // await client.ensureBucket({ bucket })
+  await client.ensureBucket({ bucket })
 
   return client
 }
@@ -36,8 +36,8 @@ export function newClientWithoutBucket() {
 
 export async function cleanClient(client: NosClient) {
   const bucket = client.options.defaultBucket
-  if (bucket) {
-    // await client.deleteBucket(bucket)
+  if (bucket && process.env.TEST_RANDOM_BUCKET) {
+    await deleteBucket(client, bucket)
   }
 }
 
@@ -47,6 +47,7 @@ export async function newBucket(client: NosClient, bucket: string = randomBucket
 }
 
 export async function cleanBucket(client: NosClient, bucket: string): Promise<void> {
+  // clean file
   let hasMore = false
   do {
     const { items, isTruncated } = await client.listObject({ bucket, limit: 1000 })
@@ -56,6 +57,19 @@ export async function cleanBucket(client: NosClient, bucket: string): Promise<vo
     })
 
     hasMore = isTruncated
+  } while (hasMore)
+
+  // clean multiparts
+  hasMore = false
+  do {
+    const { items, isTruncated } = await client.listMultipartUpload({bucket, limit: 1000})
+    for (const object of items) {
+      await client.abortMultipartUpload({
+        objectKey: object.key,
+        uploadId: object.uploadId,
+      })
+    }
+  hasMore = isTruncated
   } while (hasMore)
 }
 
