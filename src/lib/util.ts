@@ -6,7 +6,7 @@ import { ObjectMetadata } from '../type/object'
 import ReadableStream = NodeJS.ReadableStream
 
 const encodeCharCode = new Map<RegExp, string>(
-  '_!\'()&^~'
+  '!\'()&^~'
     .split('')
     .map(char => [
       new RegExp(`\\${char}`, 'g'),

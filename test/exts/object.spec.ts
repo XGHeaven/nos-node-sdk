@@ -109,7 +109,7 @@ describe('listObject', async () => {
 describe('putObject', () => {
   it.each([
     ['chinese', '中文'],
-    ['()', 'char(0)()'],
+    ['()_', 'char(0)__()'],
     ['!@#$%', 'char!@#$%!@#$%'],
     ['^&*()', 'xx^&*()'],
     ['~`[]{}\\|', 'xx~`[]{}\\|'],

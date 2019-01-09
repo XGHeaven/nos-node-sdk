@@ -32,7 +32,8 @@ describe('encodeKey', () => {
     ['中国.jpg', '%E4%B8%AD%E5%9B%BD.jpg'],
     ['a/b/c.jpg', 'a/b/c.jpg'],
     ['/a!@#$/p.jpg', 'a%21%40%23%24/p.jpg'],
-    ['/a/b.png', 'a/b.png']
+    ['/a/b.png', 'a/b.png'],
+    ['abc_def', 'abc_def']
   ])('encode %s to %s', (input, expected) => {
     expect(encodeKey(input)).toEqual(expected)
   })
