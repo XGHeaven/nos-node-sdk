@@ -24,6 +24,7 @@
     "@types/ramda": "^0.25.36",
     "@types/tempy": "^0.1.0",
     "chai": "^3.5.0",
+    "coveralls": "^3.0.2",
     "dotenv": "^6.0.0",
     "http-proxy-agent": "^2.1.0",
     "istanbul": "^1.0.0-alpha",
