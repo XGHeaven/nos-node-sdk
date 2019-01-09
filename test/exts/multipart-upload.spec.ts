@@ -151,7 +151,7 @@ describe('listMultipart', () => {
 
 describe('putBigObject', async () => {
   it('should upload success', async () => {
-    jest.setTimeout(20 * 1000)
+    jest.setTimeout(60 * 1000)
     const body = newReadableStream(1024 * 1024) // 1M
     const key = randomObjectKey()
 
