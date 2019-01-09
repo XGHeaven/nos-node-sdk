@@ -148,7 +148,7 @@ export class NosBaseClient {
     }
 
     if ('targetObjectKey' in params) {
-      resource.objectKey = params.targetObjectKey
+      resource.objectKey = encodeKey(params.targetObjectKey)
     }
 
     return {

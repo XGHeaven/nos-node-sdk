@@ -52,7 +52,6 @@ describe('getResourceString', () => {
     ],
     'objectKey resource with directory': [
       [{ bucket: 'bkt', objectKey: 'folder/file' }, '/bkt/folder%2Ffile'],
-      [{ bucket: 'bkt', objectKey: '/folder/file' }, '/bkt/folder%2Ffile'],
       [{ bucket: 'bkt', objectKey: 'dir/obj', uploads: true }, '/bkt/dir%2Fobj?uploads'],
     ],
   }

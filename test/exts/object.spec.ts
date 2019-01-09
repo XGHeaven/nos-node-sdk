@@ -14,8 +14,6 @@ import {
 import { newTempFile } from '../helpers/runtime'
 
 let client: NosClient
-let bucket1: string
-let bucket2: string
 
 beforeAll(async () => {
   client = await newClient()
@@ -247,6 +245,16 @@ describe('deleteObject', () => {
     await expect(client.isObjectExist({ objectKey })).resolves.toBeFalse()
   })
 
+  it('should success when delete objectKey with special character', async () => {
+    const objectKey = randomObjectKey('.txt', '中文@#$%^/*(0)/')
+    await client.putObject({ objectKey, body: 'special character'})
+
+    await expect(client.isObjectExist({objectKey})).resolves.toBeTrue()
+
+    await client.deleteObject({objectKey})
+    await expect(client.isObjectExist({objectKey})).resolves.toBeFalse()
+  })
+
   it.skip('should return false when delete object that do not exist', async () => {
     const objectKey = randomObjectKey()
     client.deleteObject({ objectKey })
@@ -336,6 +344,8 @@ describe('moveObject', () => {
     // NOT IMPLEMENTED ['in different bucket', {}, {}],
     ['source object in a folder', { key: randomObjectKey('', 'move-folder/') }, {}],
     ['target object in a folder', {}, { key: randomObjectKey('', 'move-folder/') }],
+    ['source objectKey is special string', { key: randomObjectKey('', '中文@#$%/') }, {}],
+    ['target objectKey is special string', {}, { key: randomObjectKey('', '中国^&*(0)/') }],
   ])('should ok when %s', async (title, source, target) => {
     const sourceKey = source.key || randomObjectKey()
     const targetKey = target.key || randomObjectKey()
@@ -367,6 +377,9 @@ describe('moveObject', () => {
 })
 
 describe('copyObject', () => {
+  let bucket1: string
+  let bucket2: string
+
   beforeAll(async () => {
     bucket1 = client.options.defaultBucket as string
     bucket2 = await newBucket(client)
@@ -377,15 +390,17 @@ describe('copyObject', () => {
   })
 
   it.each([
-    ['in same bucket', {}, { bucket: bucket1 }],
+    ['in same bucket', {}, { bucket: () => bucket1 }],
     ['in different bucket', {}, {}],
     ['source object in a folder', { key: randomObjectKey('', 'copy-file-folder') }, {}],
     ['target object in a folder', {}, { key: randomObjectKey('', 'copy-file-folder') }],
+    ['source objectKey is special string', { key: randomObjectKey('', '中文@#$%/') }, {}],
+    ['target objectKey is special string', {}, { key: randomObjectKey('', '中国^&*(0)/') }],
   ])('should ok when %s', async (title, source, target) => {
     const sourceKey = source.key || randomObjectKey()
     const targetKey = target.key || randomObjectKey()
-    const sourceBucket = source.bucket || bucket1
-    const targetBucket = target.bucket || bucket2
+    const sourceBucket = typeof source.bucket === 'function' ? source.bucket() : (source.bucket || bucket1)
+    const targetBucket = typeof target.bucket === 'function' ? target.bucket() : (target.bucket || bucket2)
     const content = 'copy file ' + title
 
     await client.putObject({ objectKey: sourceKey, body: content, bucket: sourceBucket })
@@ -423,7 +438,7 @@ describe('deleteMultiObject', () => {
   it('should return empty array when delete multi object all success', async () => {
     const file1 = randomObjectKey()
     const file2 = randomObjectKey()
-    const file3 = randomObjectKey()
+    const file3 = randomObjectKey('', '中文!@#%^$/#^$*@#(0)/')
     const data = Buffer.from('test-content')
     await Promise.all([
       client.putObject({ objectKey: file1, body: data }),
