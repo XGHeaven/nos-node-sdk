@@ -6,12 +6,16 @@ import { ObjectMetadata } from '../type/object'
 import ReadableStream = NodeJS.ReadableStream
 
 const encodeCharCode = new Map<RegExp, string>(
-  '_!\'()&^~'
-    .split('')
-    .map(char => [
-      new RegExp(`\\${char}`, 'g'),
-      `%${char.charCodeAt(0).toString(16).toUpperCase()}`
-    ] as [RegExp, string])
+  "!'()&^~".split('').map(
+    char =>
+      [
+        new RegExp(`\\${char}`, 'g'),
+        `%${char
+          .charCodeAt(0)
+          .toString(16)
+          .toUpperCase()}`,
+      ] as [RegExp, string]
+  )
 )
 
 export function camelCase(name: string): string {
