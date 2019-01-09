@@ -113,7 +113,7 @@ describe('putObject', () => {
     ['!@#$%', 'char!@#$%!@#$%'],
     ['^&*()', 'xx^&*()'],
     ['~`[]{}\\|', 'xx~`[]{}\\|'],
-    [',.<>?', 'xx,.<>?']
+    [',.<>?', 'xx,.<>?'],
   ])('upload file which objectKey has %s', async (type, char) => {
     const objectKey = `${char}-${randomObjectKey()}`
     const content = 'xxxx'
@@ -247,12 +247,12 @@ describe('deleteObject', () => {
 
   it('should success when delete objectKey with special character', async () => {
     const objectKey = randomObjectKey('.txt', '中文@#$%^/*(0)/')
-    await client.putObject({ objectKey, body: 'special character'})
+    await client.putObject({ objectKey, body: 'special character' })
 
-    await expect(client.isObjectExist({objectKey})).resolves.toBeTrue()
+    await expect(client.isObjectExist({ objectKey })).resolves.toBeTrue()
 
-    await client.deleteObject({objectKey})
-    await expect(client.isObjectExist({objectKey})).resolves.toBeFalse()
+    await client.deleteObject({ objectKey })
+    await expect(client.isObjectExist({ objectKey })).resolves.toBeFalse()
   })
 
   it.skip('should return false when delete object that do not exist', async () => {
@@ -399,8 +399,8 @@ describe('copyObject', () => {
   ])('should ok when %s', async (title, source, target) => {
     const sourceKey = source.key || randomObjectKey()
     const targetKey = target.key || randomObjectKey()
-    const sourceBucket = typeof source.bucket === 'function' ? source.bucket() : (source.bucket || bucket1)
-    const targetBucket = typeof target.bucket === 'function' ? target.bucket() : (target.bucket || bucket2)
+    const sourceBucket = typeof source.bucket === 'function' ? source.bucket() : source.bucket || bucket1
+    const targetBucket = typeof target.bucket === 'function' ? target.bucket() : target.bucket || bucket2
     const content = 'copy file ' + title
 
     await client.putObject({ objectKey: sourceKey, body: content, bucket: sourceBucket })

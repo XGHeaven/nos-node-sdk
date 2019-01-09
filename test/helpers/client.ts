@@ -53,7 +53,7 @@ export async function cleanBucket(client: NosClient, bucket: string): Promise<vo
     const { items, isTruncated } = await client.listObject({ bucket, limit: 1000 })
     await client.deleteMultiObject({
       objectKeys: items.map(obj => obj.key),
-      bucket
+      bucket,
     })
 
     hasMore = isTruncated
@@ -62,14 +62,14 @@ export async function cleanBucket(client: NosClient, bucket: string): Promise<vo
   // clean multiparts
   hasMore = false
   do {
-    const { items, isTruncated } = await client.listMultipartUpload({bucket, limit: 1000})
+    const { items, isTruncated } = await client.listMultipartUpload({ bucket, limit: 1000 })
     for (const object of items) {
       await client.abortMultipartUpload({
         objectKey: object.key,
         uploadId: object.uploadId,
       })
     }
-  hasMore = isTruncated
+    hasMore = isTruncated
   } while (hasMore)
 }
 
