@@ -29,8 +29,8 @@ NOS Node.js SDK 实现了 NOS 对象操作接口，基于此 SDK 能方便快速
 在设计 API 的时候，遵循了一些设计原则。
 
 - **Keep it Simple** 一切都是那么直观，体现在接口上面就是见名明意。比如 getObject 就是获取对象内容，返回值便是 Buffer/string/Stream，而不是类似于 `{err: Error, data: xxx}` 的结构，你只是想得到内容体，为何要返回这么多数据。Believe me, It's a Trouble.
-- **Arguments Bus** 参数总线或者参数公交。将参数都整合在一个对象中传递给函数，而不是散落在函数的参数中。这样有力于在后面版本的迭代中，保证接口的兼容性。例如 `getObject({objectKey: 'key', bucket: 'bucket'})` 而不是 `getObject('key', 'bucket', options)`
-- **Throw as Possible** 如果有错误，能抛出就抛出，而不是内部转化，然后包装成返回参数。例如 `deleteObject(params).then(() => console.log('success')).catch(() => console.log('error'))` 而不是 `deleteObject(params).then(success => console.log(success))`
+- **Arguments Bus** 参数总线。将参数都整合在一个对象中传递给函数，而不是散落在函数的参数中。这样有力于在后面版本的迭代中，保证接口的兼容性。例如 `getObject({objectKey: 'key', bucket: 'bucket'})` 而不是 `getObject('key', 'bucket', options)`
+- **Throw as Possible** 如果有错误，能抛出就抛出，而不是内部消化，然后包装成返回参数。例如 `deleteObject(params).then(() => console.log('success')).catch(() => console.log('error'))` 而不是 `deleteObject(params).then(success => console.log(success))`
 
 ## QuickStart
 
@@ -49,7 +49,7 @@ client.putObject({
   body: Buffer.from('test'), // 支持 Buffer/Readable/string
 }).then(() => {
   return client.getObject({
-    key: 'test-file.txt',
+    objectKey: 'test-file.txt',
     encode: 'utf-8', // 支持 'buffer' | 编码 | 'stream'
   })
 }).then(content => {
