@@ -1,6 +1,7 @@
 import { NosClient } from '../../src'
 import { cleanClient, newClient, randomObjectKey } from '../helpers/client'
 import { newReadableStream, newTempFile } from '../helpers/runtime'
+import { join } from 'path'
 
 let client: NosClient
 let bucket: string
@@ -165,5 +166,18 @@ describe('putBigObject', async () => {
     expect(res.key).toEqual(key)
 
     await expect(client.isObjectExist({ objectKey: key })).resolves.toBeTrue()
+  })
+
+  it('should upload local file success', async () => {
+    const key = randomObjectKey('.jpg')
+    const res = await client.putBigObject({
+      file: join(__dirname, '../files/lena.jpg'),
+      objectKey: key,
+      parallel: 1,
+    })
+
+    expect(res.key).toEqual(key)
+
+    await expect(client.isObjectExist({objectKey: key})).resolves.toBeTrue()
   })
 })
