@@ -273,7 +273,7 @@ export class NosClientMultipartUploadExt extends NosBaseClient {
         if (aborted) {
           return
         }
-        stream.off('data', onData)
+        stream.removeListener('data', onData)
         aborted = true
         reject(e)
       }

@@ -81,10 +81,10 @@
 						<section class="tsd-index-section ">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_lib_resource_.html#escapeobjectkey" class="tsd-kind-icon">escape<wbr>Object<wbr>Key</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_lib_resource_.html#getresourcestring" class="tsd-kind-icon">get<wbr>Resource<wbr>String</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_lib_resource_.html#getresourceuri" class="tsd-kind-icon">get<wbr>Resource<wbr>Uri</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_lib_resource_.html#mergeresource" class="tsd-kind-icon">merge<wbr>Resource</a></li>
-								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_lib_resource_.html#normalizeobjectkey" class="tsd-kind-icon">normalize<wbr>Object<wbr>Key</a></li>
 							</ul>
 						</section>
 					</div>
@@ -98,7 +98,7 @@
 					<div class="tsd-signature tsd-kind-icon">common<wbr>Query<wbr>Stringify<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;pipe(Object.entries,map(([key, value]) &#x3D;&gt; {if (typeof value &#x3D;&#x3D;&#x3D; &#x27;boolean&#x27;) {return value ? key : &#x27;&#x27;}return &#x60;${key}&#x3D;${qs.escape(value)}&#x60;}),compact,sort(ascend(v &#x3D;&gt; v)),join(&#x27;&amp;&#x27;))</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/3197b85/src/lib/resource.ts#L10">lib/resource.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/50c6350/src/lib/resource.ts#L10">lib/resource.ts:10</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -129,7 +129,7 @@
 					<div class="tsd-signature tsd-kind-icon">resource<wbr>Query<wbr>Stringify<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;pipe(pick([&#x27;acl&#x27;, &#x27;location&#x27;, &#x27;uploadId&#x27;, &#x27;uploads&#x27;, &#x27;partNumber&#x27;, &#x27;delete&#x27;]),commonQueryStringify)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/3197b85/src/lib/resource.ts#L28">lib/resource.ts:28</a></li>
+							<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/50c6350/src/lib/resource.ts#L28">lib/resource.ts:28</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -160,7 +160,7 @@
 					<div class="tsd-signature tsd-kind-icon">uri<wbr>Query<wbr>Stringify<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;pipe(omit([&#x27;bucket&#x27;, &#x27;objectKey&#x27;]),commonQueryStringify)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/3197b85/src/lib/resource.ts#L23">lib/resource.ts:23</a></li>
+							<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/50c6350/src/lib/resource.ts#L23">lib/resource.ts:23</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -189,6 +189,40 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Functions</h2>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
+					<a name="escapeobjectkey" class="tsd-anchor"></a>
+					<h3>escape<wbr>Object<wbr>Key</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
+						<li class="tsd-signature tsd-kind-icon">escape<wbr>Object<wbr>Key<span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/50c6350/src/lib/resource.ts#L39">lib/resource.ts:39</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>normalize object key</p>
+									<ol>
+										<li>remove prefix /
+										/obj =&gt; obj, dir/obj =&gt; dir%2Fobj</li>
+									</ol>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>key: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
 					<a name="getresourcestring" class="tsd-anchor"></a>
 					<h3>get<wbr>Resource<wbr>String</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
@@ -198,13 +232,20 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/3197b85/src/lib/resource.ts#L58">lib/resource.ts:58</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/50c6350/src/lib/resource.ts#L66">lib/resource.ts:66</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>获取资源字符串，对 objectKey 进行转义，保证 objectKey 没有前置 /</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>resource: <a href="_type_resource_.html#resource" class="tsd-signature-type">Resource</a></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
@@ -221,13 +262,20 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/3197b85/src/lib/resource.ts#L43">lib/resource.ts:43</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/50c6350/src/lib/resource.ts#L47">lib/resource.ts:47</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>获取资源路径，不对 / 进行转义</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>resource: <a href="_type_resource_.html#resource" class="tsd-signature-type">Resource</a></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
@@ -244,7 +292,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/3197b85/src/lib/resource.ts#L73">lib/resource.ts:73</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/50c6350/src/lib/resource.ts#L81">lib/resource.ts:81</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -260,40 +308,6 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
-					<a name="normalizeobjectkey" class="tsd-anchor"></a>
-					<h3>normalize<wbr>Object<wbr>Key</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">normalize<wbr>Object<wbr>Key<span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/3197b85/src/lib/resource.ts#L39">lib/resource.ts:39</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>normalize object key</p>
-									<ol>
-										<li>remove prefix /
-										/obj =&gt; obj, /dir/obj =&gt; dir/obj</li>
-									</ol>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>key: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
-						</li>
-					</ul>
-				</section>
 			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -304,6 +318,9 @@
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="_client_.html">"client"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_exts_auth_.html">"exts/auth"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="_exts_bucket_.html">"exts/bucket"</a>
@@ -370,6 +387,9 @@
 						<a href="_lib_resource_.html#uriquerystringify" class="tsd-kind-icon">uri<wbr>Query<wbr>Stringify</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="_lib_resource_.html#escapeobjectkey" class="tsd-kind-icon">escape<wbr>Object<wbr>Key</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
 						<a href="_lib_resource_.html#getresourcestring" class="tsd-kind-icon">get<wbr>Resource<wbr>String</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
@@ -377,9 +397,6 @@
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
 						<a href="_lib_resource_.html#mergeresource" class="tsd-kind-icon">merge<wbr>Resource</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="_lib_resource_.html#normalizeobjectkey" class="tsd-kind-icon">normalize<wbr>Object<wbr>Key</a>
 					</li>
 				</ul>
 			</nav>

@@ -1,5 +1,12 @@
 # ChangeLog
 
+### v0.2.5
+
+- Feature
+    - 添加 `createToken`/`createTokenString` 方法生成前端直传 Token
+- Compatible
+    - 用 `removeListener` 替代 `off` 方法，兼容旧版本 Node
+
 ### v0.2.3, v0.2.4
 
 - 修复部分特殊字符无法上传的问题

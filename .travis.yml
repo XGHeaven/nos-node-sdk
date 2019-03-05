@@ -6,5 +6,8 @@ node_js:
   - "11"
 env:
   - TEST_RANDOM_BUCKET=true
+branches:
+  except:
+    - master
 repo_token: 9WQMbVv4TBn4rST2F6mlSRENwiawzETQa
 after_script: cat ./coverage/lcov.info | ./node_modules/.bin/coveralls
