@@ -1,7 +1,7 @@
 # NOS Node.js SDK
 
 [![Coverage Status](https://coveralls.io/repos/github/XGHeaven/nos-node-sdk/badge.svg?branch=master)](https://coveralls.io/github/XGHeaven/nos-node-sdk?branch=master)
-[![Build Status](https://travis-ci.org/XGHeaven/nos-node-sdk.svg?branch=master)](https://travis-ci.org/XGHeaven/nos-node-sdk)
+[![Build Status](https://travis-ci.org/XGHeaven/nos-node-sdk.svg?branch=develop)](https://travis-ci.org/XGHeaven/nos-node-sdk)
 
 NOS Node.js SDK 实现了 NOS 对象操作接口，基于此 SDK 能方便快速地实现 JavaScript 应用程序来使用 NOS 的对象存储服务。
 
@@ -23,6 +23,7 @@ NOS Node.js SDK 实现了 NOS 对象操作接口，基于此 SDK 能方便快速
 - Support Async/Await or Callback
 - 操作简单专注，不会给你返回额外的信息
 - 丰富的测试用例
+- 支持创建直传 Token
 
 ## 设计哲学
 
@@ -81,12 +82,13 @@ client.listObject({
 ----------------------|----------|----------|----------|----------|-------------------|
 File                  |  % Stmts | % Branch |  % Funcs |  % Lines | Uncovered Line #s |
 ----------------------|----------|----------|----------|----------|-------------------|
-All files             |    94.11 |    80.34 |    92.86 |    95.22 |                   |
+All files             |    94.68 |     83.7 |    93.02 |    95.78 |                   |
  src                  |       98 |    94.12 |      100 |       98 |                   |
   client.ts           |       98 |    94.12 |      100 |       98 |               143 |
- src/exts             |    93.23 |    70.33 |    96.97 |    93.17 |                   |
+ src/exts             |    94.34 |    77.32 |    97.14 |     94.3 |                   |
+  auth.ts             |      100 |      100 |      100 |      100 |                   |
   bucket.ts           |    96.23 |    85.71 |      100 |    96.15 |             62,85 |
-  multipart-upload.ts |    91.82 |    59.26 |    92.86 |    91.82 |... 74,276,277,278 |
+  multipart-upload.ts |    93.64 |    77.78 |    92.86 |    93.64 |... 74,276,277,278 |
   object.ts           |    93.18 |       72 |      100 |     93.1 |... 82,233,234,236 |
  src/lib              |    94.01 |    87.76 |     88.1 |     97.4 |                   |
   authorization.ts    |      100 |    83.33 |      100 |      100 |                29 |
@@ -94,7 +96,7 @@ All files             |    94.11 |    80.34 |    92.86 |    95.22 |             
   error.ts            |      100 |       80 |      100 |      100 |                 3 |
   request.ts          |      100 |      100 |      100 |      100 |                   |
   resource.ts         |    94.12 |    81.25 |      100 |      100 |          14,48,67 |
-  util.ts             |    91.67 |    95.45 |    83.33 |    95.29 |      32,33,34,126 |
+  util.ts             |    91.67 |    95.45 |    83.33 |    95.29 |      36,37,38,130 |
  src/type             |      100 |      100 |      100 |      100 |                   |
   bucket.ts           |      100 |      100 |      100 |      100 |                   |
 ----------------------|----------|----------|----------|----------|-------------------|
