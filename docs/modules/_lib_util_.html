@@ -77,6 +77,7 @@
 								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="_lib_util_.html#addmetadataprefix" class="tsd-kind-icon">add<wbr>Metadata<wbr>Prefix</a></li>
 								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="_lib_util_.html#camelcaseobject-1" class="tsd-kind-icon">camel<wbr>Case<wbr>Object</a></li>
 								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="_lib_util_.html#compactobject" class="tsd-kind-icon">compact<wbr>Object</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_lib_util_.html#encodecharcode" class="tsd-kind-icon">encode<wbr>Char<wbr>Code</a></li>
 								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="_lib_util_.html#kababcaseobject" class="tsd-kind-icon">kabab<wbr>Case<wbr>Object</a></li>
 							</ul>
 						</section>
@@ -87,6 +88,7 @@
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_lib_util_.html#camelcase" class="tsd-kind-icon">Camel<wbr>Case</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_lib_util_.html#applymixins" class="tsd-kind-icon">apply<wbr>Mixins</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_lib_util_.html#camelcase-1" class="tsd-kind-icon">camel<wbr>Case</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_lib_util_.html#encodekey" class="tsd-kind-icon">encode<wbr>Key</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_lib_util_.html#getmetadatafromheaders" class="tsd-kind-icon">get<wbr>Metadata<wbr>From<wbr>Headers</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_lib_util_.html#ishttpstatusok" class="tsd-kind-icon">is<wbr>Http<wbr>Status<wbr>Ok</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_lib_util_.html#isnullorundefined" class="tsd-kind-icon">is<wbr>Null<wbr>OrUndefined</a></li>
@@ -108,7 +110,7 @@
 					<div class="tsd-signature tsd-kind-icon">Camel<wbr>Case<wbr>Object<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;renameObjectNameFactory(CamelCase)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/3197b85/src/lib/util.ts#L50">lib/util.ts:50</a></li>
+							<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/50c6350/src/lib/util.ts#L63">lib/util.ts:63</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -139,7 +141,7 @@
 					<div class="tsd-signature tsd-kind-icon">add<wbr>Metadata<wbr>Prefix<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;renameKeysWith(pipe(kababCase,concat(&#x27;x-nos-&#x27;)))</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/3197b85/src/lib/util.ts#L64">lib/util.ts:64</a></li>
+							<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/50c6350/src/lib/util.ts#L77">lib/util.ts:77</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -170,7 +172,7 @@
 					<div class="tsd-signature tsd-kind-icon">camel<wbr>Case<wbr>Object<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;renameObjectNameFactory(camelCase)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/3197b85/src/lib/util.ts#L49">lib/util.ts:49</a></li>
+							<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/50c6350/src/lib/util.ts#L62">lib/util.ts:62</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -201,7 +203,17 @@
 					<div class="tsd-signature tsd-kind-icon">compact<wbr>Object<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">FilterOnceApplied</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;filter&lt;any&gt;(e &#x3D;&gt; !isNullOrUndefined(e))</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/3197b85/src/lib/util.ts#L98">lib/util.ts:98</a></li>
+							<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/50c6350/src/lib/util.ts#L110">lib/util.ts:110</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+					<a name="encodecharcode" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> encode<wbr>Char<wbr>Code</h3>
+					<div class="tsd-signature tsd-kind-icon">encode<wbr>Char<wbr>Code<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new Map&lt;RegExp, string&gt;(&quot;!&#x27;()&amp;^~&quot;.split(&#x27;&#x27;).map(char &#x3D;&gt;[new RegExp(&#x60;\\${char}&#x60;, &#x27;g&#x27;),&#x60;%${char.charCodeAt(0).toString(16).toUpperCase()}&#x60;,] as [RegExp, string]))</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/50c6350/src/lib/util.ts#L8">lib/util.ts:8</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -211,7 +223,7 @@
 					<div class="tsd-signature tsd-kind-icon">kabab<wbr>Case<wbr>Object<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;renameObjectNameFactory(kababCase)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/3197b85/src/lib/util.ts#L51">lib/util.ts:51</a></li>
+							<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/50c6350/src/lib/util.ts#L64">lib/util.ts:64</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -249,7 +261,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/3197b85/src/lib/util.ts#L110">lib/util.ts:110</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/50c6350/src/lib/util.ts#L122">lib/util.ts:122</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -278,7 +290,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/3197b85/src/lib/util.ts#L15">lib/util.ts:15</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/50c6350/src/lib/util.ts#L28">lib/util.ts:28</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -301,7 +313,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/3197b85/src/lib/util.ts#L101">lib/util.ts:101</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/50c6350/src/lib/util.ts#L113">lib/util.ts:113</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -327,13 +339,40 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/3197b85/src/lib/util.ts#L8">lib/util.ts:8</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/50c6350/src/lib/util.ts#L21">lib/util.ts:21</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
+					<a name="encodekey" class="tsd-anchor"></a>
+					<h3>encode<wbr>Key</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
+						<li class="tsd-signature tsd-kind-icon">encode<wbr>Key<span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/50c6350/src/lib/util.ts#L157">lib/util.ts:157</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>key: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
@@ -350,7 +389,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/3197b85/src/lib/util.ts#L70">lib/util.ts:70</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/50c6350/src/lib/util.ts#L83">lib/util.ts:83</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -373,7 +412,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/3197b85/src/lib/util.ts#L86">lib/util.ts:86</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/50c6350/src/lib/util.ts#L99">lib/util.ts:99</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -396,7 +435,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/3197b85/src/lib/util.ts#L97">lib/util.ts:97</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/50c6350/src/lib/util.ts#L109">lib/util.ts:109</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -419,7 +458,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/3197b85/src/lib/util.ts#L22">lib/util.ts:22</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/50c6350/src/lib/util.ts#L35">lib/util.ts:35</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -442,7 +481,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/3197b85/src/lib/util.ts#L90">lib/util.ts:90</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/50c6350/src/lib/util.ts#L103">lib/util.ts:103</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -465,7 +504,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/3197b85/src/lib/util.ts#L130">lib/util.ts:130</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/50c6350/src/lib/util.ts#L142">lib/util.ts:142</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -488,7 +527,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/3197b85/src/lib/util.ts#L28">lib/util.ts:28</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/50c6350/src/lib/util.ts#L41">lib/util.ts:41</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -547,7 +586,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/3197b85/src/lib/util.ts#L53">lib/util.ts:53</a></li>
+									<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/50c6350/src/lib/util.ts#L66">lib/util.ts:66</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -570,6 +609,9 @@
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="_client_.html">"client"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_exts_auth_.html">"exts/auth"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="_exts_bucket_.html">"exts/bucket"</a>
@@ -638,6 +680,9 @@
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
 						<a href="_lib_util_.html#compactobject" class="tsd-kind-icon">compact<wbr>Object</a>
 					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="_lib_util_.html#encodecharcode" class="tsd-kind-icon">encode<wbr>Char<wbr>Code</a>
+					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
 						<a href="_lib_util_.html#kababcaseobject" class="tsd-kind-icon">kabab<wbr>Case<wbr>Object</a>
 					</li>
@@ -652,6 +697,9 @@
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
 						<a href="_lib_util_.html#camelcase-1" class="tsd-kind-icon">camel<wbr>Case</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="_lib_util_.html#encodekey" class="tsd-kind-icon">encode<wbr>Key</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
 						<a href="_lib_util_.html#getmetadatafromheaders" class="tsd-kind-icon">get<wbr>Metadata<wbr>From<wbr>Headers</a>

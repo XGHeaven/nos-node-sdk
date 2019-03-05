@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>CompleteMultipartParams | @xgheaven/nos-node-sdk</title>
+	<title>Token | @xgheaven/nos-node-sdk</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,13 +56,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_type_multipart_upload_.html">&quot;type/multipart-upload&quot;</a>
+					<a href="../modules/_exts_auth_.html">&quot;exts/auth&quot;</a>
 				</li>
 				<li>
-					<a href="_type_multipart_upload_.completemultipartparams.html">CompleteMultipartParams</a>
+					<a href="_exts_auth_.token.html">Token</a>
 				</li>
 			</ul>
-			<h1>Interface CompleteMultipartParams</h1>
+			<h1>Interface Token</h1>
 		</div>
 	</div>
 </header>
@@ -73,12 +73,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<a href="_type_multipart_upload_.multipartuploadparams.html" class="tsd-signature-type">MultipartUploadParams</a>
-						<ul class="tsd-hierarchy">
-							<li>
-								<span class="target">CompleteMultipartParams</span>
-							</li>
-						</ul>
+						<span class="target">Token</span>
 					</li>
 				</ul>
 			</section>
@@ -89,10 +84,8 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_type_multipart_upload_.completemultipartparams.html#bucket" class="tsd-kind-icon">bucket</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_type_multipart_upload_.completemultipartparams.html#objectkey" class="tsd-kind-icon">object<wbr>Key</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_type_multipart_upload_.completemultipartparams.html#parts" class="tsd-kind-icon">parts</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_type_multipart_upload_.completemultipartparams.html#uploadid" class="tsd-kind-icon">upload<wbr>Id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_exts_auth_.token.html#putpolicy" class="tsd-kind-icon">put<wbr>Policy</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_exts_auth_.token.html#sign" class="tsd-kind-icon">sign</a></li>
 							</ul>
 						</section>
 					</div>
@@ -100,48 +93,35 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="bucket" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> bucket</h3>
-					<div class="tsd-signature tsd-kind-icon">bucket<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="putpolicy" class="tsd-anchor"></a>
+					<h3>put<wbr>Policy</h3>
+					<div class="tsd-signature tsd-kind-icon">put<wbr>Policy<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="_type_object_.operateoptionalbucketparams.html">OperateOptionalBucketParams</a>.<a href="_type_object_.operateoptionalbucketparams.html#bucket">bucket</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/50c6350/src/type/object.ts#L15">type/object.ts:15</a></li>
+							<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/50c6350/src/exts/auth.ts#L32">exts/auth.ts:32</a></li>
 						</ul>
 					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="objectkey" class="tsd-anchor"></a>
-					<h3>object<wbr>Key</h3>
-					<div class="tsd-signature tsd-kind-icon">object<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<p>Inherited from <a href="_type_object_.operateobjectparams.html">OperateObjectParams</a>.<a href="_type_object_.operateobjectparams.html#objectkey">objectKey</a></p>
-						<ul>
-							<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/50c6350/src/type/object.ts#L4">type/object.ts:4</a></li>
-						</ul>
-					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>上传凭证</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="parts" class="tsd-anchor"></a>
-					<h3>parts</h3>
-					<div class="tsd-signature tsd-kind-icon">parts<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Pick</span><span class="tsd-signature-symbol">&lt;</span><a href="_type_multipart_upload_.part.html" class="tsd-signature-type">Part</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">"partNumber"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"eTag"</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<a name="sign" class="tsd-anchor"></a>
+					<h3>sign</h3>
+					<div class="tsd-signature tsd-kind-icon">sign<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/50c6350/src/type/multipart-upload.ts#L32">type/multipart-upload.ts:32</a></li>
+							<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/50c6350/src/exts/auth.ts#L36">exts/auth.ts:36</a></li>
 						</ul>
 					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="uploadid" class="tsd-anchor"></a>
-					<h3>upload<wbr>Id</h3>
-					<div class="tsd-signature tsd-kind-icon">upload<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<p>Inherited from <a href="_type_multipart_upload_.multipartuploadparams.html">MultipartUploadParams</a>.<a href="_type_multipart_upload_.multipartuploadparams.html#uploadid">uploadId</a></p>
-						<ul>
-							<li>Defined in <a href="https://github.com/XGHeaven/nos-node-sdk/blob/50c6350/src/type/multipart-upload.ts#L7">type/multipart-upload.ts:7</a></li>
-						</ul>
-					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>签名</p>
+						</div>
+					</div>
 				</section>
 			</section>
 		</div>
@@ -154,7 +134,7 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_client_.html">"client"</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class="current tsd-kind-external-module">
 						<a href="../modules/_exts_auth_.html">"exts/auth"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -196,7 +176,7 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_type_callback_.html">"type/callback"</a>
 					</li>
-					<li class="current tsd-kind-external-module">
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/_type_multipart_upload_.html">"type/multipart-<wbr>upload"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -212,75 +192,27 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="../classes/_exts_auth_.nosclientauthext.html" class="tsd-kind-icon">Nos<wbr>Client<wbr>Auth<wbr>Ext</a>
+					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_type_multipart_upload_.abortmultipartuploadparams.html" class="tsd-kind-icon">Abort<wbr>Multipart<wbr>Upload<wbr>Params</a>
+						<a href="_exts_auth_.createtokenparams.html" class="tsd-kind-icon">Create<wbr>Token<wbr>Params</a>
 					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_type_multipart_upload_.completemultipartparams.html" class="tsd-kind-icon">Complete<wbr>Multipart<wbr>Params</a>
+						<a href="_exts_auth_.token.html" class="tsd-kind-icon">Token</a>
 						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="_type_multipart_upload_.completemultipartparams.html#bucket" class="tsd-kind-icon">bucket</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="_type_multipart_upload_.completemultipartparams.html#objectkey" class="tsd-kind-icon">object<wbr>Key</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_exts_auth_.token.html#putpolicy" class="tsd-kind-icon">put<wbr>Policy</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_type_multipart_upload_.completemultipartparams.html#parts" class="tsd-kind-icon">parts</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="_type_multipart_upload_.completemultipartparams.html#uploadid" class="tsd-kind-icon">upload<wbr>Id</a>
+								<a href="_exts_auth_.token.html#sign" class="tsd-kind-icon">sign</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_type_multipart_upload_.initmultipartuploadparams.html" class="tsd-kind-icon">Init<wbr>Multipart<wbr>Upload<wbr>Params</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_type_multipart_upload_.listmultipartparams.html" class="tsd-kind-icon">List<wbr>Multipart<wbr>Params</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="_type_multipart_upload_.listmultipartresult.html" class="tsd-kind-icon">List<wbr>Multipart<wbr>Result</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_type_multipart_upload_.listpartsoptions.html" class="tsd-kind-icon">List<wbr>Parts<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_type_multipart_upload_.listpartsresult.html" class="tsd-kind-icon">List<wbr>Parts<wbr>Result</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_type_multipart_upload_.multipartupload.html" class="tsd-kind-icon">Multipart<wbr>Upload</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_type_multipart_upload_.multipartuploadobject.html" class="tsd-kind-icon">Multipart<wbr>Upload<wbr>Object</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_type_multipart_upload_.multipartuploadparams.html" class="tsd-kind-icon">Multipart<wbr>Upload<wbr>Params</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_type_multipart_upload_.part.html" class="tsd-kind-icon">Part</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_type_multipart_upload_.progress.html" class="tsd-kind-icon">Progress</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_type_multipart_upload_.putbigobjectbaseparams.html" class="tsd-kind-icon">Put<wbr>Big<wbr>Object<wbr>Base<wbr>Params</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_type_multipart_upload_.putbigobjectfileparams.html" class="tsd-kind-icon">Put<wbr>Big<wbr>Object<wbr>File<wbr>Params</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_type_multipart_upload_.putbigobjectstreamparams.html" class="tsd-kind-icon">Put<wbr>Big<wbr>Object<wbr>Stream<wbr>Params</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_type_multipart_upload_.uploadmultipartparams.html" class="tsd-kind-icon">Upload<wbr>Multipart<wbr>Params</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/_type_multipart_upload_.html#putbigobjectparams" class="tsd-kind-icon">Put<wbr>Big<wbr>Object<wbr>Params</a>
-					</li>
 				</ul>
 			</nav>
 		</div>
