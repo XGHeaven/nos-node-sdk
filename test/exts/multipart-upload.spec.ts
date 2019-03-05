@@ -180,4 +180,19 @@ describe('putBigObject', async () => {
 
     await expect(client.isObjectExist({objectKey: key})).resolves.toBeTrue()
   })
+
+  it('should parallel upload success', async () => {
+    const objectKey = randomObjectKey()
+    const body = newReadableStream(1024 * 1024 * 3)
+    const ret = await client.putBigObject({
+      body,
+      objectKey,
+      maxPart: 1024 * 128,
+      parallel: 8,
+    })
+
+    expect(ret.key).toEqual(objectKey)
+
+    await expect(client.isObjectExist({objectKey})).resolves.toBeTrue()
+  })
 })
