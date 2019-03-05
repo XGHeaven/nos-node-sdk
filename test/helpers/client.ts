@@ -1,7 +1,11 @@
+import fetch from 'node-fetch'
 import { NosClient } from '../../src'
 import * as dotenv from 'dotenv'
 import 'jest-extended'
 dotenv.config()
+
+// 缓存的直传最优上传节点
+let cacheEndpoint = ''
 
 export function randomBucketName() {
   return `nos-node-sdk-test-bucket-${Date.now()}${Math.floor(Math.random() * 900 + 100)}`
@@ -90,4 +94,28 @@ export async function putRandomObject(
       body: 'random-object-' + Date.now(),
     })
   }
+}
+
+export async function uploadUseToken(token: string, bucket: string, objectKey: string, body: Buffer | string, headers: any = {}): Promise<boolean> {
+  let endpoint = cacheEndpoint
+  if (!endpoint) {
+    const resp = await fetch('http://lbs-eastchina1.126.net/lbs?version=1.0&bucketname=' + bucket)
+    const data = await resp.json()
+    endpoint = cacheEndpoint = data.upload[0]
+  }
+
+  const resp = await fetch(`${endpoint}/${bucket}/${objectKey}?offset=0&complete=true&version=1.0`, {
+    method: 'POST',
+    headers: {
+      'host': 'nos-eastchina1.126.net',
+      'x-nos-token': `UPLOAD ${token}`,
+      'content-length': body.length.toString(),
+      ...headers
+    },
+    body
+  })
+
+  const data = await resp.json()
+
+  return !data.errCode
 }
