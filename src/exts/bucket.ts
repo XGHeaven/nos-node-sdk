@@ -94,7 +94,7 @@ export class NosClientBucketExt extends NosBaseClient {
   @Callbackable
   async isBucketExist(params: OperateBucketParams): Promise<boolean> {
     const { headers, resource } = this.validateParams(params)
-    const resp = await this._request('head', headers, resource)
+    const { resp } = await this._request('head', headers, resource)
 
     if (resp.status === 404) return false
     await this.handleRequestError(resp)

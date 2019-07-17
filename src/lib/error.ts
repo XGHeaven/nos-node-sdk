@@ -23,3 +23,9 @@ export class NoBucketError extends Error {
     super(`No bucket, Please set defaultBucket in constructor or bucket/sourceBucket/targetBucket in function params`)
   }
 }
+
+export class EtagVaildError extends Error {
+  constructor() {
+    super(`Upload file md5 value check does not match`)
+  }
+}
