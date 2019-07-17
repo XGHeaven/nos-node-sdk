@@ -88,7 +88,12 @@ export class NosClientObjectExt extends NosBaseClient {
     } else {
       data = params.body
     }
-
+    if (data instanceof fs.ReadStream) {
+      data.on('error', err => {
+        // 通常是文件不存在等无法从可读流读取的错误
+        throw err
+      })
+    }
     Object.assign(headers, {
       ...addMetadataPrefix(params.metadata || {}),
     })
@@ -125,7 +130,7 @@ export class NosClientObjectExt extends NosBaseClient {
 
     mergeResource(resource, pick(['ifNotFound'], params))
 
-    const resp = await this._request('get', headers, resource)
+    const { resp } = await this._request('get', headers, resource)
     if (!isHttpStatusOk(resp.status) && (params.ifNotFound && resp.status !== 404)) {
       await this.handleRequestError(resp)
     }
